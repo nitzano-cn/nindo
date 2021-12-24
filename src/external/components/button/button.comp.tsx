@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { InternalComp } from '../../../internal/components';
+
 import './button.scss';
 
 export interface ButtonProps {
@@ -7,5 +9,10 @@ export interface ButtonProps {
 }
 
 export const Button = (props: ButtonProps) => {
-  return <button>{props.label}</button>;
+  return (
+    <button>
+      {props.label}
+      <InternalComp />
+    </button>
+  );
 };
