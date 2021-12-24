@@ -6,8 +6,9 @@
     "rollup": "rollup -c",
     "test": "jest"
   },
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "outputDir": "./dist",
   "sideEffects": [
     "**/*.css",
     "**/*.scss"
