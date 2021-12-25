@@ -14,14 +14,21 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "outputDir": "./dist",
+  "bin": {
+    "cn-scripts": "./bin/cn-scripts.js"
+  },
   "sideEffects": [
     "**/*.css",
     "**/*.scss"
   ],
   "files": [
-    "dist"
+    "dist",
+    "bin",
+    "scripts",
+    "tsconfig.json"
   ],
   "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "author": "Common Ninja Ltd.",
   "license": "ISC",
   "homepage": "https://github.com/CommonNinja/nindo#readme",
@@ -37,7 +44,10 @@
     "dotenv": "^10.0.0",
     "react-color": "^2.19.3",
     "react-notification-system": "^0.4.0",
-    "react-router-dom": "^6.2.1"
+    "react-notification-system-redux": "^2.0.1",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -52,6 +62,8 @@
     "@types/react": "^17.0.34",
     "@types/react-color": "^3.0.6",
     "@types/react-notification-system": "^0.2.41",
+    "@types/react-notification-system-redux": "^1.1.7",
+    "@types/uuid": "^8.3.3",
     "babel-jest": "^27.3.1",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",

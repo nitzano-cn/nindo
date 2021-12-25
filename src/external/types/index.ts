@@ -1,3 +1,4 @@
+export * from './app.types';
 export * from './appMenu.types';
 export * from './appNotification.types';
 export * from './asset.types';
