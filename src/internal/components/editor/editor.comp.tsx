@@ -1,6 +1,6 @@
 import React, { ComponentType, ReactElement } from 'react';
 import loadable from '@loadable/component';
-import { useRouteMatch } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { IEditorConfig, TActivePage, TSiteBuilderVendor } from '../../../external/types/editor.types';
 import { PluginWrapper } from '../pluginWrapper/pluginWrapper.comp';
 import { Loader } from '../../../external/components/loader/loader.comp';
@@ -26,14 +26,13 @@ interface IConfigParts {
 
 export interface IEditorProps<T> extends IEditorExtraProps<T> {
 	config: IEditorConfig<T>;
-	pluginComp: IPluginComp<T>;
+	pluginComp: IPluginComp;
 	defaultPluginData: IPlugin<T>;
 	pluginLoaderComp?: IPluginLoaderComp;
 }
 
 export const Editor = ({ config, pluginComp, pluginLoaderComp, defaultPluginData, ...restProps }: IEditorProps<any>) => {
-	const match = useRouteMatch();
-	const { vendor } = match.params as {
+	const { vendor } = useParams() as {
 		vendor: TSiteBuilderVendor;
 	};
 
@@ -44,7 +43,7 @@ export const Editor = ({ config, pluginComp, pluginLoaderComp, defaultPluginData
 			menuLinks={menuItems}
 			resolveContextComp={pageToComp}
 			defaultPluginData={defaultPluginData}
-			pluginComp={<PluginWrapper mode={'editor'} pluginComp={pluginComp} vendor={vendor} />}
+			pluginComp={<PluginWrapper pluginComp={pluginComp} />}
 			pluginLoaderComp={pluginLoaderComp}
 			showAnnouncements={true}
 			showHistoryButtons={true}

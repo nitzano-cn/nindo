@@ -14,7 +14,7 @@ require('ace-builds/webpack-resolver');
 
 interface CustomCSSEditor<T> {
   onUpdate: (newStyles: string) => void
-  pluginComp: IPluginComp<T>
+  pluginComp: IPluginComp
   css: string
   title?: string
   defaultStyles?: string
@@ -59,8 +59,8 @@ export const CustomCSSEditor = (props: CustomCSSEditor<any>) => {
           }}
         />
         <div className="custom-css-preview">
+          <PluginWrapper pluginComp={pluginComp} />
           <style dangerouslySetInnerHTML={{ __html: customCSS }}></style>
-          <PluginWrapper mode="editor" pluginComp={pluginComp} />
         </div>
       </div>
       <div className="buttons-wrapper center">

@@ -68,7 +68,7 @@ export const App = ({ appConfig }: IAppProps<any>) => {
 				/>
 			)}
 			previewComp={(
-				<PluginWrapper mode="preview" pluginComp={pluginComp} />
+				<PluginWrapper pluginComp={pluginComp} />
 			)}
 			defaultRoutePath={appConfig.app?.defaultRoutePath || '/editor/content'}
 			extraRoutes={appConfig.app?.extraRoutes}

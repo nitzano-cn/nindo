@@ -36,16 +36,10 @@ export interface IEditorConfig<T> {
 
 export interface IEditorSection<T> {
 	id: TActivePage;
-	component: ComponentType<IEditorSectionProps<T>>;
+	component: ComponentType;
 	name: string;
 	icon: any;
   context?: 'menu' | 'main';
-}
-
-export interface IEditorSectionProps<T> {
-  pluginData: IPlugin<T>, 
-  updateData: (updatedData: Partial<T>) => void 
-  user: IUser
 }
 
 export type TActivePage =

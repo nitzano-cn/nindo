@@ -1,5 +1,5 @@
 import React, { useState, useEffect, ComponentType, ReactElement } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { faCode, faChartBar, faEye } from '@fortawesome/free-solid-svg-icons';
 
@@ -40,7 +40,6 @@ import {
   IAppState,
   TActivePage,
   IPluginLoaderComp,
-  IEditorSectionProps,
 } from '../../../external/types';
 import { useQuery } from '../../../external/hooks/query.hook';
 import { IExtraMenuItem } from '../exportMenu/exportMenu.comp';
@@ -97,9 +96,8 @@ export const CNEditor = ({
   preSaveValidation,
 }: ICNEditor<any>) => {
   const query = useQuery();
-  const match = useRouteMatch();
   const dispatch = useDispatch();
-  const { pluginId, page } = match.params as any;
+  const { pluginId, page } = useParams() as any;
   const { isSaved, plugin, user } = useSelector((state: IAppState<any>) => ({
     isSaved: state.editor.isSaved,
     plugin: state.plugin,
@@ -343,24 +341,8 @@ export const CNEditor = ({
     }
 
     let activePageProps = resolveContextComp(page);
-    let mainComp = pluginComp;
-
-    if (activePageProps?.context === 'main') {
-      const MainComp = activePageProps?.comp;
-      const componentData: IEditorSectionProps<any> = {
-        pluginData: plugin,
-        user,
-        updateData: (updatedData) => {
-          dispatch(dataUpdated(updatedData));
-        },
-      };
-      mainComp =
-        typeof MainComp === 'function' ? (
-          <MainComp {...componentData} />
-        ) : (
-          React.cloneElement(MainComp, componentData)
-        );
-    } else if (page === 'code') {
+    
+    if (page === 'code') {
       activePageProps = {
         comp: (
           <PublishSettingsComp
@@ -413,7 +395,7 @@ export const CNEditor = ({
                 withContextMenu={
                   activePageProps?.context === 'menu' && !!activePageProps?.comp
                 }
-                mainComp={mainComp}
+                mainComp={pluginComp}
                 showExportMenu={!!showExportMenu}
                 exportIsAvailable={
                   typeof exportIsAvailable === 'function'

@@ -1,17 +1,10 @@
 import { ComponentType, ReactChild, ReactElement, ReactNode } from 'react';
 
-import { TSiteBuilderVendor } from './editor.types';
 import { TComponentType } from './component.types';
 
 export type TChildren = ReactNode | ReactChild | ReactElement | JSX.Element[] | JSX.Element | string | Element[] | ComponentType;
 
-export interface IPluginProps<T> {
-	pluginData: IPlugin<T>;
-  mode: TPluginMode;
-  vendor?: TSiteBuilderVendor;
-}
-
-export type IPluginComp<T> = (props: IPluginProps<T>) => ReactElement;
+export type IPluginComp = () => ReactElement;
 
 export type IPluginLoaderComp = (props: { mode: TPluginMode, [x: string]: any; }) => ReactElement;
 

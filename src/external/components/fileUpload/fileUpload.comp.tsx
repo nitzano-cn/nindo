@@ -1,5 +1,5 @@
 import React, { useRef, ChangeEvent } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
@@ -25,9 +25,8 @@ export interface IFileUploadProps {
 
 export const FileUpload = (props: IFileUploadProps) => {
   const { children, acceptType, uploadApiUrl, errorCallback, uploadStartCallback, className, pluginId, postUploadCallback, sizeLimitInMB, enabled, disabledCallback } = props;
-  const match = useRouteMatch();
   const query = useQuery();
-  const { vendor } = match.params as any;
+  const { vendor } = useParams() as any;
   const accept = FileTypes.get(acceptType) as string;
   const inputRef = useRef<HTMLInputElement>(null);
   const queryParams: string = [

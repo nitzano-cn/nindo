@@ -19,7 +19,7 @@ export type TPluginViewerProps<T> = IViewerProps<T> | TViewerPropsGenerator<T>;
 export interface IAppConfig<T, P = {}> {
 	plugin: {
 		defaultData: IPlugin<T>;
-		pluginComponent: IPluginComp<T>;
+		pluginComponent: IPluginComp;
 		loaderComponent?: IPluginLoaderComp;
 	}
 	editor: {

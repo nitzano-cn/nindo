@@ -10,7 +10,7 @@ import * as userActions from '../../actions/user.actions';
 import './galleryPage.scss';
 
 export const GalleryPage = (props: {
-	pluginComp: IPluginComp<any>;
+	pluginComp: IPluginComp;
 	pluginLoaderComp?: IPluginLoaderComp;
 }) => {
 	const { user } = useSelector((state: IAppState<any>) => ({
@@ -36,7 +36,7 @@ export const GalleryPage = (props: {
 			/>
 			<div className="gallery-page">
 				<PluginLoader
-					pluginComp={<PluginWrapper mode="viewer" pluginComp={pluginComp} />}
+					pluginComp={<PluginWrapper pluginComp={pluginComp} />}
 					pluginLoaderComp={pluginLoaderComp}
 					{...otherProps}
 				/>
