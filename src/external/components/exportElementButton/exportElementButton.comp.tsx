@@ -20,7 +20,7 @@ interface IExportElementButtonProps {
   errorCallback?: (e: Error) => void
 }
 
-const ExportElementButton = ({ exportUrl, automaticallyDownload, exportSelector, exportHideElements, exportFormat, fileName, buttonTitle, exportDelay, exportWidth, exportHeight, exportStartCallback, successCallback, errorCallback }: IExportElementButtonProps) => {
+export const ExportElementButton = ({ exportUrl, automaticallyDownload, exportSelector, exportHideElements, exportFormat, fileName, buttonTitle, exportDelay, exportWidth, exportHeight, exportStartCallback, successCallback, errorCallback }: IExportElementButtonProps) => {
   const [exporting, setExporting] = useState<boolean>(false);
 
   async function fetchJobStatus(jobId: number) {

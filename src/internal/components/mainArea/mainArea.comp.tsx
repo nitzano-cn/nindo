@@ -6,17 +6,12 @@ import { EditorToolbar } from '../editorToolbar/editorToolbar.comp';
 import { ExportMenu, IExtraMenuItem } from '../exportMenu/exportMenu.comp';
 import { savePlugin, nameUpdated, pluginContextUpdated } from '../../actions';
 import { TChildren } from '../../../external/types/plugin.types';
-import { TSiteBuilderVendor } from '../../../external/types/editor.types';
+import { IPreSaveValidation, TSiteBuilderVendor } from '../../../external/types/editor.types';
 import { useQuery } from '../../../external/hooks/query.hook';
 import { notificationHelper } from '../../../external/helpers/notification.helper';
 import { BackgroundPicker } from '../backgroundPicker/backgroundPicker.comp';
 
 import './mainArea.scss';
-
-export interface IPreSaveValidation { 
-	valid: boolean
-	message?: string 
-}
 
 interface IMainAreaProps {
 	withContextMenu: boolean;

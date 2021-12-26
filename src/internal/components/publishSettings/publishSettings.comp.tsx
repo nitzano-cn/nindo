@@ -14,7 +14,7 @@ type PublishSettingsProps = {
 	hideTutorials?: boolean;
 };
 
-const PublishSettingsComp = (props: PublishSettingsProps) => {
+export const PublishSettingsComp = (props: PublishSettingsProps) => {
 	const { pluginId, showCode = true, hideTutorials, htmlCodeOnly } = props;
 
 	return !pluginId ? (

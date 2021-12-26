@@ -33,13 +33,14 @@ import { IPlugin, TChildren } from '../../../external/types/plugin.types';
 import { IUser } from '../../../external/types/user.types';
 import { historyChange } from '../../actions/history.actions';
 import { CommonNinjaPlugin } from '../commonninjaPlugin/commonninjaPlugin.comp';
-import { MainArea, IPreSaveValidation } from '../mainArea/mainArea.comp';
+import { MainArea } from '../mainArea/mainArea.comp';
 import { PluginSkeleton } from '../../../external/components/pluginSkeleton/pluginSkeleton.comp';
 import {
   TSiteBuilderVendor,
   IAppState,
   TActivePage,
   IPluginLoaderComp,
+  IPreSaveValidation,
 } from '../../../external/types';
 import { useQuery } from '../../../external/hooks/query.hook';
 import { IExtraMenuItem } from '../exportMenu/exportMenu.comp';
