@@ -6,7 +6,6 @@ export * from './appNotifications/appNotifications.comp';
 export * from './assetsGallery/assetsGallery.comp';
 export * from './backgroundPicker/backgroundPicker.comp';
 export * from './cnApp/cnApp.comp';
-export * from './cnBootstrap/cnBootstrap.comp';
 export * from './cnDashboard/cnDashboard.comp';
 export * from './cnEditor/cnEditor.comp';
 export * from './cnVendorDashboardApp/cnVendorDashboardApp.comp';

@@ -16,9 +16,6 @@ export default [
     input: [
       'src/index.ts',
       ...getFiles('./src/external', extensions),
-      // ...getFiles('./src/hooks', extensions),
-      // ...getFiles('./src/common', extensions),
-      // ...getFiles('./src/utils', extensions),
     ],
     output: {
       dir: 'dist',

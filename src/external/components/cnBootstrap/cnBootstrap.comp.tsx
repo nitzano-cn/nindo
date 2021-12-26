@@ -4,11 +4,11 @@ import { Provider } from 'react-redux';
 
 import * as serviceWorker from './serviceWorker';
 
-import defaultUserState from '../../mocks/userState.mocks';
-import { assetMocks, eventMocks, pluginMocks, userMocks } from '../../mocks';
-import { IAppConfig } from '../../../external/types/app.types';
-import { genStore } from '../init/reducers.init';
-import { App } from '../app/app.comp';
+import defaultUserState from '../../../internal/mocks/userState.mocks';
+import { assetMocks, eventMocks, pluginMocks, userMocks } from '../../../internal/mocks';
+import { IAppConfig } from '../../types/app.types';
+import { genStore } from '../../../internal/components/init/reducers.init';
+import { App } from '../../../internal/components/app/app.comp';
 
 // Polyfill Promise for IE10+
 require('es6-promise').polyfill();
@@ -54,3 +54,5 @@ export function cnBootstrap<T, P = {}>(appConfig: IAppConfig<T, P>) {
 	// Learn more about service workers: https://bit.ly/CRA-PWA
 	serviceWorker.unregister();
 }
+
+export const nindoApp = cnBootstrap;

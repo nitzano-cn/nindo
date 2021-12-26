@@ -1,6 +1,7 @@
 export * from './addItemButton/addItemButton.comp';
 export * from './assetsGalleryOpener/assetsGalleryOpener.comp';
 export * from './button/button.comp';
+export * from './cnBootstrap/cnBootstrap.comp';
 export * from './colorPicker/colorPicker.comp';
 export * from './confirmationPopup/confirmationPopup.comp';
 export * from './contextMenuSection/contextMenuSection.comp';
