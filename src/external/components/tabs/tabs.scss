@@ -1,0 +1,36 @@
+@import '../../styles/_vars';
+
+.tabs {
+  font-size: 14px;
+  font-weight: 200;
+  margin: 0;
+  line-height: 1.5em;
+  background: rgba(255,255,255,0.03);
+  text-align: center;
+  padding: 10px 0 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+
+  .tab-trigger {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-bottom: none;
+    padding: 9px 15px 7px;
+    background: none;
+    font-size: 14px;
+    margin: 0 5px;
+    cursor: pointer;
+    color: $gray-20;
+    border-radius: 3px 3px 0 0;
+    margin-bottom: -1px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+
+    &:hover {
+      background: rgba(255,255,255,0.05);
+    }
+    
+    &.active {
+      background: $black-40;
+      color: #fff;
+    }
+  }
+}

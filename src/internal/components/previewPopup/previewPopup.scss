@@ -1,0 +1,59 @@
+.preview-popup {
+  .popup-content {
+    width: 90%;
+    padding: 0;
+
+    > h2 {
+      margin: 0 0 20px;
+      padding: 20px;
+      background: #eaecf3;
+    }
+
+    section {
+      padding: 20px;
+    }
+    
+    .buttons-wrapper {
+      text-align: center;
+    }
+  }
+
+  .preview-wrapper {
+    .iframe-wrapper {
+      border-radius: 5px;
+      border: 3px solid #eaecf3;
+      width: 95%;
+      margin: 0 auto;
+      height: calc(100vh - 320px);
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      display: block;
+      transition: height 0.05s ease;
+    }
+
+    .platforms {
+      text-align: center;
+      margin-bottom: 20px;
+
+      > * {
+        display: inline-block;
+        border: 1px solid #eaecf3;
+        border-radius: 50em;
+        padding: 10px;
+        font-size: 18px;
+        cursor: pointer;
+        width: 45px;
+        height: 45px;
+        margin: 0 3px;
+
+        &:hover {
+          background: #eaecf3;
+        }
+      }
+    }
+  }
+}

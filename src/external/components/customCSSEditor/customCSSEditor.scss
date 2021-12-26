@@ -1,0 +1,39 @@
+@import '../../styles/_vars';
+
+.custom-css-editor {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  
+  > * {
+    flex: 1;
+    max-height: 60vh;
+    overflow: auto;
+  }
+}
+
+.custom-css-popup {
+	.popup-content {
+		width: 100%;
+		padding: 0;
+		min-height: 50vh;
+
+		.loader {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		> h2 {
+			margin: 0;
+			padding: 20px;
+			background: #eaecf3;
+		}
+	}
+
+	.buttons-wrapper {
+		padding: 20px 0;
+	}
+}

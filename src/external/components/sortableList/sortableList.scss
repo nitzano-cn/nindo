@@ -1,0 +1,26 @@
+.panel.floating-item {
+	z-index: 50;
+	opacity: 0.5;
+	color: #fff;
+
+	img, .item-thumb {
+		margin-right: 7px;
+		width: 20px;
+		height: 20px;
+		border-radius: 5px;
+		background-size: cover;
+	}
+}
+
+.drag-handler {
+	cursor: move;
+	opacity: 0.3;
+	margin-right: 10px;
+	font-size: 14px;
+	transition: opacity 0.1s ease;
+
+	&.disabled {
+		opacity: 0.1;
+		cursor: not-allowed;
+	}
+}

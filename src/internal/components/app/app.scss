@@ -1,0 +1,54 @@
+@import '../../_reset';
+@import '../../../external/styles/_vars';
+
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	background: transparent;
+	color: $black-20;
+	font-size: 14px;
+	line-height: 1.5em;
+	font-weight: 400;
+	font-family: $secondaryFont;
+	height: 100%;
+	max-width: 100%;
+	position: relative;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+strong {
+	font-weight: 700;
+}
+
+em {
+	font-style: italic;
+}
+
+.center {
+	text-align: center;
+}
+
+.all-centered {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	width: 90%;
+}
+
+.loading-error {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	padding: 20px;
+}
+
+.cn-app {}

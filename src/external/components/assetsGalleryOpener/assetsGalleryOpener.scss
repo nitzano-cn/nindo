@@ -1,0 +1,12 @@
+.assets-gallery-popup {
+  $popup-width: 90%;
+
+  .popup-content {
+    width: $popup-width;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+  }
+}

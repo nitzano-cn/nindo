@@ -1,0 +1,159 @@
+@import '../../../external/styles/_vars';
+
+.export-menu {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  color: #343C46;
+  font-size: 13px;
+
+  @media screen and (max-width: $breakpoint-3) {
+    display: none;
+  }
+
+  > ul {
+    display: flex;
+    margin: 0;
+
+    li {
+      cursor: default;
+
+      input[type=file] {
+        display: none;
+      }
+
+      i, svg {
+        color: #B1B4B6;
+        margin-right: 5px;
+        width: 12px;
+        text-align: center;
+      }
+      
+      &:hover {
+        background: #fff;
+
+        ul {
+          display: block;
+        }
+      }
+    }
+
+    > li {
+      padding: 7px 15px;
+      border-radius: 3px 3px 0 0;
+      position: relative;
+
+      ul {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        background: #fff;
+        border-radius: 0 3px 3px 3px;
+        z-index: 10;
+        width: 180px;
+        font-size: 13px;
+        box-shadow: 0 2px 3px rgba(0,0,0,0.05);
+
+        hr {
+          margin: 0;
+          padding: 0;
+          border-top: none;
+          border-color: #eaecf3;
+        }
+
+        li {
+          padding: 5px 15px;
+          cursor: pointer;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+
+          i, svg {
+            margin-right: 7px;
+            width: 16px !important;
+            text-align: center;
+          }
+
+          &:hover {
+            background: #f9f9fc;
+            color: $blue-10;
+
+            i, svg {
+              color: $blue-10;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.share-link-popup {
+  $popup-width: 540px;
+  cursor: default;
+  
+  .popup-content {
+    width: $popup-width;
+    padding: 0;
+    background: $black-40;
+    color: #fff;
+    
+    .close-popup {
+      color: #fff;
+    }
+
+    h2 {
+      margin: 0;
+      z-index: 2;
+      position: relative;
+      background: $black-20;
+      color: #fff;
+      border: none;
+    }
+
+    section {
+      padding: 20px 40px;
+    }
+
+    p {
+      margin: 0 0 20px;
+    }
+
+    .copy-input-post-message {
+      margin-top: 5px;
+    }
+
+    .form-row input[type=text] {
+      border: none;
+			color: $gray-20;
+			background-color: rgba(255, 255, 255, 0.1);
+			font-family: $secondaryFont;
+
+			&::placeholder {
+				color: rgba(255, 255, 255, 0.2);
+			}
+
+			&:focus {
+				background-color: rgba(255, 255, 255, 0.2);
+				color: $white-10;
+			}
+    }
+    
+    .buttons-wrapper {
+      margin: 0;
+      padding: 30px 0 0;
+      text-align: center;
+
+      .button {
+        color: #fff;
+        border-color: #fff;
+        opacity: 0.7;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

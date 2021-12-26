@@ -1,0 +1,12 @@
+@import '../../../external/styles/_vars';
+
+.gallery-page {
+	position: relative;
+	max-width: 100vw;
+	min-height: calc(100vh - #{$headerHeight});
+	overflow: auto;
+
+	@media screen and (max-width: $breakpoint-3) {
+		min-height: calc(100vh - 55px);
+	}
+}

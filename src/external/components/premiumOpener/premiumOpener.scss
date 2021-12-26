@@ -1,0 +1,12 @@
+.premium-opener-trigger {
+  cursor: pointer;
+  display: inline;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.notifications-wrapper {
+  .premium-opener-trigger:hover {
+    text-decoration: underline;
+  }
+}

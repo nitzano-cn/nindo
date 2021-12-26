@@ -1,0 +1,39 @@
+@import '../../styles/_vars';
+
+.confirmation-popup {
+  $popup-width: 640px;
+  cursor: default;
+  
+  .popup-content {
+    width: $popup-width;
+    padding: 0;
+    min-height: 200px;
+
+    h2 {
+      margin: 0;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+      z-index: 2;
+      position: relative;
+      background: none;
+    }
+  }
+
+  section {
+    padding: 20px 40px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+
+    p {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    
+    ul {
+      margin: 10px 30px 20px;
+
+      li {
+        list-style: disc;
+      }
+    }
+  }
+}

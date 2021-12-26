@@ -1,4 +1,15 @@
-import { PluginActionTypes, IPluginSettings, TPluginState, TPluginPrivacy, IPluginStyles, IPluginColors, IPluginBackground, IPluginContent, IPlugin, IPluginData } from '../types/plugin.types';
+import {
+  PluginActionTypes,
+  IPluginSettings,
+  TPluginState,
+  TPluginPrivacy,
+  IPluginStyles,
+  IPluginColors,
+  IPluginBackground,
+  IPluginContent,
+  IPlugin,
+  IPluginData,
+} from '../../external/types/plugin.types';
 import { historyChange, savedStateChange } from './history.actions';
 import { userService } from '../services';
 import { premiumHelper } from '../../external/helpers/premium.helper';
@@ -9,56 +20,60 @@ export const gotPluginData = (data: IPlugin<any>) => {
     if (data.planFeatures && typeof data.planFeatures === 'object') {
       premiumHelper.planFeatures = data.planFeatures;
     }
-  
+
     dispatch({
       type: PluginActionTypes.GOT_DATA,
-      data
+      data,
     });
-  }
+  };
 };
 
 export const dataUpdated = (data: IPluginData | any) => {
   return (dispatch: Function, getState: Function) => {
     const state = getState();
     const plugin: IPlugin<any> = state.plugin;
-    
+
     dispatch(savedStateChange(false));
 
-    dispatch(historyChange({
-      ...plugin,
-      data: {
-        ...plugin.data,
-        ...data
-      }
-    }));
+    dispatch(
+      historyChange({
+        ...plugin,
+        data: {
+          ...plugin.data,
+          ...data,
+        },
+      }),
+    );
 
     dispatch({
       type: PluginActionTypes.DATA_UPDATED,
-      data
+      data,
     });
-  }
+  };
 };
 
 export const contentUpdated = (data: IPluginContent | any) => {
   return (dispatch: Function, getState: Function) => {
     const state = getState();
     const plugin: IPlugin<any> = state.plugin;
-    
+
     dispatch(savedStateChange(false));
 
-    dispatch(historyChange({
-      ...plugin,
-      data: {
-        ...plugin.data,
-        content: data
-      }
-    }));
+    dispatch(
+      historyChange({
+        ...plugin,
+        data: {
+          ...plugin.data,
+          content: data,
+        },
+      }),
+    );
 
     dispatch({
       type: PluginActionTypes.CONTENT_UPDATED,
-      data
+      data,
     });
-  }
+  };
 };
 
 export const settingsUpdated = (data: IPluginSettings | any) => {
@@ -68,19 +83,21 @@ export const settingsUpdated = (data: IPluginSettings | any) => {
 
     dispatch(savedStateChange(false));
 
-    dispatch(historyChange({
-      ...plugin,
-      data: {
-        ...plugin.data,
-        settings: data
-      }
-    }));
+    dispatch(
+      historyChange({
+        ...plugin,
+        data: {
+          ...plugin.data,
+          settings: data,
+        },
+      }),
+    );
 
     dispatch({
       type: PluginActionTypes.SETTINGS_UPDATED,
-      data
+      data,
     });
-  }
+  };
 };
 
 export const nameUpdated = (name: string) => {
@@ -90,16 +107,18 @@ export const nameUpdated = (name: string) => {
 
     dispatch(savedStateChange(false));
 
-    dispatch(historyChange({
-      ...plugin,
-      name
-    }));
+    dispatch(
+      historyChange({
+        ...plugin,
+        name,
+      }),
+    );
 
     dispatch({
       type: PluginActionTypes.NAME_UPDATED,
-      name
+      name,
     });
-  }
+  };
 };
 
 export const statusUpdated = (status: TPluginState) => {
@@ -109,16 +128,18 @@ export const statusUpdated = (status: TPluginState) => {
 
     dispatch(savedStateChange(false));
 
-    dispatch(historyChange({
-      ...plugin,
-      status
-    }));
+    dispatch(
+      historyChange({
+        ...plugin,
+        status,
+      }),
+    );
 
     dispatch({
       type: PluginActionTypes.STATUS_UPDATED,
-      status
+      status,
     });
-  }
+  };
 };
 
 export const descriptionUpdated = (description: string) => {
@@ -128,16 +149,18 @@ export const descriptionUpdated = (description: string) => {
 
     dispatch(savedStateChange(false));
 
-    dispatch(historyChange({
-      ...plugin,
-      description
-    }));
+    dispatch(
+      historyChange({
+        ...plugin,
+        description,
+      }),
+    );
 
     dispatch({
       type: PluginActionTypes.DESCRIPTION_UPDATED,
-      description
+      description,
     });
-  }
+  };
 };
 
 export const privacyUpdated = (privacy: TPluginPrivacy) => {
@@ -147,16 +170,18 @@ export const privacyUpdated = (privacy: TPluginPrivacy) => {
 
     dispatch(savedStateChange(false));
 
-    dispatch(historyChange({
-      ...plugin,
-      privacy
-    }));
+    dispatch(
+      historyChange({
+        ...plugin,
+        privacy,
+      }),
+    );
 
     dispatch({
       type: PluginActionTypes.PRIVACY_UPDATED,
-      privacy
+      privacy,
     });
-  }
+  };
 };
 
 export const stylesUpdated = (data: IPluginStyles | any) => {
@@ -166,19 +191,21 @@ export const stylesUpdated = (data: IPluginStyles | any) => {
 
     dispatch(savedStateChange(false));
 
-    dispatch(historyChange({
-      ...plugin,
-      data: {
-        ...plugin.data, 
-        styles: data
-      }
-    }));
+    dispatch(
+      historyChange({
+        ...plugin,
+        data: {
+          ...plugin.data,
+          styles: data,
+        },
+      }),
+    );
 
     dispatch({
       type: PluginActionTypes.STYLES_UPDATED,
-      styles: data
+      styles: data,
     });
-  }
+  };
 };
 
 export const colorsUpdated = (colors: IPluginColors | any) => {
@@ -188,22 +215,24 @@ export const colorsUpdated = (colors: IPluginColors | any) => {
 
     dispatch(savedStateChange(false));
 
-    dispatch(historyChange({
-      ...plugin,
-      data: {
-        ...plugin.data, 
-        styles: {
-          ...plugin.data.styles,
-          colors
-        }
-      }
-    }));
+    dispatch(
+      historyChange({
+        ...plugin,
+        data: {
+          ...plugin.data,
+          styles: {
+            ...plugin.data.styles,
+            colors,
+          },
+        },
+      }),
+    );
 
     dispatch({
       type: PluginActionTypes.COLORS_UPDATED,
-      colors
+      colors,
     });
-  }
+  };
 };
 
 export const backgroundUpdated = (background: IPluginBackground) => {
@@ -213,27 +242,29 @@ export const backgroundUpdated = (background: IPluginBackground) => {
 
     dispatch(savedStateChange(false));
 
-    dispatch(historyChange({
-      ...plugin,
-      data: {
-        ...plugin.data, 
-        styles: {
-          ...plugin.data.styles,
-          background
-        }
-      }
-    }));
+    dispatch(
+      historyChange({
+        ...plugin,
+        data: {
+          ...plugin.data,
+          styles: {
+            ...plugin.data.styles,
+            background,
+          },
+        },
+      }),
+    );
 
     dispatch({
       type: PluginActionTypes.BACKGROUND_UPDATED,
-      background
+      background,
     });
-  }
+  };
 };
 
 export const planFeaturesUpdated = (data: any) => ({
   type: PluginActionTypes.PLAN_FEATURES_UPDATED,
-  data
+  data,
 });
 
 export const getPlanFeatures = (pluginId?: string) => {
@@ -243,6 +274,6 @@ export const getPlanFeatures = (pluginId?: string) => {
       if (result.success && result.data) {
         dispatch(planFeaturesUpdated(result.data));
       }
-    } catch (e) {}  
+    } catch (e) {}
   };
 };

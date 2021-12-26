@@ -1,0 +1,22 @@
+@import '../../../external/styles/_vars';
+
+.popup.vendor-upgrade-popup {
+  $popup-width: 90%;
+  cursor: default;
+  
+  .popup-content {
+    width: $popup-width;
+    height: $popup-width;
+    padding: 0;
+    background: $black-30;
+    color: $white-10;
+
+    .close-popup {
+      color: #fff;
+    }
+
+    > p {
+      margin: 40px;
+    }
+  }
+}

@@ -1,0 +1,67 @@
+.css-props-editor {
+  position: relative;
+
+  .panel {
+    header .actions .button {
+      color: #fff;
+      transform: rotate(90deg);
+      padding: 0;
+    }
+
+    .inner {
+      padding: 10px 20px;
+      margin: 0;
+    }
+
+    .form-row {
+      margin-bottom: 20px;
+
+      > * {
+        flex: 1;
+        justify-content: space-between;
+      }
+
+      &.column {
+        align-items: stretch;
+
+        label {
+          margin: 0;
+        }
+
+        > input {
+          margin: 10px 0 0;
+        }
+      }
+
+      label {
+        > span {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .number-input {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+
+          input {
+            width: 50px;
+            font-size: 14px;
+            padding: 3px;
+            text-align: center;
+            margin-right: 5px;
+          }
+        }
+      }
+
+      .cn-slider {
+        margin: 10px 5px 0;
+      }
+
+      .ninja-select {
+        margin: 10px 0 0;
+      }
+    }
+  }
+}
