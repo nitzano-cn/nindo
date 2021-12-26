@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
 
+import 'react-datepicker/dist/react-datepicker.css';
 import './datePicker.scss';
 
 const isSSR: boolean = typeof document === 'undefined';

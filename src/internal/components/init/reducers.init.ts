@@ -9,6 +9,7 @@ import thunk from 'redux-thunk';
 import {
 	editorReducer,
 	notificationsReducer,
+	pluginContextReducer,
 	pluginReducer,
 	pluginStateReducer,
 	userReducer,
@@ -27,6 +28,7 @@ function provideReducers<T, P = {}>(
 		user: userReducer,
 		plugin: pluginReducer(defaultState),
 		pluginState: pluginStateReducer(pluginState),
+		pluginContext: pluginContextReducer(),
 		editor: editorReducer,
 		notifications: notificationsReducer,
 	});

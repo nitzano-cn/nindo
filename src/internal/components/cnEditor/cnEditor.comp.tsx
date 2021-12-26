@@ -47,6 +47,7 @@ import { VendorUpgradePopup } from '../vendorUpgradePopup/vendorUpgradePopup.com
 import PublishSettingsComp from '../publishSettings/publishSettings.comp';
 import { TemplatesPopup } from '../templatesPopup/templatesPopup.comp';
 import { premiumHelper } from '../../../external/helpers';
+import { pluginContextUpdated } from '../../actions/pluginContext.actions';
 
 import './cnEditor.scss';
 
@@ -306,6 +307,13 @@ export const CNEditor = ({
       // If exists, load JS sdk
       loadJSSdk(`${vendor}-sdk`, query.get('jsSdkUrl'));
     }
+
+    // Updating plugin context
+    dispatch(pluginContextUpdated({
+      instanceId: pluginId,
+      mode: 'editor',
+      platform: vendor,
+    }));
     // eslint-disable-next-line
   }, []);
 
@@ -341,8 +349,12 @@ export const CNEditor = ({
     }
 
     let activePageProps = resolveContextComp(page);
-    
-    if (page === 'code') {
+    let mainComp = pluginComp;
+
+    if (activePageProps?.context === 'main') {
+      const MainComp = activePageProps?.comp;
+      mainComp = typeof MainComp === 'function' ? <MainComp {...{}} /> : React.cloneElement(MainComp, {});
+    } else if (page === 'code') {
       activePageProps = {
         comp: (
           <PublishSettingsComp
@@ -395,7 +407,7 @@ export const CNEditor = ({
                 withContextMenu={
                   activePageProps?.context === 'menu' && !!activePageProps?.comp
                 }
-                mainComp={pluginComp}
+                mainComp={mainComp}
                 showExportMenu={!!showExportMenu}
                 exportIsAvailable={
                   typeof exportIsAvailable === 'function'

@@ -11,9 +11,18 @@ interface IContextMenuProps<T> {
 }
 
 export const ContextMenu = ({ component, closeLink }: IContextMenuProps<any>) => {
+  const Component = component;
+
   return (
     <aside className={`context-menu ${component ? 'is-opened' : ''}`}>
-      {component}
+      {
+        Component &&
+        (
+          typeof Component === 'function' ?
+          <Component {...{}} /> :
+          React.cloneElement(Component, {})
+        )
+      }
       <NavLink title="Close" className="context-menu-toggler" to={closeLink}>
         <FontAwesomeIcon icon={faCaretLeft} />
       </NavLink>

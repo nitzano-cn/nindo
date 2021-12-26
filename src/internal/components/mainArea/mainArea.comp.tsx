@@ -4,7 +4,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 
 import { EditorToolbar } from '../editorToolbar/editorToolbar.comp';
 import { ExportMenu, IExtraMenuItem } from '../exportMenu/exportMenu.comp';
-import { savePlugin, nameUpdated } from '../../actions';
+import { savePlugin, nameUpdated, pluginContextUpdated } from '../../actions';
 import { TChildren } from '../../../external/types/plugin.types';
 import { TSiteBuilderVendor } from '../../../external/types/editor.types';
 import { useQuery } from '../../../external/hooks/query.hook';
@@ -65,6 +65,9 @@ export const MainArea = ({
 	function postCreationCallback(pluginId: string) {
 		const nextUrl = `${location.pathname}/${pluginId}?${query.toString()}`.replace(`//${pluginId}`, `/${pluginId}`);
 		history.push(nextUrl);
+
+		// Update plugin context with new ID
+		dispatch(pluginContextUpdated({ instanceId: pluginId }));
 		
 		notificationHelper.success({
 			title: 'Your changes have been successfully saved.',

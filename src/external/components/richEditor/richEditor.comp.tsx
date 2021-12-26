@@ -7,6 +7,7 @@ import ImageResize from 'quill-image-resize-module-react';
 
 import { AssetsGalleryOpener } from '../assetsGalleryOpener/assetsGalleryOpener.comp';
 
+import 'react-quill/dist/quill.snow.css';
 import './richEditor.scss';
 
 let Icons, TextAlignStyle, Size, Link;

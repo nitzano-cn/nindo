@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { IAppState, IPluginComp, IPluginLoaderComp, IUser } from '../../../external/types';
@@ -6,6 +6,7 @@ import { AppHeader } from '../appHeader/appHeader.comp';
 import { PluginLoader } from '../pluginLoader/pluginLoader.comp';
 import { PluginWrapper } from '../pluginWrapper/pluginWrapper.comp';
 import * as userActions from '../../actions/user.actions';
+import { pluginContextUpdated } from '../../actions/pluginContext.actions';
 
 import './galleryPage.scss';
 
@@ -17,7 +18,15 @@ export const GalleryPage = (props: {
 		user: state.user,
 	}));
 	const dispatch = useDispatch();
-	const {pluginComp, pluginLoaderComp, ...otherProps } = props;
+	const { pluginComp, pluginLoaderComp, ...otherProps } = props;
+
+	useEffect(() => {
+		// Updating plugin context
+    dispatch(pluginContextUpdated({
+      instanceId: '',
+      mode: 'viewer',
+    }));
+	}, []);
 
 	return (
 		<>

@@ -16,6 +16,7 @@ export const PluginWrapper = ({
 	ignoreCustomCSS,
 	pluginComp,
 }: IPluginWrapperProps<any>) => {
+	const Plugin = pluginComp;
 	const pluginData = useSelector((state: IAppState<any>) => state.plugin);
 	const { styles } = pluginData.data;
 	const activeFont: FontT = fontHelper.getFontDetails(styles.fontId);
@@ -39,7 +40,7 @@ export const PluginWrapper = ({
 				></style>
 			)}
 
-			{pluginComp}
+			<Plugin />
 		</div>
 	);
 };
