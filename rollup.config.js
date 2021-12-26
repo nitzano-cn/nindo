@@ -1,10 +1,10 @@
 // Setup is based on the following article:
 // https://www.codefeetime.com/post/tree-shaking-a-react-component-library-in-rollup/
 
-import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import dts from 'rollup-plugin-dts';
 import { getFiles } from './scripts/buildUtils';
 
@@ -13,10 +13,7 @@ const extensions = ['.js', '.ts', '.jsx', '.tsx'];
 
 export default [
   {
-    input: [
-      'src/index.ts',
-      ...getFiles('./src/external', extensions),
-    ],
+    input: ['src/index.ts', ...getFiles('./src/external', extensions)],
     output: {
       dir: 'dist',
       format: 'esm',
@@ -25,14 +22,20 @@ export default [
       sourcemap: true,
     },
     plugins: [
-      resolve(),
+      nodeResolve(),
       commonjs(),
-      typescript({ 
+      typescript({
         tsconfig: './tsconfig.json',
         declaration: true,
         declarationDir: 'dist/types',
       }),
       postcss(),
+    ],
+    external: [
+      // Use external version of React
+      // To prevent loading react twice
+      'react',
+      'react-dom'
     ],
   },
   {

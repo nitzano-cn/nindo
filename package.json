@@ -1,6 +1,6 @@
 {
   "name": "@commonninja/nindo",
-  "version": "2.1.0-beta.8",
+  "version": "2.1.0-beta.9",
   "description": "",
   "scripts": {
     "rollup": "rollup -c",
@@ -81,7 +81,7 @@
     "@babel/preset-react": "^7.16.0",
     "@babel/preset-typescript": "^7.16.0",
     "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-node-resolve": "^13.1.1",
     "@rollup/plugin-typescript": "^8.3.0",
     "@testing-library/react": "^12.1.2",
     "@types/jest": "^27.0.2",
