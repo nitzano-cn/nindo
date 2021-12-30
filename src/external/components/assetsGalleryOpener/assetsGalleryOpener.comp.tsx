@@ -50,11 +50,11 @@ export const AssetsGalleryOpener = (props: AssetsGalleryOpenerProps) => {
   const [opened, setOpened] = useState<boolean>(false);
   const query = useQuery();
 	const { vendor } = useParams() as any;
-  const queryParams: string = `multi=true&assetType=${assetType}&serviceName=${pluginService.serviceName}${pluginId ? '&componentId=' + pluginId : ''}&${query.toString()}`;
+  const queryParams: string = `multi=true&assetType=${assetType}&pluginType=${pluginService.pluginType}&serviceName=${pluginService.serviceName}${pluginId ? '&componentId=' + pluginId : ''}&${query.toString()}`;
   let finalAssetApiBaseUrl = assetApiBaseUrl;
 
   if (!assetApiBaseUrl && vendor) {
-    finalAssetApiBaseUrl= `/api/v1/${vendor}/${pluginService.pluginType}`;
+    finalAssetApiBaseUrl= `/api/v1/${vendor}`;
   }
 
   function uploadDisabledCallback() {

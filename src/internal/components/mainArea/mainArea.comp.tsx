@@ -6,7 +6,7 @@ import { EditorToolbar } from '../editorToolbar/editorToolbar.comp';
 import { ExportMenu, IExtraMenuItem } from '../exportMenu/exportMenu.comp';
 import { savePlugin, nameUpdated, pluginContextUpdated } from '../../actions';
 import { TChildren } from '../../../external/types/plugin.types';
-import { IPreSaveValidation, TSiteBuilderVendor } from '../../../external/types/editor.types';
+import { IPreSaveValidation, TPlatform } from '../../../external/types/editor.types';
 import { useQuery } from '../../../external/hooks/query.hook';
 import { notificationHelper } from '../../../external/helpers/notification.helper';
 import { BackgroundPicker } from '../backgroundPicker/backgroundPicker.comp';
@@ -20,7 +20,7 @@ interface IMainAreaProps {
 	exportIsAvailable?: boolean
 	showHistoryButtons?: boolean
 	defaultPluginName?: string
-	vendor?: TSiteBuilderVendor
+	vendor?: TPlatform
 	extraMenuItems?: IExtraMenuItem[]
 	extraToolbarButtons?: TChildren
 	preSaveValidation?: () => IPreSaveValidation

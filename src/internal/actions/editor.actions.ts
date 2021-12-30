@@ -1,5 +1,5 @@
-import { dudaService, shopifyService, bigCommerceService, shift4ShopService, pluginService, wixService } from '../services';
-import { EditorActionTypes, IEditorState, TSiteBuilderVendor } from '../../external/types/editor.types';
+import { pluginService } from '../services';
+import { EditorActionTypes, IEditorState, TPlatform } from '../../external/types/editor.types';
 import { IHttpResult } from '../../external/types/http.types';
 import { gotPluginData } from './plugin.actions';
 import { IPlugin } from '../../external/types/plugin.types';
@@ -12,7 +12,7 @@ export const hasErrorStateChange = (hasError: boolean) => ({
   hasError
 });
 
-export const savePlugin = (successCallback?: (pluginId: string) => void, errorCallback?: (err: string) => void, vendor?: TSiteBuilderVendor) => {
+export const savePlugin = (successCallback?: (pluginId: string) => void, errorCallback?: (err: string) => void, vendor?: TPlatform) => {
   return async (dispatch: Function, getState: Function) => {
     const state = getState();
     const plugin: IPlugin<any> = state.plugin;
@@ -23,31 +23,9 @@ export const savePlugin = (successCallback?: (pluginId: string) => void, errorCa
       let result: IHttpResult = { success: false };
       
       if (plugin.guid) {
-        if (!vendor) {
-          result = await pluginService.update(plugin.guid, plugin);
-        } else if (vendor === 'duda') {
-          result = await dudaService.update(plugin.guid, plugin);
-        } else if (vendor === 'wix') {
-          result = await wixService.update(plugin.guid, plugin);
-        } else if (vendor === 'shopify') {
-          result = await shopifyService.update(plugin.guid, plugin);
-        } else if (vendor === 'bigcommerce') {
-          result = await bigCommerceService.update(plugin.guid, plugin);
-        } else if (vendor === 'shift4shop') {
-          result = await shift4ShopService.update(plugin.guid, plugin);
-        }
+        result = await pluginService.update(plugin.guid, plugin, vendor);
       } else {
-        if (!vendor) {
-          result = await pluginService.create(plugin);
-        } else if (vendor === 'duda') {
-          result = await dudaService.create(plugin);
-        } else if (vendor === 'shopify') {
-          result = await shopifyService.create(plugin);
-        } else if (vendor === 'bigcommerce') {
-          result = await bigCommerceService.create(plugin);
-        } else if (vendor === 'shift4shop') {
-          result = await shift4ShopService.create(plugin);
-        }
+        result = await pluginService.create(plugin, vendor);
       }
       
       if (result.success) {

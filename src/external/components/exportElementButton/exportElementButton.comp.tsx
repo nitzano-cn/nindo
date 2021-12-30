@@ -75,7 +75,6 @@ export const ExportElementButton = ({ exportUrl, automaticallyDownload, exportSe
       const job = await exportService.createExportJobForUrl({ 
         url: exportUrl, 
         format: exportFormat || 'image', 
-        componentType: pluginService.pluginType, 
         selector: exportSelector, 
         delay: exportDelay, 
         width: exportWidth, 

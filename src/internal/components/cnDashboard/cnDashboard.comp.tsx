@@ -8,7 +8,7 @@ import { IPlugin } from '../../../external/types/plugin.types';
 import { IPluginListing, pluginsList } from '../../../external/types/component.types';
 import { TComponentType } from '../../../external/types/component.types';
 import { HttpService } from '../../../external/services/http.service';
-import { TSiteBuilderVendor } from '../../../external/types/editor.types';
+import { TPlatform } from '../../../external/types/editor.types';
 import { useQuery } from '../../../external/hooks/query.hook';
 import { notificationHelper } from '../../../external/helpers/notification.helper';
 
@@ -18,7 +18,7 @@ export const getDashboardActionUrl = (
 	component: IPlugin<any>,
 	actionType: 'edit' | 'delete' | 'duplicate',
 	query: string,
-	vendor: TSiteBuilderVendor,
+	vendor: TPlatform,
 ) => {
 	const { type, guid = '' } = component;
 	const meta: IPluginListing = pluginsList.filter((c) => c.name === type)[0];
@@ -40,7 +40,7 @@ export const getDashboardActionUrl = (
 };
 
 interface ICNDashboard {
-	vendor: TSiteBuilderVendor
+	vendor: TPlatform
 	itemRenderer: any
 	loaderRenderer: any
 	componentType: TComponentType

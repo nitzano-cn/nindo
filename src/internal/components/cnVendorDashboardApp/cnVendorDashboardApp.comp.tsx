@@ -5,7 +5,7 @@ import { faDollarSign, faHandshake, faLifeRing, faTh } from '@fortawesome/free-s
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { AppNotifications } from '../appNotifications/appNotifications.comp';
-import { TSiteBuilderVendor } from '../../../external/types/editor.types';
+import { TPlatform } from '../../../external/types/editor.types';
 import { AppHeader } from '../appHeader/appHeader.comp';
 import { AppMenu } from '../appMenu/appMenu.comp';
 import { IAppMenuLink } from '../../../external/types/appMenu.types';
@@ -18,7 +18,7 @@ const { NODE_ENV } = process.env;
 const basename = '';
 const env = NODE_ENV === 'production' ? 'prod' : 'dev';
 
-const LocalAppMenu = ({ menuLinks, vendor, includePricing }: { menuLinks: IAppMenuLink[], includePricing: boolean, vendor?: TSiteBuilderVendor }) => {
+const LocalAppMenu = ({ menuLinks, vendor, includePricing }: { menuLinks: IAppMenuLink[], includePricing: boolean, vendor?: TPlatform }) => {
 	const params = useParams() as any;
 	let componentType = params.componentType || (window?.location?.href || '').split('?')[0].match(/([^\/]*)\/*$/)?.[1] || '';
 	const pluginDetails = pluginsList.filter((c) => c.name === componentType)[0];
@@ -85,7 +85,7 @@ export const CNVendorDashboardApp = (props: {
   dashboardComp: any;
   pricingComp?: any;
 	menuLinks?: IAppMenuLink[];
-  vendor?: TSiteBuilderVendor;
+  vendor?: TPlatform;
 	extraRoutes?: RouteProps[];
 	defaultRoutePath?: string;
 }) => {

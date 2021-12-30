@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { PricingLoader } from '../pricingLoader/pricingLoader.comp';
 import { shopifyService } from '../../services';
-import { TSiteBuilderVendor } from '../../../external/types/editor.types';
+import { TPlatform } from '../../../external/types/editor.types';
 import { IUser } from '../../../external/types/user.types';
 import { IPlan, IPricingModel } from '../../../external/types/plan.types';
 import { notificationHelper } from '../../../external/helpers/notification.helper';
@@ -11,7 +11,7 @@ import { notificationHelper } from '../../../external/helpers/notification.helpe
 interface IVendorUpgradeProps {
   user: IUser
   serviceName: string
-  vendor: TSiteBuilderVendor | null
+  vendor: TPlatform | null
 }
 
 export const VendorUpgrade = ({ vendor, user, serviceName }: IVendorUpgradeProps) => {
@@ -64,7 +64,7 @@ export const VendorUpgrade = ({ vendor, user, serviceName }: IVendorUpgradeProps
       user={user}
       onPlanDataLoad={(nextPlanData) => setPlanData(nextPlanData)}
       onPlanSelect={onPlanSelect}
-      vendor={vendor as TSiteBuilderVendor}
+      vendor={vendor as TPlatform}
       showEnterpriseBox={false}
       showCycleSelector={false}
     />

@@ -10,7 +10,7 @@ import { UpgradePopup } from '../upgradePopup/upgradePopup.comp';
 import { IAppMenuLink } from '../../../external/types/appMenu.types';
 import { eventService, pluginService } from '../../services';
 import { useQuery } from '../../../external/hooks/query.hook';
-import { TSiteBuilderVendor } from '../../../external/types/editor.types';
+import { TPlatform } from '../../../external/types/editor.types';
 
 import './appMenu.scss';
 
@@ -21,7 +21,7 @@ interface AppMenuProps {
   onPremiumPopupOpenerClick?: (e: any) => void
   userIsAuthenticated?: boolean  
   children?: TChildren
-  vendor?: TSiteBuilderVendor
+  vendor?: TPlatform
 };
 
 export const AppMenu = (props: AppMenuProps) => {

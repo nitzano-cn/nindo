@@ -1,8 +1,6 @@
 import { ComponentType } from 'react';
 import { IPlugin, TChildren } from './plugin.types';
 
-import { IUser } from './user.types';
-
 type TBoolFunc = () => boolean;
 
 export interface IEditorExtraProps<T> {
@@ -77,7 +75,7 @@ export enum EditorActionTypes {
   EDITOR_HISTORY_CHANGE = 'EDITOR_HISTORY_CHANGE',
 }
 
-export type TSiteBuilderVendor = 
+export type TPlatform = 
     'duda' 
   | 'wix' 
   | 'weebly' 
@@ -96,4 +94,4 @@ export type TSiteBuilderVendor =
   | 'shift4shop'
   | 'squarespace';
 
-export type TPlatform = TSiteBuilderVendor;
+export type TSiteBuilderVendor = TPlatform;

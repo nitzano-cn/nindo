@@ -5,7 +5,7 @@ import { TChildren } from '../../../external/types/plugin.types';
 import { ICycle, IFeature, IPricingModel, IPlan, IFeatureGroup } from '../../../external/types/plan.types';
 import { Tooltip } from '../../../external/components/tooltip/tooltip.comp';
 import { calculatePricing } from '../../helpers';
-import { TSiteBuilderVendor } from '../../../external/types/editor.types';
+import { TPlatform } from '../../../external/types/editor.types';
 
 import './pricingTable.scss';
 
@@ -48,7 +48,7 @@ export const PricingTable = ({
   activeCycle: ICycle, 
   buttonsRenderer: (plan: IPlan) => TChildren, 
   fullComparisonAvailable: boolean,
-  vendor?: TSiteBuilderVendor,
+  vendor?: TPlatform,
   vendorFeaturesBlockList?: string[],
 }) => {
   const highlightedFeatures: IFeature[] = [];

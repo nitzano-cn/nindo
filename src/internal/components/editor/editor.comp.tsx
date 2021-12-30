@@ -1,7 +1,7 @@
 import React, { ComponentType, ReactElement } from 'react';
 import loadable from '@loadable/component';
 import { useParams } from 'react-router-dom';
-import { IEditorConfig, TActivePage, TSiteBuilderVendor } from '../../../external/types/editor.types';
+import { IEditorConfig, TActivePage, TPlatform } from '../../../external/types/editor.types';
 import { PluginWrapper } from '../pluginWrapper/pluginWrapper.comp';
 import { Loader } from '../../../external/components/loader/loader.comp';
 import { IAppMenuLink, IEditorExtraProps, IPlugin, IPluginComp, IPluginLoaderComp } from '../../../external/types';
@@ -33,7 +33,7 @@ export interface IEditorProps<T> extends IEditorExtraProps<T> {
 
 export const Editor = ({ config, pluginComp, pluginLoaderComp, defaultPluginData, ...restProps }: IEditorProps<any>) => {
 	const { vendor } = useParams() as {
-		vendor: TSiteBuilderVendor;
+		vendor: TPlatform;
 	};
 
 	const { menuItems, pageToComp } = mapConfigToPats(config);

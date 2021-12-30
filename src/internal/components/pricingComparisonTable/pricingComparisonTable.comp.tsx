@@ -4,7 +4,7 @@ import { TChildren } from '../../../external/types/plugin.types';
 import { ICycle, IPricingModel, IPlan, IFeatureGroup, IFeature } from '../../../external/types/plan.types';
 import { calculatePricing } from '../../helpers';
 import { SystemIcon } from '../../../external/components/icon/icon.comp';
-import { TSiteBuilderVendor } from '../../../external/types/editor.types';
+import { TPlatform } from '../../../external/types/editor.types';
 
 import './pricingComparisonTable.scss';
 
@@ -40,7 +40,7 @@ export const PricingComparisonTable = ({
   serviceName: string,
   activeCycle: ICycle,
   buttonsRenderer: (plan: IPlan) => TChildren,
-  vendor?: TSiteBuilderVendor,
+  vendor?: TPlatform,
   vendorFeaturesBlockList?: string[],
 }) => {
 

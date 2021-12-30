@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-import { TSiteBuilderVendor } from '../../../external/types/editor.types';
+import { TPlatform } from '../../../external/types/editor.types';
 import { useQuery } from '../../../external/hooks/query.hook';
 import { Popup } from '../../../external/components/popup/popup.comp';
 
@@ -15,7 +15,7 @@ interface IUpgradePopupProps {
   show: boolean
   closeCallback: any
   className?: string
-  vendor?: TSiteBuilderVendor
+  vendor?: TPlatform
 }
 
 export const UpgradePopup = (props: IUpgradePopupProps) => {

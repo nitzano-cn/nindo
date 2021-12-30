@@ -5,11 +5,6 @@ import { faCode, faChartBar, faEye } from '@fortawesome/free-solid-svg-icons';
 
 import {
   pluginService,
-  dudaService,
-  shopifyService,
-  wixService,
-  bigCommerceService,
-  shift4ShopService,
   templatesService,
   localStorageService,
 } from '../../services';
@@ -36,7 +31,7 @@ import { CommonNinjaPlugin } from '../commonninjaPlugin/commonninjaPlugin.comp';
 import { MainArea } from '../mainArea/mainArea.comp';
 import { PluginSkeleton } from '../../../external/components/pluginSkeleton/pluginSkeleton.comp';
 import {
-  TSiteBuilderVendor,
+  TPlatform,
   IAppState,
   TActivePage,
   IPluginLoaderComp,
@@ -69,7 +64,7 @@ export interface ICNEditor<T> {
   postGetDataProcess?: (data: IPlugin<T>) => IPlugin<T> | Promise<IPlugin<T>>;
   showAnnouncements?: boolean;
   announcementsCategoryId?: string;
-  vendor?: TSiteBuilderVendor;
+  vendor?: TPlatform;
   extraMenuItems?: IExtraMenuItem[];
   extraToolbarButtons?: TChildren;
   preSaveValidation?: () => IPreSaveValidation;
@@ -108,7 +103,7 @@ export const CNEditor = ({
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
   const [activeVndorUpgradePopup, setActiveVendorUpgradePopup] =
-    useState<null | TSiteBuilderVendor>(null);
+    useState<null | TPlatform>(null);
   const [activePage, setActivePage] = useState<TActivePage>(page || null);
   const [pluginTemplates, setPluginTemplates] = useState<[]>([]);
   const vendorPath = vendor ? `v/${vendor}` : 'editor';
@@ -120,27 +115,7 @@ export const CNEditor = ({
     setError('');
 
     try {
-      let result: IHttpResult = { success: false };
-
-      if (!vendor) {
-        result = await pluginService.getForEditor(pluginId, defaultPluginData);
-      } else if (vendor === 'duda') {
-        result = await dudaService.getForEditor(pluginId, defaultPluginData);
-      } else if (vendor === 'shopify') {
-        result = await shopifyService.getForEditor(pluginId, defaultPluginData);
-      } else if (vendor === 'bigcommerce') {
-        result = await bigCommerceService.getForEditor(
-          pluginId,
-          defaultPluginData,
-        );
-      } else if (vendor === 'shift4shop') {
-        result = await shift4ShopService.getForEditor(
-          pluginId,
-          defaultPluginData,
-        );
-      } else if (vendor === 'wix') {
-        result = await wixService.getForEditor(defaultPluginData);
-      }
+      const result = await pluginService.getForEditor(pluginId, defaultPluginData, vendor);
 
       if (!result || !result.success) {
         throw new Error(result.message || 'Could not load plugin.');

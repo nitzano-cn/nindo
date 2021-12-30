@@ -9,7 +9,7 @@ import { Button } from '../../../external/components/button/button.comp';
 import { CycleSelector, CycleSelectorLoader } from '../pricingCycleSelector/pricingCycleSelector.comp';
 import { PricingTable, PricingTableLoader } from '../pricingTable/pricingTable.comp';
 import { PricingComparisonTable } from '../pricingComparisonTable/pricingComparisonTable.comp';
-import { TSiteBuilderVendor } from '../../../external/types';
+import { TPlatform } from '../../../external/types';
 import { getPluginNameByService } from '../../helpers';
 
 import './pricingLoader.scss';
@@ -81,7 +81,7 @@ interface IPricingLoaderProps {
   showCycleSelector?: boolean
   showEnterpriseBox?: boolean
   showFullComparison?: boolean
-  vendor?: TSiteBuilderVendor
+  vendor?: TPlatform
 }
 
 export const PricingLoader = ({ 

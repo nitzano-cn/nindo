@@ -3,9 +3,6 @@ import { HttpService } from '../../external/services/http.service';
 const apiBaseUrl: string = process.env.REACT_APP_PLUGIN_API_URL || '';
 
 class UserService extends HttpService {
-
-  public serviceName: string = process.env.REACT_APP_NINJA_SERVICE_NAME || '';
-
   async getUserInfo() {
     return await this.makeRequest(`${apiBaseUrl}/api/v1/user?serviceName=${this.serviceName}`);
   }
@@ -18,7 +15,6 @@ class UserService extends HttpService {
     await this.makeRequest(`${apiBaseUrl}/api/user/logout`, {}, false);
     return await this.makeRequest(`${apiBaseUrl}/api/v1/user/logout?serviceName=${this.serviceName}`, {}, false);
   }
-
 }
 
 export const userService = new UserService();

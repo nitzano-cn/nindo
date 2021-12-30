@@ -2,6 +2,7 @@ import { HttpService } from '../../external/services/http.service';
 import { IHttpResult } from '../../external/types/http.types';
 import { IPlugin } from '../../external/types/plugin.types';
 import { ServiceName, TComponentType } from '../../external/types/component.types';
+import { TPlatform } from '../..';
 
 const apiBaseUrl: string = process.env.REACT_APP_PLUGIN_API_URL || '';
 const cdnBaseUrl: string = process.env.REACT_APP_CDN_URL || '';
@@ -67,12 +68,12 @@ class PluginService extends HttpService {
   }
 
   public async getByGalleryId(galleryId: string = '', includeData: boolean = false) {
-    const url = `${cdnBaseUrl || apiBaseUrl}/api/v1/plugin/gallery/${galleryId}?serviceName=${this.serviceName}&includeData=${includeData}`;
+    const url = `${cdnBaseUrl || apiBaseUrl}/api/v1/plugin/gallery/${galleryId}?serviceName=${this.serviceName}&includeData=${includeData}&${this.queryParams}`;
     return await this.makeRequest(url).then(this.setMetaTags);
   }
 
-  public async getForEditor(pluginId: string = '', defaultPluginData?: IPlugin<any>) {
-    const url = `${apiBaseUrl}/api/v1/plugin/${pluginId}?serviceName=${this.serviceName}`;
+  public async getForEditor(pluginId: string = '', defaultPluginData?: IPlugin<any>, vendor?: TPlatform) {
+    const url = `${apiBaseUrl}/api/v1/${vendor ? vendor + '/' : ''}plugin/${pluginId}?pluginType=${this.pluginType}&serviceName=${this.serviceName}&${this.queryParams}`;
     return await this.makeRequest(url).then((res) => {
       if (res.success && res.data) {
         res.data = {
@@ -86,8 +87,8 @@ class PluginService extends HttpService {
     });
   }
 
-  public async create(body: any) {
-    return await this.makeRequest(`${apiBaseUrl}/api/v1/plugin/?serviceName=${this.serviceName}`, {
+  public async create(body: any, vendor?: TPlatform) {
+    return await this.makeRequest(`${apiBaseUrl}/api/v1/${vendor ? vendor + '/' : ''}plugin/?pluginType=${this.pluginType}&serviceName=${this.serviceName}&${this.queryParams}`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
@@ -103,8 +104,8 @@ class PluginService extends HttpService {
     });
   }
 
-  public async update(pluginId: string = '', body: any) {
-    return await this.makeRequest(`${apiBaseUrl}/api/v1/plugin/${pluginId}?serviceName=${this.serviceName}`, {
+  public async update(pluginId: string = '', body: any, vendor?: TPlatform) {
+    return await this.makeRequest(`${apiBaseUrl}/api/v1/${vendor ? vendor + '/' : ''}plugin/${pluginId}?pluginType=${this.pluginType}&serviceName=${this.serviceName}&${this.queryParams}`, {
       method: 'put',
       headers: {
         'Content-Type': 'application/json'

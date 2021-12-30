@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Popup } from '../../../external/components/popup/popup.comp';
-import { TSiteBuilderVendor } from '../../../external/types/editor.types';
+import { TPlatform } from '../../../external/types/editor.types';
 import { IUser } from '../../../external/types/user.types';
 import { VendorUpgrade } from '../vendorUpgrade/vendorUpgrade.comp';
 
@@ -11,7 +11,7 @@ interface IVendorUpgradePopupProps {
   user: IUser
   serviceName: string
   closeCallback: () => void
-  vendor: TSiteBuilderVendor | null
+  vendor: TPlatform | null
 }
 
 export const VendorUpgradePopup = ({ vendor, user, closeCallback, serviceName }: IVendorUpgradePopupProps) => {

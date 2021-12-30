@@ -31,6 +31,7 @@ export const FileUpload = (props: IFileUploadProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const queryParams: string = [
     `multi=true`,
+    `pluginType=${pluginService.pluginType}`,
     `serviceName=${pluginService.serviceName}`,
     `componentId=${pluginId || ''}`,
     `assetType=${acceptType || ''}`,
@@ -39,7 +40,7 @@ export const FileUpload = (props: IFileUploadProps) => {
   let defaultUploadUrl = `/api/v1/asset?${queryParams}`;
 
   if (!uploadApiUrl && vendor) {
-    defaultUploadUrl= `/api/v1/${vendor}/${pluginService.pluginType}/asset?${queryParams}`;
+    defaultUploadUrl= `/api/v1/${vendor}/asset?${queryParams}`;
   }
 
   function defaultErrorCallback(errorMessage: string) {

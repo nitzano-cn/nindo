@@ -41,6 +41,6 @@ export const iconToNumberOfPaths: { [key: string]: number } = {
   'countdown-bar': 6,
   'pdf-gallery': 8,
   'social-feeds': 9,
-  'business-hours': 1,
+  'business-hours': 13,
   'logo-showcase': 7
 };
