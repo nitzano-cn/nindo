@@ -213,8 +213,10 @@ async function init() {
 	}
 
 	const pkg = require(path.join(templateDir, `package.json`));
+	const nindoPkg = require(path.join(__dirname, '../', `package.json`));
 
 	pkg.name = packageName;
+	pkg.dependencies['@commonninja/nindo'] = nindoPkg.version;
 
 	// Create package.json dynamically with package name
 	write('package.json', JSON.stringify(pkg, null, 2));
