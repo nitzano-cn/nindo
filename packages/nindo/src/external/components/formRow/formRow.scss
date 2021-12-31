@@ -1,131 +1,139 @@
 @import '../../styles/_vars';
 
 .form-row {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: 15px;
-  position: relative;
-  
-  &:last-child {
-    margin-bottom: 0;
-  }
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin-bottom: 15px;
+	position: relative;
 
-  &.column {
-    flex-direction: column;
-    align-items: flex-start;
+	&:last-child {
+		margin-bottom: 0;
+	}
 
-    label {
-      flex-basis: 0;
-      margin: 0 0 10px;
-    }
-  }
+	&.column {
+		flex-direction: column;
+		align-items: flex-start;
 
-  > label {
-    flex-basis: 160px;
-    font-size: 12px;
-    color: $gray-20;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-right: 10px;
-    flex-shrink: 0;
+		label {
+			flex-basis: 0;
+			margin: 0 0 10px;
+		}
+	}
 
-    .premium-star {
-      margin-right: 5px;
-      margin-top: -3px;
-    }
+	> label {
+		flex-basis: 160px;
+		font-size: 12px;
+		color: $gray-20;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		padding-right: 10px;
+		flex-shrink: 0;
 
-    .tooltip {
-      margin: 0 10px;
-    }
-  }
+		.premium-star {
+			margin-right: 5px;
+			margin-top: -3px;
+		}
 
-  > *:not(label) {
-    flex: 1;
-  }
+		.tooltip {
+			margin: 0 10px;
+		}
+	}
 
-  .trim {
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+	> *:not(label) {
+		flex: 1;
+	}
 
-  .toggler {
-    transform: scale(0.85);
-    transform-origin: 0;
-  }
+	.trim {
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
 
-  .row-message {
-    font-size: 12px;
-    padding: 0;
-    color: $gray-20;
-  }
+	.toggler {
+		transform: scale(0.85);
+		transform-origin: 0;
+	}
 
-  select {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    background-image: url($downCaretBg);
-    background-repeat: no-repeat, repeat;
-    background-position: right .7em top 50%, 0 0;
-    background-size: .65em auto, 100%;
-    fill: #fff;
-  }
+	.row-message {
+		font-size: 12px;
+		padding: 0;
+		color: $gray-20;
+	}
 
-  input[type=text], select, textarea, input[type=url], input[type=number], input[type=date], input[type=email], input[type=password] {
-    width: 100%;
-    padding: 7px;
-    border: 1px solid rgba(0,0,0,0.1);
-    color: #AAB0BE;
-    background-color: #fff;
-    font-size: 14px;
-    margin: 0;
-    box-sizing: border-box;
-    border-radius: 2px;
-    transition: all 0.2s ease;
-    text-overflow: ellipsis;
+	select {
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		appearance: none;
+		background-image: url($downCaretBg);
+		background-repeat: no-repeat, repeat;
+		background-position: right 0.7em top 50%, 0 0;
+		background-size: 0.65em auto, 100%;
+		fill: #fff;
+	}
 
-    &.small {
-      max-width: 70px;
-      text-align: center;
-    }
+	input[type='text'],
+	select,
+	textarea,
+	input[type='url'],
+	input[type='number'],
+	input[type='date'],
+	input[type='email'],
+	input[type='password'] {
+		width: 100%;
+		padding: 7px;
+		border: 1px solid rgba(0, 0, 0, 0.1);
+		color: #aab0be;
+		background-color: #fff;
+		font-size: 14px;
+		margin: 0;
+		box-sizing: border-box;
+		border-radius: 2px;
+		transition: all 0.2s ease;
+		text-overflow: ellipsis;
 
-    &::placeholder {
-      color: rgba(255, 255, 255, 0.2);
-    }
+		&.small {
+			max-width: 70px;
+			text-align: center;
+		}
 
-    &::selection {
-      background-color: #AAB0BE;
-      color: #fff;
-    }
-    
-    &:focus {
-      color: #5C606B;
-      border-color: rgba(0,0,0,0.2);
-    }
-  }
+		&::placeholder {
+			color: rgba(255, 255, 255, 0.2);
+		}
 
-  .file-upload, .assets-gallery-opener {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0.7;
-    transition: opacity 0.2s ease;
-    z-index: 1;
-    cursor: pointer;
+		&::selection {
+			background-color: #aab0be;
+			color: #fff;
+		}
 
-    + input {
-      padding-right: 30px;
-    }
-    
-    &:hover {
-      opacity: 1;
-    }
-  }
+		&:focus {
+			color: #5c606b;
+			border-color: rgba(0, 0, 0, 0.2);
+		}
+	}
 
-  .cn-slider + span {
-    flex: 0 1;
-    margin-left: 5px;
-  }
+	.file-upload,
+	.assets-gallery-opener {
+		position: absolute;
+		right: 10px;
+		top: 50%;
+		transform: translateY(-50%);
+		opacity: 0.7;
+		transition: opacity 0.2s ease;
+		z-index: 1;
+		cursor: pointer;
+
+		+ input {
+			padding-right: 30px;
+		}
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+
+	.cn-slider + span {
+		flex: 0 1;
+		margin-left: 5px;
+	}
 }

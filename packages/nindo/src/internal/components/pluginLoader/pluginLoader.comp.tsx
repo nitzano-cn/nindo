@@ -11,7 +11,11 @@ import {
 } from '../../services';
 import { IHttpResult } from '../../../external/types/http.types';
 import { gotPluginData } from '../../actions/plugin.actions';
-import { IPlugin, IPluginLoaderComp, TChildren } from '../../../external/types/plugin.types';
+import {
+	IPlugin,
+	IPluginLoaderComp,
+	TChildren,
+} from '../../../external/types/plugin.types';
 import { PluginSkeleton } from '../../../external/components/pluginSkeleton/pluginSkeleton.comp';
 import { eventHelper } from '../../../external/helpers/event.helper';
 import { TPlatform } from '../../../external/types/editor.types';
@@ -19,21 +23,21 @@ import { IViewerProps } from '../../../external/types/viewer.types';
 import { pluginContextUpdated } from '../../actions/pluginContext.actions';
 
 export interface IPluginLoader<T> extends IViewerProps<T> {
-  pluginComp: TChildren
-  pluginLoaderComp?: IPluginLoaderComp
-	vendor?: TPlatform
+	pluginComp: TChildren;
+	pluginLoaderComp?: IPluginLoaderComp;
+	vendor?: TPlatform;
 }
 
 let eventsReported = false;
 let dataRefreshTimer: any = null;
 
-export const PluginLoader = ({ 
-	pluginComp, 
-	pluginLoaderComp, 
-	vendor, 
-	muteEvents, 
-	postGetDataProcess = (data) => (data), 
-	onLoad, 
+export const PluginLoader = ({
+	pluginComp,
+	pluginLoaderComp,
+	vendor,
+	muteEvents,
+	postGetDataProcess = (data) => data,
+	onLoad,
 	dataRefreshTTL,
 	viewerSettings,
 }: IPluginLoader<any>) => {
@@ -42,15 +46,15 @@ export const PluginLoader = ({
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<string>('');
 	const { pluginId, galleryId } = useParams() as any;
-	const { 
-		inlineElm = false, 
-		viewerSelector = '#viewer', 
-		minHeight = 0, 
+	const {
+		inlineElm = false,
+		viewerSelector = '#viewer',
+		minHeight = 0,
 		minWidth = 0,
-		maxHeight = 0, 
+		maxHeight = 0,
 		maxWidth = 0,
 		ignoreFrameResize = false,
-		onFrameResize = () => {}
+		onFrameResize = () => {},
 	} = viewerSettings || {};
 
 	function handleResize() {
@@ -72,7 +76,7 @@ export const PluginLoader = ({
 		}
 
 		onFrameResize?.(finalWidth, finalHeight);
-		
+
 		if (ignoreFrameResize) {
 			return;
 		}
@@ -81,43 +85,36 @@ export const PluginLoader = ({
 		if (vendor === 'wix' && typeof window?.Wix !== 'undefined') {
 			window?.Wix.setHeight(height);
 		}
-		
-		eventService.postEventToParent(
-			'COMMONNINJA_DIMENSIONS_UPDATE',
-			pluginId,
-			{
-				height: finalHeight,
-				width: inlineElm ? finalWidth : null
-			}
-		);
+
+		eventService.postEventToParent('COMMONNINJA_DIMENSIONS_UPDATE', pluginId, {
+			height: finalHeight,
+			width: inlineElm ? finalWidth : null,
+		});
 	}
 
-	const onResize = useCallback(
-		handleResize, 
-		[
-			viewerSelector, 
-			minHeight, 
-			minWidth, 
-			maxHeight, 
-			maxWidth, 
-			ignoreFrameResize, 
-			inlineElm, 
-			onFrameResize, 
-			vendor, 
-			pluginId
-		]
-	);
+	const onResize = useCallback(handleResize, [
+		viewerSelector,
+		minHeight,
+		minWidth,
+		maxHeight,
+		maxWidth,
+		ignoreFrameResize,
+		inlineElm,
+		onFrameResize,
+		vendor,
+		pluginId,
+	]);
 	const { ref } = useResizeDetector({
-    refreshMode: 'debounce',
+		refreshMode: 'debounce',
 		refreshRate: 50,
-    onResize
-  });
+		onResize,
+	});
 
 	function autoRefresh() {
 		if (!dataRefreshTTL || dataRefreshTTL < 1000) {
 			return;
 		}
-		
+
 		if (dataRefreshTimer) {
 			clearTimeout(dataRefreshTimer);
 		}
@@ -130,13 +127,13 @@ export const PluginLoader = ({
 	async function wixDataUpdated(data: any) {
 		const pluginData: IPlugin<any> = data.message.pluginData;
 
-    if (!pluginData || !pluginData.data) {
-      return;
-    }
+		if (!pluginData || !pluginData.data) {
+			return;
+		}
 
 		const finalPluginData = await postGetDataProcess(pluginData);
-    
-    dispatch(gotPluginData(finalPluginData));
+
+		dispatch(gotPluginData(finalPluginData));
 	}
 
 	async function getData(fromAutoRefresh: boolean) {
@@ -172,16 +169,18 @@ export const PluginLoader = ({
 			eventHelper.pluginId = pluginData.guid as string;
 			localStorageService.pluginId = pluginData.guid as string;
 
-      const finalPluginData = await postGetDataProcess(pluginData);
+			const finalPluginData = await postGetDataProcess(pluginData);
 
 			// Set plugin for plugin global state
 			dispatch(gotPluginData(finalPluginData));
 
 			// Set plugin context
-			dispatch(pluginContextUpdated({
-				instanceId: finalPluginData.guid || '',
-				mode: 'viewer',
-			}));
+			dispatch(
+				pluginContextUpdated({
+					instanceId: finalPluginData.guid || '',
+					mode: 'viewer',
+				})
+			);
 
 			// Callback if exists
 			await onLoad?.(finalPluginData);
@@ -197,7 +196,7 @@ export const PluginLoader = ({
 					'COMMONNINJA_PLUGIN_REQUESTED_DATA',
 					pluginData.guid
 				);
-	
+
 				// Report load event to parent
 				eventService.postEventToParent(
 					'COMMONNINJA_PLUGIN_LOADED',
@@ -223,16 +222,22 @@ export const PluginLoader = ({
 		}
 		// eslint-disable-next-line
 	}, [dataRefreshTTL]);
-	
+
 	useEffect(() => {
 		if (vendor === 'wix') {
 			if (typeof window.Wix !== 'undefined') {
-				window.Wix.addEventListener(window.Wix.Events.SETTINGS_UPDATED, wixDataUpdated);
+				window.Wix.addEventListener(
+					window.Wix.Events.SETTINGS_UPDATED,
+					wixDataUpdated
+				);
 			} else {
 				window.setTimeout(() => {
 					if (typeof window.Wix !== 'undefined') {
-						window.Wix.addEventListener(window.Wix.Events.SETTINGS_UPDATED, wixDataUpdated);
-					}   
+						window.Wix.addEventListener(
+							window.Wix.Events.SETTINGS_UPDATED,
+							wixDataUpdated
+						);
+					}
 				}, 10000);
 			}
 		}
@@ -240,11 +245,14 @@ export const PluginLoader = ({
 			if (dataRefreshTimer) {
 				clearTimeout(dataRefreshTimer);
 			}
-			
+
 			if (vendor === 'wix' && typeof window.Wix !== 'undefined') {
-				window.Wix.removeEventListener(window.Wix.Events.SETTINGS_UPDATED, wixDataUpdated);
+				window.Wix.removeEventListener(
+					window.Wix.Events.SETTINGS_UPDATED,
+					wixDataUpdated
+				);
 			}
-		}
+		};
 	}, []);
 
 	function renderAppLoader() {
@@ -264,9 +272,5 @@ export const PluginLoader = ({
 		return pluginComp;
 	}
 
-	return (
-		<div ref={ref}>
-			{loading ? renderAppLoader() : renderBody()}
-		</div>
-	);
+	return <div ref={ref}>{loading ? renderAppLoader() : renderBody()}</div>;
 };

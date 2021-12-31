@@ -1,6 +1,6 @@
 export {
-  CSSPropertiesEditor,
-  TAvailablePropertiesGroups,
-  TCSSPropertyGroupName,
-  TCSSProps,
+	CSSPropertiesEditor,
+	TAvailablePropertiesGroups,
+	TCSSPropertyGroupName,
+	TCSSProps,
 } from './cssPropertiesEditor.comp';

@@ -1,36 +1,36 @@
 @import '../../styles/_vars';
 
 .copy-input {
-  position: relative;
-  display: flex;
-  width: 100%;
-  justify-content: flex-start;
-  align-items: center;
+	position: relative;
+	display: flex;
+	width: 100%;
+	justify-content: flex-start;
+	align-items: center;
 
-  input {
-    flex: 3;
-  }
+	input {
+		flex: 3;
+	}
 
-  button {
-    height: 100%;
-    flex: 0 1;
-    padding: 7px 10px 8px;
-    line-height: 1em;
-    margin-left: 10px;
-    max-width: 40px;
-  }
+	button {
+		height: 100%;
+		flex: 0 1;
+		padding: 7px 10px 8px;
+		line-height: 1em;
+		margin-left: 10px;
+		max-width: 40px;
+	}
 
-  .copy-input-post-message {
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    transform: translateX(-50%);
-    font-size: 12px;
-    background: $black-20;
-    color: #fff;
-    padding: 5px 15px;
-    border-radius: 3px;
-    margin-top: 10px;
-    z-index: 10;
-  }
+	.copy-input-post-message {
+		position: absolute;
+		left: 50%;
+		top: 100%;
+		transform: translateX(-50%);
+		font-size: 12px;
+		background: $black-20;
+		color: #fff;
+		padding: 5px 15px;
+		border-radius: 3px;
+		margin-top: 10px;
+		z-index: 10;
+	}
 }

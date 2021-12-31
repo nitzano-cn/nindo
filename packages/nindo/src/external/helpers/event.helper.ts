@@ -26,12 +26,16 @@ class EventHelper {
 		);
 	}
 
-  public dispatchEventToFrame(frameId: string, action: any) {
-    eventService.postEventToParent('COMMONNINJA_DISPATCH_ACTION_TO_FRAME', this.pluginId, {
-      frameId,
-      action,
-    });
-  }
+	public dispatchEventToFrame(frameId: string, action: any) {
+		eventService.postEventToParent(
+			'COMMONNINJA_DISPATCH_ACTION_TO_FRAME',
+			this.pluginId,
+			{
+				frameId,
+				action,
+			}
+		);
+	}
 
 	public updateViewerDimensions(height?: number, width?: number) {
 		const dimensions: any = {
@@ -54,15 +58,14 @@ class EventHelper {
 		);
 	}
 
-	public updateViewerStyles(styles: CSSProperties = {}, elmToUpdate?: 'wrapper' | 'iframe' | 'both') {
-		eventService.postEventToParent(
-			'COMMONNINJA_STYLES_UPDATE',
-			this.pluginId,
-			{ 
-				styles,
-				elmToUpdate,
-			}
-		);
+	public updateViewerStyles(
+		styles: CSSProperties = {},
+		elmToUpdate?: 'wrapper' | 'iframe' | 'both'
+	) {
+		eventService.postEventToParent('COMMONNINJA_STYLES_UPDATE', this.pluginId, {
+			styles,
+			elmToUpdate,
+		});
 	}
 
 	private openFrame({
@@ -70,22 +73,18 @@ class EventHelper {
 		url,
 		overlayStyles = {},
 		iframeStyles = {},
-	}: { 
-		popupId: string, 
-		url: string, 
-		overlayStyles: CSSProperties 
-		iframeStyles: CSSProperties
+	}: {
+		popupId: string;
+		url: string;
+		overlayStyles: CSSProperties;
+		iframeStyles: CSSProperties;
 	}) {
-		eventService.postEventToParent(
-			'COMMONNINJA_OPEN_POPUP',
-			this.pluginId,
-			{
-				popupId,
-				url,
-				iframeStyles,
-				overlayStyles,
-			}
-		);
+		eventService.postEventToParent('COMMONNINJA_OPEN_POPUP', this.pluginId, {
+			popupId,
+			url,
+			iframeStyles,
+			overlayStyles,
+		});
 	}
 
 	private updateFrameStyles({
@@ -93,8 +92,8 @@ class EventHelper {
 		overlayStyles,
 		iframeStyles,
 	}: {
-		popupId: string; 
-		overlayStyles?: CSSProperties; 
+		popupId: string;
+		overlayStyles?: CSSProperties;
 		iframeStyles?: CSSProperties;
 	}) {
 		const styles: any = {};
@@ -117,9 +116,13 @@ class EventHelper {
 		);
 	}
 
-	public openFrameModal(frameId: string, frameUrl: string, backgroundMode: boolean = false) {
+	public openFrameModal(
+		frameId: string,
+		frameUrl: string,
+		backgroundMode: boolean = false
+	) {
 		this.openFrame({
-			popupId: frameId, 
+			popupId: frameId,
 			url: frameUrl,
 			overlayStyles: {
 				display: backgroundMode ? 'none' : 'block',
@@ -142,16 +145,21 @@ class EventHelper {
 
 	public toggleFrameModal(frameId: string, show: boolean) {
 		this.updateFrameStyles({
-			popupId: frameId, 
+			popupId: frameId,
 			overlayStyles: {
 				display: show ? 'block' : 'none',
-			}
+			},
 		});
 	}
 
-	public openFrameDrawer(frameId: string, frameUrl: string, backgroundMode: boolean = false, direction: 'left' | 'right' = 'right') {
+	public openFrameDrawer(
+		frameId: string,
+		frameUrl: string,
+		backgroundMode: boolean = false,
+		direction: 'left' | 'right' = 'right'
+	) {
 		this.openFrame({
-			popupId: frameId, 
+			popupId: frameId,
 			url: frameUrl,
 			overlayStyles: {
 				display: backgroundMode ? 'none' : 'block',
@@ -178,31 +186,39 @@ class EventHelper {
 				opacity: backgroundMode ? '0' : '1',
 				transition: 'all 0.2s ease 0.2s',
 				background: '#fff',
-				transform: backgroundMode ? (direction === 'right' ? 'translateX(100%)' : 'translateX(-100%)') : 'translateX(0)',
+				transform: backgroundMode
+					? direction === 'right'
+						? 'translateX(100%)'
+						: 'translateX(-100%)'
+					: 'translateX(0)',
 			},
 		});
 	}
 
-	public toggleFrameDrawer(frameId: string, show: boolean, direction: 'left' | 'right' = 'right') {
+	public toggleFrameDrawer(
+		frameId: string,
+		show: boolean,
+		direction: 'left' | 'right' = 'right'
+	) {
 		if (show) {
 			this.updateFrameStyles({
-				popupId: frameId, 
+				popupId: frameId,
 				overlayStyles: {
 					display: 'block',
-				}
+				},
 			});
 
 			window?.setTimeout(() => {
 				this.updateFrameStyles({
-					popupId: frameId, 
+					popupId: frameId,
 					overlayStyles: {
 						opacity: '1',
-					}
+					},
 				});
 
 				window?.setTimeout(() => {
 					this.updateFrameStyles({
-						popupId: frameId, 
+						popupId: frameId,
 						iframeStyles: {
 							opacity: '1',
 							transform: 'translateX(0)',
@@ -212,15 +228,16 @@ class EventHelper {
 			}, 10);
 		} else {
 			this.updateFrameStyles({
-				popupId: frameId, 
+				popupId: frameId,
 				iframeStyles: {
-					transform: direction === 'right' ? 'translateX(100%)' : 'translateX(-100%)',
+					transform:
+						direction === 'right' ? 'translateX(100%)' : 'translateX(-100%)',
 				},
 			});
-	
+
 			window?.setTimeout(() => {
 				this.updateFrameStyles({
-					popupId: frameId, 
+					popupId: frameId,
 					overlayStyles: {
 						opacity: '0',
 					},
@@ -228,10 +245,10 @@ class EventHelper {
 						opacity: '0',
 					},
 				});
-	
+
 				window?.setTimeout(() => {
 					this.updateFrameStyles({
-						popupId: frameId, 
+						popupId: frameId,
 						overlayStyles: {
 							display: 'none',
 						},

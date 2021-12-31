@@ -1,17 +1,17 @@
 #date-picker-portal {
-  z-index: 100000;
-  position: absolute;
-  left: 0;
-  top: 0;
+	z-index: 100000;
+	position: absolute;
+	left: 0;
+	top: 0;
 
-  .react-datepicker__tab-loop {
-    flex: 0;
-    min-width: 330px;
-  }
+	.react-datepicker__tab-loop {
+		flex: 0;
+		min-width: 330px;
+	}
 }
 
 .date-picker-wrapper {
-  .react-datepicker-wrapper {
-    display: block;
-  }
+	.react-datepicker-wrapper {
+		display: block;
+	}
 }

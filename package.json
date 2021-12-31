@@ -1,12 +1,18 @@
 {
-  "name": "root",
-  "private": true,
-  "scripts": {
-    "publish": "lerna publish",
-    "bootstrap": "lerna bootstrap"
-  },
-  "devDependencies": {
-    "lerna": "^4.0.0",
-    "typescript": "^4.5.4"
-  }
+	"name": "nindo-monorepo",
+	"private": true,
+	"engines": {
+		"node": ">=16.0.0"
+	},
+	"scripts": {
+		"publish": "lerna publish",
+		"bootstrap": "lerna bootstrap",
+		"format": "prettier --write --ignore-unknown .",
+		"format:check": "prettier --check --ignore-unknown ."
+	},
+	"devDependencies": {
+		"lerna": "^4.0.0",
+		"prettier": "^2.5.1",
+		"typescript": "^4.5.4"
+	}
 }

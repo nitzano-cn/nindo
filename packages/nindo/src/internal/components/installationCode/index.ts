@@ -1,1 +1,4 @@
-export { InstallationCode, InstallationTutorials } from './installationCode.comp';
+export {
+	InstallationCode,
+	InstallationTutorials,
+} from './installationCode.comp';

@@ -7,15 +7,15 @@ import { Button } from '../button/button.comp';
 import './addItemButton.scss';
 
 interface IAddItemButtonProps {
-  onClick: () => void
-  title?: string
+	onClick: () => void;
+	title?: string;
 }
 
 export const AddItemButton = ({ onClick, title }: IAddItemButtonProps) => {
-  return (
-    <Button className="add-item-button" onClick={onClick}>
-      <FontAwesomeIcon icon={faPlus} />
-      <span> {title || 'Add an Item'}</span>
-    </Button>
-  );
-}
+	return (
+		<Button className="add-item-button" onClick={onClick}>
+			<FontAwesomeIcon icon={faPlus} />
+			<span> {title || 'Add an Item'}</span>
+		</Button>
+	);
+};

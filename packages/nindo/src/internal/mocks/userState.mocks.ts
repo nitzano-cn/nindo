@@ -4,7 +4,7 @@ export default {
 	userData: {
 		fullName: 'Ninja',
 		isAuthenticated: true,
-		thumbnail: ''
+		thumbnail: '',
 	},
-	planFeaturesData: {}
+	planFeaturesData: {},
 } as IUserStateMocks;

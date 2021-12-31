@@ -1,16 +1,16 @@
 @import '../../styles/_vars';
 
 .custom-css-editor {
-  display: flex;
-  align-items: stretch;
-  justify-content: flex-start;
-  margin-bottom: 20px;
-  
-  > * {
-    flex: 1;
-    max-height: 60vh;
-    overflow: auto;
-  }
+	display: flex;
+	align-items: stretch;
+	justify-content: flex-start;
+	margin-bottom: 20px;
+
+	> * {
+		flex: 1;
+		max-height: 60vh;
+		overflow: auto;
+	}
 }
 
 .custom-css-popup {

@@ -1,5 +1,8 @@
 import React from 'react';
-import { InstallationCode, InstallationTutorials } from '../installationCode/installationCode.comp';
+import {
+	InstallationCode,
+	InstallationTutorials,
+} from '../installationCode/installationCode.comp';
 import { pluginService } from '../../services';
 import { FormRow } from '../../../external/components/formRow/formRow.comp';
 import { ContextMenuWrapper } from '../../../external/components/contextMenuWrapper/contextMenuWrapper.comp';
@@ -24,8 +27,7 @@ export const PublishSettingsComp = (props: PublishSettingsProps) => {
 		</p>
 	) : (
 		<ContextMenuWrapper className="publish-settings">
-			{
-				showCode && 
+			{showCode && (
 				<ContextMenuSection title="Installation Guide">
 					<InstallationCode
 						componentId={pluginId}
@@ -34,7 +36,7 @@ export const PublishSettingsComp = (props: PublishSettingsProps) => {
 						htmlOnly={htmlCodeOnly}
 					/>
 				</ContextMenuSection>
-			}
+			)}
 			<ContextMenuSection title="App Details">
 				<FormRow>
 					<label>App Instance ID</label>
@@ -45,12 +47,11 @@ export const PublishSettingsComp = (props: PublishSettingsProps) => {
 					<span>{pluginService.pluginType}</span>
 				</FormRow>
 			</ContextMenuSection>
-			{
-				!hideTutorials &&
+			{!hideTutorials && (
 				<ContextMenuSection title="Tutorials">
 					<InstallationTutorials />
 				</ContextMenuSection>
-			}
+			)}
 		</ContextMenuWrapper>
 	);
 };

@@ -15,125 +15,138 @@ import { AssetType } from '../../types/asset.types';
 import './assetsGalleryOpener.scss';
 
 interface AssetsGalleryOpenerProps {
-  enabled: boolean
-  submitCallback: (url: string) => void
-  pluginId?: string
-  postUploadCallback?: (url: string, name: string, guid: string) => void
-  uploadStartCallback?: () => void
-  errorCallback?: (message: string) => void
-  disabledCallback?: () => void
-  assetApiBaseUrl?: string
-  limit?: number
-  children?: TChildren
-  className?: string
-  fileSizeLimitInMB?: number
-  assetType?: AssetType
+	enabled: boolean;
+	submitCallback: (url: string) => void;
+	pluginId?: string;
+	postUploadCallback?: (url: string, name: string, guid: string) => void;
+	uploadStartCallback?: () => void;
+	errorCallback?: (message: string) => void;
+	disabledCallback?: () => void;
+	assetApiBaseUrl?: string;
+	limit?: number;
+	children?: TChildren;
+	className?: string;
+	fileSizeLimitInMB?: number;
+	assetType?: AssetType;
 }
 
 export const AssetsGalleryOpener = (props: AssetsGalleryOpenerProps) => {
-  const { 
-    children, 
-    submitCallback, 
-    errorCallback, 
-    uploadStartCallback, 
-    className, 
-    postUploadCallback, 
-    enabled, 
-    disabledCallback,
-    assetApiBaseUrl,
-    limit,
-    pluginId,
-    fileSizeLimitInMB,
-    assetType = AssetType.IMAGE
-  } = props;
+	const {
+		children,
+		submitCallback,
+		errorCallback,
+		uploadStartCallback,
+		className,
+		postUploadCallback,
+		enabled,
+		disabledCallback,
+		assetApiBaseUrl,
+		limit,
+		pluginId,
+		fileSizeLimitInMB,
+		assetType = AssetType.IMAGE,
+	} = props;
 
-  const [opened, setOpened] = useState<boolean>(false);
-  const query = useQuery();
+	const [opened, setOpened] = useState<boolean>(false);
+	const query = useQuery();
 	const { vendor } = useParams() as any;
-  const queryParams: string = `multi=true&assetType=${assetType}&pluginType=${pluginService.pluginType}&serviceName=${pluginService.serviceName}${pluginId ? '&componentId=' + pluginId : ''}&${query.toString()}`;
-  let finalAssetApiBaseUrl = assetApiBaseUrl;
+	const queryParams: string = `multi=true&assetType=${assetType}&pluginType=${
+		pluginService.pluginType
+	}&serviceName=${pluginService.serviceName}${
+		pluginId ? '&componentId=' + pluginId : ''
+	}&${query.toString()}`;
+	let finalAssetApiBaseUrl = assetApiBaseUrl;
 
-  if (!assetApiBaseUrl && vendor) {
-    finalAssetApiBaseUrl= `/api/v1/${vendor}`;
-  }
+	if (!assetApiBaseUrl && vendor) {
+		finalAssetApiBaseUrl = `/api/v1/${vendor}`;
+	}
 
-  function uploadDisabledCallback() {
-    if (disabledCallback) {
-      disabledCallback();
-    } else {
-      notificationHelper.removeAll();
-      notificationHelper.warning({
-        title: '✭ Premium Feature',
-        message: "Your current plan doesn't support image uploads.",
-        children: (
-          <PremiumOpener>
-            Upgrade your account now to enjoy premium features!
-          </PremiumOpener>
-        ),
-        position: 'tc',
-        autoDismiss: 4,
-      });
-    }
-  }
+	function uploadDisabledCallback() {
+		if (disabledCallback) {
+			disabledCallback();
+		} else {
+			notificationHelper.removeAll();
+			notificationHelper.warning({
+				title: '✭ Premium Feature',
+				message: "Your current plan doesn't support image uploads.",
+				children: (
+					<PremiumOpener>
+						Upgrade your account now to enjoy premium features!
+					</PremiumOpener>
+				),
+				position: 'tc',
+				autoDismiss: 4,
+			});
+		}
+	}
 
-  function triggerClick() {
-    setOpened(true);
-  }
+	function triggerClick() {
+		setOpened(true);
+	}
 
-  function postSubmit(url: string) {
-    setOpened(false);
-    submitCallback(url);
-  }
+	function postSubmit(url: string) {
+		setOpened(false);
+		submitCallback(url);
+	}
 
-  return (
-    <>
-      <div className={`assets-gallery-opener ${className || ''}`} onClick={triggerClick}>
-        {
-          children || 
-          <FontAwesomeIcon icon={faImages} title="Open Gallery" />
-        }
-      </div>
-      <Popup
-        className="assets-gallery-popup"
-        closeCallback={() => setOpened(false)}
-        show={opened}
-      >
-        <h2>Manage Assets</h2>
-        <AssetsGallery 
-          postUploadCallback={postUploadCallback || (() => {
-            notificationHelper.removeAll();
-            notificationHelper.success({
-              title: 'File has been successfully uploaded.',
-              position: 'tc',
-              autoDismiss: 3,
-            });
-          })}
-          assetApiQueryParams={queryParams}
-          assetApiBaseUrl={finalAssetApiBaseUrl}
-          uploadErrorCallback={errorCallback || ((errorMessage) => {
-            notificationHelper.removeAll();
-            notificationHelper.error({
-              title: errorMessage,
-              position: 'tc',
-              autoDismiss: 4.5,
-            });
-          })}
-          uploadStartCallback={uploadStartCallback || (() => {
-            notificationHelper.removeAll();
-            notificationHelper.info({
-              title: 'Uploading file...',
-              position: 'tc',
-              autoDismiss: 0,
-            });
-          })}
-          uploadIsAvailable={enabled}
-          uploadDisabledCallback={uploadDisabledCallback}
-          submitCallback={postSubmit}
-          limit={limit}
-          fileSizeLimitInMB={fileSizeLimitInMB}
-          assetType={assetType}
-        />
-      </Popup>
-    </>
-  );
+	return (
+		<>
+			<div
+				className={`assets-gallery-opener ${className || ''}`}
+				onClick={triggerClick}
+			>
+				{children || <FontAwesomeIcon icon={faImages} title="Open Gallery" />}
+			</div>
+			<Popup
+				className="assets-gallery-popup"
+				closeCallback={() => setOpened(false)}
+				show={opened}
+			>
+				<h2>Manage Assets</h2>
+				<AssetsGallery
+					postUploadCallback={
+						postUploadCallback ||
+						(() => {
+							notificationHelper.removeAll();
+							notificationHelper.success({
+								title: 'File has been successfully uploaded.',
+								position: 'tc',
+								autoDismiss: 3,
+							});
+						})
+					}
+					assetApiQueryParams={queryParams}
+					assetApiBaseUrl={finalAssetApiBaseUrl}
+					uploadErrorCallback={
+						errorCallback ||
+						((errorMessage) => {
+							notificationHelper.removeAll();
+							notificationHelper.error({
+								title: errorMessage,
+								position: 'tc',
+								autoDismiss: 4.5,
+							});
+						})
+					}
+					uploadStartCallback={
+						uploadStartCallback ||
+						(() => {
+							notificationHelper.removeAll();
+							notificationHelper.info({
+								title: 'Uploading file...',
+								position: 'tc',
+								autoDismiss: 0,
+							});
+						})
+					}
+					uploadIsAvailable={enabled}
+					uploadDisabledCallback={uploadDisabledCallback}
+					submitCallback={postSubmit}
+					limit={limit}
+					fileSizeLimitInMB={fileSizeLimitInMB}
+					assetType={assetType}
+				/>
+			</Popup>
+		</>
+	);
 };

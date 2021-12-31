@@ -6,21 +6,21 @@ import { FormLabel } from '../formLabel/formLabel.comp';
 import { FormRow } from '../formRow/formRow.comp';
 
 export const NameFieldEditor = ({ currentValue }: { currentValue: string }) => {
-  const dispatch = useDispatch();
-  
-  function setPluginName(value = '') {
+	const dispatch = useDispatch();
+
+	function setPluginName(value = '') {
 		dispatch(nameUpdated(value));
 	}
 
-  return (
-    <FormRow>
-      <FormLabel>Main Title</FormLabel>
-      <input
-        type="text"
-        value={currentValue}
-        placeholder="Enter title..."
-        onChange={(e) => setPluginName(e.target.value)}
-      />
-    </FormRow>
-  );
-}
+	return (
+		<FormRow>
+			<FormLabel>Main Title</FormLabel>
+			<input
+				type="text"
+				value={currentValue}
+				placeholder="Enter title..."
+				onChange={(e) => setPluginName(e.target.value)}
+			/>
+		</FormRow>
+	);
+};

@@ -1,19 +1,24 @@
 import React from 'react';
-import {
-	NinjaSkeleton,
-	NinjaSkeletonTheme,
-} from '../skeleton/skeleton.comp';
+import { NinjaSkeleton, NinjaSkeletonTheme } from '../skeleton/skeleton.comp';
 import { getLuminance, darken, lighten } from 'color2k';
 
 import { TPluginMode } from '../../types/plugin.types';
 
 import './pluginSkeleton.scss';
 
-export const PluginSkeleton = ({ leadColor, mode }: { leadColor?: string, mode: TPluginMode }) => {
+export const PluginSkeleton = ({
+	leadColor,
+	mode,
+}: {
+	leadColor?: string;
+	mode: TPluginMode;
+}) => {
 	let color = 'rgba(255,255,255,0.2)';
 
 	try {
-		const urlParams = new URLSearchParams(typeof window !== 'undefined' ? window?.location?.search : '');
+		const urlParams = new URLSearchParams(
+			typeof window !== 'undefined' ? window?.location?.search : ''
+		);
 		const baseColor: string =
 			leadColor || decodeURIComponent(urlParams.get('bg') || '') || '#fff';
 		const brightness = getLuminance(baseColor);

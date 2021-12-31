@@ -27,7 +27,7 @@ export const userMocks = ({ userData, planFeaturesData }: IUserStateMocks) => {
 		name: 'User details',
 		origin: origin,
 	};
-	
+
 	const getPlanFeatures = {
 		id: uuidv4(),
 		active: true,
@@ -52,4 +52,4 @@ export const userMocks = ({ userData, planFeaturesData }: IUserStateMocks) => {
 	};
 
 	return [getUserDetails, getPlanFeatures];
-}
+};

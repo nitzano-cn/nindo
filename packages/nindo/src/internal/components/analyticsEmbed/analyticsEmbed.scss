@@ -1,21 +1,21 @@
 @import '../../../external/styles/_vars';
 
 .analytics-embed {
-  position: relative;
-  width: 100%;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  
-  iframe {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: calc(100vh - #{$headerHeight} - 5px);
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
+	position: relative;
+	width: 100%;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
 
-    @media screen and (max-width: $breakpoint-3) {
-      height: calc(100vh - #{$headerHeight} - 40px - 20px);
-    }
-  }
+	iframe {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		height: calc(100vh - #{$headerHeight} - 5px);
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+
+		@media screen and (max-width: $breakpoint-3) {
+			height: calc(100vh - #{$headerHeight} - 40px - 20px);
+		}
+	}
 }

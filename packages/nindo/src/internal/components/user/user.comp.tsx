@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt, faCog, faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import {
+	faSignOutAlt,
+	faCog,
+	faChevronDown,
+} from '@fortawesome/free-solid-svg-icons';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 import { userService } from '../../services';
@@ -11,166 +15,192 @@ require('@commonninja/commonninja-auth-sdk');
 const usersServiceUrl = process.env.REACT_APP_USERS_SERVICE_URL || '';
 
 declare global {
-  interface Window { CommonninjaAuthSDK: any; }
+	interface Window {
+		CommonninjaAuthSDK: any;
+	}
 }
 
 export interface IUserProps {
-  user: IUser
-  componentType?: string
-  serviceName?: string
-  defaultAuthType?: 'login' | 'signup' 
-  allowLoginRedirect?: boolean
-  noUI?: boolean
-  postLoginCallback?: (user: IUser, triggered: boolean) => void
-  postLogoutCallback?: () => void
-  failedToAuthenticateCallback?: (errorMessage: string) => void
-};
+	user: IUser;
+	componentType?: string;
+	serviceName?: string;
+	defaultAuthType?: 'login' | 'signup';
+	allowLoginRedirect?: boolean;
+	noUI?: boolean;
+	postLoginCallback?: (user: IUser, triggered: boolean) => void;
+	postLogoutCallback?: () => void;
+	failedToAuthenticateCallback?: (errorMessage: string) => void;
+}
 
 export const User = (props: IUserProps) => {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [menuStatus, setMenuStatus] = useState<'closed' | 'opened'>('closed');
-  const { 
-    user,
-    defaultAuthType,
-    allowLoginRedirect,
-    noUI,
-    postLoginCallback,
-    postLogoutCallback,
-    failedToAuthenticateCallback,
-  } = props;
+	const [loading, setLoading] = useState<boolean>(false);
+	const [menuStatus, setMenuStatus] = useState<'closed' | 'opened'>('closed');
+	const {
+		user,
+		defaultAuthType,
+		allowLoginRedirect,
+		noUI,
+		postLoginCallback,
+		postLogoutCallback,
+		failedToAuthenticateCallback,
+	} = props;
 
-  function handleOutsideClick(e: MouseEvent) {
-    const target = e.target as HTMLElement;
-    if (menuStatus === 'opened' && target && !target.closest('.user-menu-wrapper')) {
-      setMenuStatus('closed');
-    }
-  }
+	function handleOutsideClick(e: MouseEvent) {
+		const target = e.target as HTMLElement;
+		if (
+			menuStatus === 'opened' &&
+			target &&
+			!target.closest('.user-menu-wrapper')
+		) {
+			setMenuStatus('closed');
+		}
+	}
 
-  async function getUserInfo(triggered: boolean) {
-    setLoading(true);
+	async function getUserInfo(triggered: boolean) {
+		setLoading(true);
 
-    try {
-      const res = await userService.getUserInfo();
-      if (!res.success) {
-        throw new Error('User is not logged in.');
-      }
+		try {
+			const res = await userService.getUserInfo();
+			if (!res.success) {
+				throw new Error('User is not logged in.');
+			}
 
-      if (postLoginCallback) {
-        postLoginCallback({
-          ...res.data,
-          isPremium: res.data.role === 'admin' || res.data.subscription
-        }, triggered);
-      }
-    } catch (e) {
-      if (failedToAuthenticateCallback) {
-        failedToAuthenticateCallback((e as Error).message);
-      }
-    }
-    
-    setLoading(false);
-  }
+			if (postLoginCallback) {
+				postLoginCallback(
+					{
+						...res.data,
+						isPremium: res.data.role === 'admin' || res.data.subscription,
+					},
+					triggered
+				);
+			}
+		} catch (e) {
+			if (failedToAuthenticateCallback) {
+				failedToAuthenticateCallback((e as Error).message);
+			}
+		}
 
-  function openLogin(e: any): void {
-    if (!allowLoginRedirect) {
-      e.preventDefault();
-      
-      window?.CommonninjaAuthSDK.login(() => {
-        getUserInfo(true);
-      });
-    }
-  }
+		setLoading(false);
+	}
 
-  function openSignup(e: any): void {
-    if (!allowLoginRedirect) {
-      e.preventDefault();
-      
-      window?.CommonninjaAuthSDK.signup(() => {
-        getUserInfo(true);
-      });
-    }
-  }
+	function openLogin(e: any): void {
+		if (!allowLoginRedirect) {
+			e.preventDefault();
 
-  async function logout(e: any) {
-    e.preventDefault();
+			window?.CommonninjaAuthSDK.login(() => {
+				getUserInfo(true);
+			});
+		}
+	}
 
-    try {
-      await userService.logout();
-      
-      // window?.CommonninjaAuthSDK.logout();
-      
-      if (postLogoutCallback) {
-        postLogoutCallback();
-      }
-    } catch (e) {
-      console.error('Could not log out', e);
-    }
-  }
+	function openSignup(e: any): void {
+		if (!allowLoginRedirect) {
+			e.preventDefault();
 
-  function toggleMenu(e: any) {
-    e.preventDefault();
-    setMenuStatus(menuStatus === 'opened' ? 'closed' : 'opened');
-  }
+			window?.CommonninjaAuthSDK.signup(() => {
+				getUserInfo(true);
+			});
+		}
+	}
 
-  function renderAuthLink() {
-    if (defaultAuthType === 'signup') {
-      return <a className="open-auth" href="/signup" onClick={openSignup}>Sign Up</a>;
-    }
-    return <a className="open-auth" href="/login" onClick={openLogin}>Log In</a>;
-  }
+	async function logout(e: any) {
+		e.preventDefault();
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      if (usersServiceUrl) {
-        window.CommonninjaAuthSDK.baseUrl = usersServiceUrl;
-      }
-      window.CommonninjaAuthSDK.serviceName = props.serviceName;
-      window.addEventListener('mousedown', handleOutsideClick);
-    }
-    
-    getUserInfo(false);
+		try {
+			await userService.logout();
 
-    return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('mousedown', handleOutsideClick);
-      }
-    }
-  }, []);
+			// window?.CommonninjaAuthSDK.logout();
 
-  if (noUI) {
-    return <></>;
-  }
-  
-  if (loading) {
-    return (
-      <div className="user-menu-wrapper" style={{ lineHeight: '1em', marginTop: '4px' }}>
-        <SkeletonTheme baseColor="#171d22" highlightColor="#9ea9b6">
-          <Skeleton width={60} height={15} />
-        </SkeletonTheme>
-      </div>
-    );
-  }
+			if (postLogoutCallback) {
+				postLogoutCallback();
+			}
+		} catch (e) {
+			console.error('Could not log out', e);
+		}
+	}
 
-  if (!user.isAuthenticated) {
-    return renderAuthLink();
-  } 
+	function toggleMenu(e: any) {
+		e.preventDefault();
+		setMenuStatus(menuStatus === 'opened' ? 'closed' : 'opened');
+	}
 
-  return (
-    <div className={`user-menu-wrapper ${menuStatus}`}>
-      <span className="user-menu-toggler" onClick={toggleMenu}>
-        <span title={user.fullName} className="thumbnail" style={{ backgroundImage: user.thumbnail ? `url(${user.thumbnail})` : '' }}></span>
-        <span>{user.fullName}</span>
-        <FontAwesomeIcon icon={faChevronDown} />
-      </span>
-      <div className="user-menu">
-        <a target="_self" href={`${usersServiceUrl}/user/dashboard`}>
-          <FontAwesomeIcon icon={faCog} />
-          <span>Dashboard</span>
-        </a>
-        <a href="/" className="openLogout" onClick={logout}>
-          <FontAwesomeIcon icon={faSignOutAlt} />
-          <span>Logout</span>
-        </a>
-      </div>
-    </div>
-  )
-}
+	function renderAuthLink() {
+		if (defaultAuthType === 'signup') {
+			return (
+				<a className="open-auth" href="/signup" onClick={openSignup}>
+					Sign Up
+				</a>
+			);
+		}
+		return (
+			<a className="open-auth" href="/login" onClick={openLogin}>
+				Log In
+			</a>
+		);
+	}
+
+	useEffect(() => {
+		if (typeof window !== 'undefined') {
+			if (usersServiceUrl) {
+				window.CommonninjaAuthSDK.baseUrl = usersServiceUrl;
+			}
+			window.CommonninjaAuthSDK.serviceName = props.serviceName;
+			window.addEventListener('mousedown', handleOutsideClick);
+		}
+
+		getUserInfo(false);
+
+		return () => {
+			if (typeof window !== 'undefined') {
+				window.removeEventListener('mousedown', handleOutsideClick);
+			}
+		};
+	}, []);
+
+	if (noUI) {
+		return <></>;
+	}
+
+	if (loading) {
+		return (
+			<div
+				className="user-menu-wrapper"
+				style={{ lineHeight: '1em', marginTop: '4px' }}
+			>
+				<SkeletonTheme baseColor="#171d22" highlightColor="#9ea9b6">
+					<Skeleton width={60} height={15} />
+				</SkeletonTheme>
+			</div>
+		);
+	}
+
+	if (!user.isAuthenticated) {
+		return renderAuthLink();
+	}
+
+	return (
+		<div className={`user-menu-wrapper ${menuStatus}`}>
+			<span className="user-menu-toggler" onClick={toggleMenu}>
+				<span
+					title={user.fullName}
+					className="thumbnail"
+					style={{
+						backgroundImage: user.thumbnail ? `url(${user.thumbnail})` : '',
+					}}
+				></span>
+				<span>{user.fullName}</span>
+				<FontAwesomeIcon icon={faChevronDown} />
+			</span>
+			<div className="user-menu">
+				<a target="_self" href={`${usersServiceUrl}/user/dashboard`}>
+					<FontAwesomeIcon icon={faCog} />
+					<span>Dashboard</span>
+				</a>
+				<a href="/" className="openLogout" onClick={logout}>
+					<FontAwesomeIcon icon={faSignOutAlt} />
+					<span>Logout</span>
+				</a>
+			</div>
+		</div>
+	);
+};

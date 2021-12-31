@@ -1,8 +1,9 @@
 .cn-app {
-  .loading-error, > .loader {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
+	.loading-error,
+	> .loader {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
 }

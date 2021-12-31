@@ -13,59 +13,63 @@ require('ace-builds/src-noconflict/ext-language_tools');
 require('ace-builds/webpack-resolver');
 
 interface CustomCSSEditor<T> {
-  onUpdate: (newStyles: string) => void
-  pluginComp: IPluginComp
-  css: string
-  title?: string
-  defaultStyles?: string
+	onUpdate: (newStyles: string) => void;
+	pluginComp: IPluginComp;
+	css: string;
+	title?: string;
+	defaultStyles?: string;
 }
 
 export const CustomCSSEditor = (props: CustomCSSEditor<any>) => {
-  const { title, pluginComp, css, defaultStyles, onUpdate } = props;
-  const [customCSS, setCustomCSS] = useState<string>(css || defaultStyles || '');
-  
-  function save() {
-    const trimmedCSS = customCSS.trim();
-    const css = defaultStyles === trimmedCSS ? '' : trimmedCSS;
-    onUpdate(css);
-  }
+	const { title, pluginComp, css, defaultStyles, onUpdate } = props;
+	const [customCSS, setCustomCSS] = useState<string>(
+		css || defaultStyles || ''
+	);
 
-  function onChange(newValue: string) {
-    setCustomCSS(newValue);
-  }
+	function save() {
+		const trimmedCSS = customCSS.trim();
+		const css = defaultStyles === trimmedCSS ? '' : trimmedCSS;
+		onUpdate(css);
+	}
 
-  return (
-    <React.Fragment>
-      <h2>{title || 'Edit CSS'}</h2>
-      <div className="custom-css-editor">
-        <AceEditor
-          placeholder="Enter Custom CSS"
-          mode="css"
-          theme="xcode"
-          name="custom-css-editor"
-          // onLoad={this.onLoad}
-          onChange={onChange}
-          fontSize={14}
-          showPrintMargin={false}
-          showGutter={true}
-          highlightActiveLine={true}
-          value={customCSS}
-          setOptions={{
-            enableBasicAutocompletion: false,
-            enableLiveAutocompletion: true,
-            enableSnippets: false,
-            showLineNumbers: true,
-            tabSize: 2,
-          }}
-        />
-        <div className="custom-css-preview">
-          <PluginWrapper pluginComp={pluginComp} />
-          <style dangerouslySetInnerHTML={{ __html: customCSS }}></style>
-        </div>
-      </div>
-      <div className="buttons-wrapper center">
-        <Button color="green" onClick={save}>Save</Button>
-      </div>
-    </React.Fragment>
-  );
+	function onChange(newValue: string) {
+		setCustomCSS(newValue);
+	}
+
+	return (
+		<React.Fragment>
+			<h2>{title || 'Edit CSS'}</h2>
+			<div className="custom-css-editor">
+				<AceEditor
+					placeholder="Enter Custom CSS"
+					mode="css"
+					theme="xcode"
+					name="custom-css-editor"
+					// onLoad={this.onLoad}
+					onChange={onChange}
+					fontSize={14}
+					showPrintMargin={false}
+					showGutter={true}
+					highlightActiveLine={true}
+					value={customCSS}
+					setOptions={{
+						enableBasicAutocompletion: false,
+						enableLiveAutocompletion: true,
+						enableSnippets: false,
+						showLineNumbers: true,
+						tabSize: 2,
+					}}
+				/>
+				<div className="custom-css-preview">
+					<PluginWrapper pluginComp={pluginComp} />
+					<style dangerouslySetInnerHTML={{ __html: customCSS }}></style>
+				</div>
+			</div>
+			<div className="buttons-wrapper center">
+				<Button color="green" onClick={save}>
+					Save
+				</Button>
+			</div>
+		</React.Fragment>
+	);
 };

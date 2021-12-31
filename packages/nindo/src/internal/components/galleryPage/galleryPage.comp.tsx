@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { IAppState, IPluginComp, IPluginLoaderComp, IUser } from '../../../external/types';
+import {
+	IAppState,
+	IPluginComp,
+	IPluginLoaderComp,
+	IUser,
+} from '../../../external/types';
 import { AppHeader } from '../appHeader/appHeader.comp';
 import { PluginLoader } from '../pluginLoader/pluginLoader.comp';
 import { PluginWrapper } from '../pluginWrapper/pluginWrapper.comp';
@@ -22,10 +27,12 @@ export const GalleryPage = (props: {
 
 	useEffect(() => {
 		// Updating plugin context
-    dispatch(pluginContextUpdated({
-      instanceId: '',
-      mode: 'viewer',
-    }));
+		dispatch(
+			pluginContextUpdated({
+				instanceId: '',
+				mode: 'viewer',
+			})
+		);
 	}, []);
 
 	return (

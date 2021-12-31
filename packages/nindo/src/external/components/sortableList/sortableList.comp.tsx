@@ -15,27 +15,27 @@ export const DragHandler = SortableHandle(() => (
 	</span>
 ));
 
-export const SortableItem = SortableElement((
-	{ 
-		data, 
-		renderItem, 
-		sortIndex, 
-		index, 
-	}: { 
-		data: any; 
+export const SortableItem = SortableElement(
+	({
+		data,
+		renderItem,
+		sortIndex,
+		index,
+	}: {
+		data: any;
 		renderItem: (data: any, index: number) => ReactElement;
 		sortIndex: number;
 		index: number;
 	}) => renderItem(data, sortIndex || index)
 );
 
-export const SortableList = SortableContainer((
-	{ 
-		items, 
-		renderItem 
-	}: { 
-		items: any[]; 
-		renderItem: (data: any, index: number) => ReactElement 
+export const SortableList = SortableContainer(
+	({
+		items,
+		renderItem,
+	}: {
+		items: any[];
+		renderItem: (data: any, index: number) => ReactElement;
 	}) => {
 		return (
 			<ul>

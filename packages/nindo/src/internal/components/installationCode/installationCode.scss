@@ -1,44 +1,44 @@
 @import '../../../external/styles/_vars';
 
 .installation-code {
-  textarea {
-    padding-right: 50px;
-    height: 135px;
-    min-height: 135px;
-    max-height: 135px;
-    font-size: 15px;
-    resize: none;
-  }
-  
-  .copy-input-button {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
+	textarea {
+		padding-right: 50px;
+		height: 135px;
+		min-height: 135px;
+		max-height: 135px;
+		font-size: 15px;
+		resize: none;
+	}
+
+	.copy-input-button {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
 }
 
 .installation-tutorials {
-  p {
-    margin: 0 0 20px;
-    color: $gray-20;
-    font-size: 14px;
-  }
+	p {
+		margin: 0 0 20px;
+		color: $gray-20;
+		font-size: 14px;
+	}
 
-  .platforms-list {
-    justify-content: flex-start;
-    flex-wrap: wrap;
+	.platforms-list {
+		justify-content: flex-start;
+		flex-wrap: wrap;
 
-    a {
-      opacity: 0.8;
+		a {
+			opacity: 0.8;
 
-      &:hover {
-        opacity: 1;
-      }
-    }
+			&:hover {
+				opacity: 1;
+			}
+		}
 
-    img {
-      max-height: 32px;
-      margin: 0 30px 20px 0;
-    }
-  }
+		img {
+			max-height: 32px;
+			margin: 0 30px 20px 0;
+		}
+	}
 }

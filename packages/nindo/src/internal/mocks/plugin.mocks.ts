@@ -6,14 +6,17 @@ import { basicMockConfig } from './basic.config';
 
 const { origin, responseBody } = basicMockConfig;
 
-export const pluginMocks = ({ planFeaturesData }: IUserStateMocks, defaultPlugin: IPlugin<any>) => {
+export const pluginMocks = (
+	{ planFeaturesData }: IUserStateMocks,
+	defaultPlugin: IPlugin<any>
+) => {
 	const existingPlugin = {
 		...defaultPlugin,
 		guid: 'test',
 		galleryId: 'test',
 		name: 'Existing Plugin',
 	};
-	
+
 	const getDefaultForEditor = {
 		id: uuidv4(),
 		active: true,
@@ -33,15 +36,15 @@ export const pluginMocks = ({ planFeaturesData }: IUserStateMocks, defaultPlugin
 					creationSource: 'website',
 					tier: 'free',
 					planFeatures: {
-						...planFeaturesData
-					}
+						...planFeaturesData,
+					},
 				},
 			},
 		},
 		name: 'Get default plugin data',
 		origin: origin,
 	};
-	
+
 	const getExistingForEditor = {
 		id: uuidv4(),
 		active: true,
@@ -60,15 +63,15 @@ export const pluginMocks = ({ planFeaturesData }: IUserStateMocks, defaultPlugin
 				data: {
 					...existingPlugin,
 					planFeatures: {
-						...planFeaturesData
-					}
+						...planFeaturesData,
+					},
 				},
 			},
 		},
 		name: 'Get existing plugin data',
 		origin: origin,
 	};
-	
+
 	const getForViewer = {
 		id: uuidv4(),
 		active: true,
@@ -87,15 +90,15 @@ export const pluginMocks = ({ planFeaturesData }: IUserStateMocks, defaultPlugin
 				data: {
 					...existingPlugin,
 					planFeatures: {
-						...planFeaturesData
-					}
+						...planFeaturesData,
+					},
 				},
 			},
 		},
 		name: 'Get plugin for viewer',
 		origin: origin,
 	};
-	
+
 	const getForGallery = {
 		id: uuidv4(),
 		active: true,
@@ -114,15 +117,15 @@ export const pluginMocks = ({ planFeaturesData }: IUserStateMocks, defaultPlugin
 				data: {
 					...existingPlugin,
 					planFeatures: {
-						...planFeaturesData
-					}
+						...planFeaturesData,
+					},
 				},
 			},
 		},
 		name: 'Get plugin for gallery',
 		origin: origin,
 	};
-	
+
 	const createPlugin = {
 		id: uuidv4(),
 		active: true,
@@ -141,15 +144,15 @@ export const pluginMocks = ({ planFeaturesData }: IUserStateMocks, defaultPlugin
 				data: {
 					...existingPlugin,
 					planFeatures: {
-						...planFeaturesData
-					}
+						...planFeaturesData,
+					},
 				},
 			},
 		},
 		name: 'Create plugin',
 		origin: origin,
 	};
-	
+
 	const updatePlugin = {
 		id: uuidv4(),
 		active: true,
@@ -168,8 +171,8 @@ export const pluginMocks = ({ planFeaturesData }: IUserStateMocks, defaultPlugin
 				data: {
 					...existingPlugin,
 					planFeatures: {
-						...planFeaturesData
-					}
+						...planFeaturesData,
+					},
 				},
 			},
 		},
@@ -185,4 +188,4 @@ export const pluginMocks = ({ planFeaturesData }: IUserStateMocks, defaultPlugin
 		createPlugin,
 		updatePlugin,
 	];
-}
+};

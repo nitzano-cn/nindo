@@ -1,53 +1,54 @@
 @import '../../../external/styles/_vars';
 
-[class^="heading-"], [class*=" heading-"] {
-  font-family: $mainFont;
+[class^='heading-'],
+[class*=' heading-'] {
+	font-family: $mainFont;
 }
 
 .heading-1 {
-  font-style: normal;
-  font-weight: 700;
-  font-size: 64px;
-  line-height: 130%;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 64px;
+	line-height: 130%;
 }
 
 .heading-2 {
-  font-style: normal;
-  font-weight: 700;
-  font-size: 44px;
-  line-height: 49px;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 44px;
+	line-height: 49px;
 }
 
 .heading-3 {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 140%;
-  
-  &.accented {
-    font-weight: normal;
-    font-weight: 600;
-    line-height: 36px;
-  }
+	font-style: normal;
+	font-weight: 400;
+	font-size: 32px;
+	line-height: 140%;
+
+	&.accented {
+		font-weight: normal;
+		font-weight: 600;
+		line-height: 36px;
+	}
 }
 
 .heading-4 {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 140%;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 140%;
 }
 
 .heading-5 {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 150%;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 150%;
 }
 
 .heading-6 {
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 140%;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 140%;
 }

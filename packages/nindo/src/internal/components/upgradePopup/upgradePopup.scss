@@ -1,26 +1,26 @@
 @import '../../../external/styles/_vars';
 
 .popup.upgrade-popup {
-  $popup-width: 90%;
-  cursor: default;
-  
-  .popup-content {
-    width: $popup-width;
-    height: $popup-width;
-    padding: 0;
-    background: $black-30;
+	$popup-width: 90%;
+	cursor: default;
 
-    .close-popup {
-      color: #fff;
-    }
-  }
+	.popup-content {
+		width: $popup-width;
+		height: $popup-width;
+		padding: 0;
+		background: $black-30;
 
-  section {
-    padding: 0;
+		.close-popup {
+			color: #fff;
+		}
+	}
 
-    iframe {
-      width: 100%;
-      min-height: 100%;
-    }
-  }
+	section {
+		padding: 0;
+
+		iframe {
+			width: 100%;
+			min-height: 100%;
+		}
+	}
 }

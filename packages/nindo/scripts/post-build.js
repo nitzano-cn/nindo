@@ -11,29 +11,29 @@ const config = {
 	path: './src/components/plugin/plugin.types.ts',
 	tsconfig: './tsconfig.json',
 	expose: 'export',
-	type: mainType
+	type: mainType,
 };
 
 function removeRequired(obj, parentKey) {
-  for (const prop in obj) {
-    if (prop === 'required' && parentKey !== mainType) {
-      delete obj[prop];
-    } else if (typeof obj[prop] === 'object') {
-      removeRequired(obj[prop], prop);
-    }
-  }
-  return obj;
+	for (const prop in obj) {
+		if (prop === 'required' && parentKey !== mainType) {
+			delete obj[prop];
+		} else if (typeof obj[prop] === 'object') {
+			removeRequired(obj[prop], prop);
+		}
+	}
+	return obj;
 }
 
 class MyFunctionTypeFormatter {
 	supportsType(type) {
-		return (type.name === 'React.CSSProperties' || type.name === 'CSSProperties');
+		return type.name === 'React.CSSProperties' || type.name === 'CSSProperties';
 	}
 
 	getDefinition(type) {
-    return {
-      type: 'object'
-    };
+		return {
+			type: 'object',
+		};
 	}
 
 	// If this type does NOT HAVE children, generally all you need is:

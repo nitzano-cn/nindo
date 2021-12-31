@@ -1,88 +1,88 @@
 @import '../../styles/_vars';
 
 .drawer {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 990;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 990;
 
-  .overlay {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 995;
-    background: rgba(0,0,0,0.85);
-    opacity: 0;
-    transition: opacity 0.2s ease;
+	.overlay {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 995;
+		background: rgba(0, 0, 0, 0.85);
+		opacity: 0;
+		transition: opacity 0.2s ease;
 
-    &.faded-in {
-      opacity: 1;
-    }
-  }
+		&.faded-in {
+			opacity: 1;
+		}
+	}
 
-  &.left {
-    .drawer-content {
-      left: 0;
-      transform: translateX(-100%);
-    }
-  }
+	&.left {
+		.drawer-content {
+			left: 0;
+			transform: translateX(-100%);
+		}
+	}
 
-  &.right {
-    .drawer-content {
-      right: 0;
-      transform: translateX(100%);
-    }
-  }
+	&.right {
+		.drawer-content {
+			right: 0;
+			transform: translateX(100%);
+		}
+	}
 
-  .drawer-content {
-    z-index: 999;
-    position: fixed;
-    top: 0;
-    height: 100%;
-    max-width: 100%;
-    width: 440px;
-    overflow: auto;
-    box-shadow: 0 0 5px rgba(0,0,0,0.7);
-    opacity: 0;
-    transition: all 0.2s ease 0.2s;
-    background: #fff;
-    color: $black-40;
+	.drawer-content {
+		z-index: 999;
+		position: fixed;
+		top: 0;
+		height: 100%;
+		max-width: 100%;
+		width: 440px;
+		overflow: auto;
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+		opacity: 0;
+		transition: all 0.2s ease 0.2s;
+		background: #fff;
+		color: $black-40;
 
-    &.faded-in {
-      transform: translateX(0);
-      opacity: 1;
-    }
+		&.faded-in {
+			transform: translateX(0);
+			opacity: 1;
+		}
 
-    > h2 {
-      font-size: 20px;
-      line-height: 1.3em;
-      font-weight: 200;
-      padding: 10px 15px;
-      text-align: left;
-      background: #efefef;
-      color: $black-40;
-      margin: 0;
-    }
+		> h2 {
+			font-size: 20px;
+			line-height: 1.3em;
+			font-weight: 200;
+			padding: 10px 15px;
+			text-align: left;
+			background: #efefef;
+			color: $black-40;
+			margin: 0;
+		}
 
-    .close-drawer {
-      position: absolute;
-      right: 10px;
-      top: 10px;
-      cursor: pointer;
-      font-size: 22px;
-      opacity: 0.5;
-      background: none;
-      border: none;
-      transition: opacity 0.2s ease;
-      z-index: 10;
+		.close-drawer {
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			cursor: pointer;
+			font-size: 22px;
+			opacity: 0.5;
+			background: none;
+			border: none;
+			transition: opacity 0.2s ease;
+			z-index: 10;
 
-      &:hover {
-        opacity: 0.9;
-      }
-    }
-  }
+			&:hover {
+				opacity: 0.9;
+			}
+		}
+	}
 }

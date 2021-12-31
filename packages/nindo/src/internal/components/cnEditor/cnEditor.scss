@@ -85,16 +85,16 @@
 				}
 			}
 
-			&.right {	
-				&::before {	
-					border-right-color: $pink-10;	
-				}	
+			&.right {
+				&::before {
+					border-right-color: $pink-10;
+				}
 			}
 
-			&.left {	
-				&::before {	
-					border-left-color: $pink-10;	
-				}	
+			&.left {
+				&::before {
+					border-left-color: $pink-10;
+				}
 			}
 		}
 	}
@@ -115,7 +115,7 @@
 	.form-row {
 		&.column {
 			gap: 5px;
-			
+
 			label {
 				margin: 0;
 				flex: 0;
@@ -321,7 +321,8 @@
 			flex: 1;
 			max-width: calc(100% - 30px);
 
-			i, svg {
+			i,
+			svg {
 				font-size: 16px;
 			}
 		}

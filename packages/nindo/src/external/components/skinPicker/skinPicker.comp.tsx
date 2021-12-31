@@ -8,18 +8,22 @@ import { PremiumOpener } from '../premiumOpener/premiumOpener.comp';
 import './skinPicker.scss';
 
 interface ISkinPickerProps<T> {
-  skins: ISkin<T>[]
-  onSelect: (skinStyles: T) => void
-  premiumSkinsAvailable?: boolean
+	skins: ISkin<T>[];
+	onSelect: (skinStyles: T) => void;
+	premiumSkinsAvailable?: boolean;
 }
 
-export const SkinPicker = <T, >({ skins, onSelect, premiumSkinsAvailable }: ISkinPickerProps<T>) => {
-  const [selectedSkin, setSelectedSkin] = useState<number>(0);
-  const uniqueKey = Math.random() * (100 - 1) + 1;;
+export const SkinPicker = <T,>({
+	skins,
+	onSelect,
+	premiumSkinsAvailable,
+}: ISkinPickerProps<T>) => {
+	const [selectedSkin, setSelectedSkin] = useState<number>(0);
+	const uniqueKey = Math.random() * (100 - 1) + 1;
 
-  function selectSkin(skin: ISkin<T>, idx: number) {
-    if (!premiumSkinsAvailable && skin.isPremium) {
-      notificationHelper.removeAll();
+	function selectSkin(skin: ISkin<T>, idx: number) {
+		if (!premiumSkinsAvailable && skin.isPremium) {
+			notificationHelper.removeAll();
 			notificationHelper.warning({
 				title: '✭ Premium Feature',
 				message: `Your current premium plan doesn't support this feature.`,
@@ -27,15 +31,15 @@ export const SkinPicker = <T, >({ skins, onSelect, premiumSkinsAvailable }: ISki
 				position: 'tc',
 				autoDismiss: 4,
 			});
-      return;
-    }
+			return;
+		}
 
-    setSelectedSkin(idx);
-    onSelect(skin.skinStyles);
-  }
+		setSelectedSkin(idx);
+		onSelect(skin.skinStyles);
+	}
 
-  return (
-    <div className="skins">
+	return (
+		<div className="skins">
 			{skins.map((skin: ISkin<T>, idx) => (
 				<div
 					className={`skin ${idx === selectedSkin ? 'selected' : ''}`}
@@ -44,10 +48,10 @@ export const SkinPicker = <T, >({ skins, onSelect, premiumSkinsAvailable }: ISki
 				>
 					<span
 						className="skin-background"
-						style={{ 
-              backgroundColor: skin.color || '#2e2e31', 
-              backgroundImage: skin.thumbnail ? `url(${skin.thumbnail})` : '' 
-            }}
+						style={{
+							backgroundColor: skin.color || '#2e2e31',
+							backgroundImage: skin.thumbnail ? `url(${skin.thumbnail})` : '',
+						}}
 					></span>
 					{skin.isPremium && (
 						<span className="skin-premium" title="Premium Skin">
@@ -57,5 +61,5 @@ export const SkinPicker = <T, >({ skins, onSelect, premiumSkinsAvailable }: ISki
 				</div>
 			))}
 		</div>
-  );
+	);
 };

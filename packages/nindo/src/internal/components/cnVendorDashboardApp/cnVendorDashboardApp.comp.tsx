@@ -1,7 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, RouteProps, Switch, useParams } from 'react-router-dom';
+import {
+	BrowserRouter as Router,
+	Route,
+	RouteProps,
+	Switch,
+	useParams,
+} from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { faDollarSign, faHandshake, faLifeRing, faTh } from '@fortawesome/free-solid-svg-icons';
+import {
+	faDollarSign,
+	faHandshake,
+	faLifeRing,
+	faTh,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { AppNotifications } from '../appNotifications/appNotifications.comp';
@@ -18,11 +29,22 @@ const { NODE_ENV } = process.env;
 const basename = '';
 const env = NODE_ENV === 'production' ? 'prod' : 'dev';
 
-const LocalAppMenu = ({ menuLinks, vendor, includePricing }: { menuLinks: IAppMenuLink[], includePricing: boolean, vendor?: TPlatform }) => {
+const LocalAppMenu = ({
+	menuLinks,
+	vendor,
+	includePricing,
+}: {
+	menuLinks: IAppMenuLink[];
+	includePricing: boolean;
+	vendor?: TPlatform;
+}) => {
 	const params = useParams() as any;
-	let componentType = params.componentType || (window?.location?.href || '').split('?')[0].match(/([^\/]*)\/*$/)?.[1] || '';
+	let componentType =
+		params.componentType ||
+		(window?.location?.href || '').split('?')[0].match(/([^\/]*)\/*$/)?.[1] ||
+		'';
 	const pluginDetails = pluginsList.filter((c) => c.name === componentType)[0];
- 
+
 	function getMenuLinks() {
 		const routePrefix = vendor ? `${vendor}/` : '';
 		const links: IAppMenuLink[] = [
@@ -46,18 +68,16 @@ const LocalAppMenu = ({ menuLinks, vendor, includePricing }: { menuLinks: IAppMe
 		return [
 			...links,
 			...menuLinks.map((link) => {
-        if (!link.url.startsWith(`/${vendor}`)) {
-          link.url = `/${vendor}/${link.url.replace(/^\//g, '')}`;
-        }
-        return link; 
-      }),
+				if (!link.url.startsWith(`/${vendor}`)) {
+					link.url = `/${vendor}/${link.url.replace(/^\//g, '')}`;
+				}
+				return link;
+			}),
 		];
 	}
 
 	return (
-		<AppMenu 
-			links={getMenuLinks()} 
-		>
+		<AppMenu links={getMenuLinks()}>
 			<>
 				<hr />
 				<a
@@ -79,19 +99,19 @@ const LocalAppMenu = ({ menuLinks, vendor, includePricing }: { menuLinks: IAppMe
 			</>
 		</AppMenu>
 	);
-}
+};
 
 export const CNVendorDashboardApp = (props: {
-  dashboardComp: any;
-  pricingComp?: any;
+	dashboardComp: any;
+	pricingComp?: any;
 	menuLinks?: IAppMenuLink[];
-  vendor?: TPlatform;
+	vendor?: TPlatform;
 	extraRoutes?: RouteProps[];
 	defaultRoutePath?: string;
 }) => {
 	const { notifications } = useSelector((state: IAppState<any>) => ({
-    notifications: state.notifications,
-  }));
+		notifications: state.notifications,
+	}));
 
 	const { vendor, extraRoutes, dashboardComp, pricingComp } = props;
 	const routePrefix = vendor ? `${vendor}/` : '';
@@ -99,7 +119,7 @@ export const CNVendorDashboardApp = (props: {
 		{
 			exact: true,
 			path: `/${routePrefix}dashboard/:componentType`,
-			render: (routeProps) => (React.cloneElement(dashboardComp, routeProps))
+			render: (routeProps) => React.cloneElement(dashboardComp, routeProps),
 		},
 	];
 
@@ -107,14 +127,11 @@ export const CNVendorDashboardApp = (props: {
 		routes.push({
 			exact: true,
 			path: `/${routePrefix}pricing/:componentType`,
-			render: (routeProps) => (React.cloneElement(pricingComp, routeProps))
+			render: (routeProps) => React.cloneElement(pricingComp, routeProps),
 		});
 	}
-	
-	const allRoutes = [
-		...routes,
-		...(extraRoutes || []),
-	];
+
+	const allRoutes = [...routes, ...(extraRoutes || [])];
 
 	return (
 		<div className="app">
@@ -134,29 +151,27 @@ export const CNVendorDashboardApp = (props: {
 						logoUrl={window?.location?.href}
 					/>
 					<main className="main-content">
-						<LocalAppMenu 
-							menuLinks={props.menuLinks || []} 
-							vendor={vendor} 
+						<LocalAppMenu
+							menuLinks={props.menuLinks || []}
+							vendor={vendor}
 							includePricing={!!pricingComp}
 						/>
 						<section className="main-section">
 							<Switch>
-								{
-									allRoutes.map((route, idx) => {
-										const routePath: string = route.path as string || '';
-										return (
-											<Route 
-												{...route} 
-												path={
-													!routePath.startsWith(`/${vendor}`) ?
-													`/${vendor}/${routePath.replace(/^\//g, '')}` :
-													routePath
-												} 
-												key={`route_${idx}`}
-											/>
-										);
-									})
-								}
+								{allRoutes.map((route, idx) => {
+									const routePath: string = (route.path as string) || '';
+									return (
+										<Route
+											{...route}
+											path={
+												!routePath.startsWith(`/${vendor}`)
+													? `/${vendor}/${routePath.replace(/^\//g, '')}`
+													: routePath
+											}
+											key={`route_${idx}`}
+										/>
+									);
+								})}
 							</Switch>
 						</section>
 					</main>
@@ -165,4 +180,4 @@ export const CNVendorDashboardApp = (props: {
 			<AppNotifications notifications={notifications} />
 		</div>
 	);
-}
+};

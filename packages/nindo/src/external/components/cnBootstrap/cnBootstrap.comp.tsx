@@ -5,7 +5,12 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 
 import defaultUserState from '../../../internal/mocks/userState.mocks';
-import { assetMocks, eventMocks, pluginMocks, userMocks } from '../../../internal/mocks';
+import {
+	assetMocks,
+	eventMocks,
+	pluginMocks,
+	userMocks,
+} from '../../../internal/mocks';
 import { IAppConfig } from '../../types/app.types';
 import { genStore } from '../../../internal/components/init/reducers.init';
 import { App } from '../../../internal/components/app/app.comp';
@@ -19,21 +24,21 @@ export function cnBootstrap<T, P = {}>(appConfig: IAppConfig<T, P>) {
 	const store: any = genStore(env, appConfig);
 	if (process.env.NODE_ENV === 'development' && !appConfig?.mocks?.disable) {
 		const userState = {
-			...defaultUserState, 
-			...(appConfig?.mocks?.userState || {})
+			...defaultUserState,
+			...(appConfig?.mocks?.userState || {}),
 		};
 		// eslint-disable-next-line
 		const Mimic = require('mimic');
-    const mocksConfig = {
-      version: '2.0.0',
-      mocks: [
-        ...(appConfig?.mocks?.customMocks || []),
-        ...pluginMocks(userState, appConfig.plugin.defaultData),
-        ...userMocks(userState),
-        ...eventMocks(),
-        ...assetMocks(),
-      ],
-    };
+		const mocksConfig = {
+			version: '2.0.0',
+			mocks: [
+				...(appConfig?.mocks?.customMocks || []),
+				...pluginMocks(userState, appConfig.plugin.defaultData),
+				...userMocks(userState),
+				...eventMocks(),
+				...assetMocks(),
+			],
+		};
 
 		// Clear old storage
 		Mimic.default.clearStorage();

@@ -82,8 +82,8 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 // sendFile will go here
-app.get('/', function(req, res) {
-  res.send(html);
+app.get('/', function (req, res) {
+	res.send(html);
 });
 
 app.listen(port);

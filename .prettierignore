@@ -1,0 +1,7 @@
+.tours
+.vscode
+build
+dist
+public
+package-lock.json
+node_modules

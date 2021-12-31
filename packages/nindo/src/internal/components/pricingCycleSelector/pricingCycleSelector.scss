@@ -2,107 +2,107 @@
 
 // Cycle selector
 .select-cycle-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-bottom: 10px;
 
-  .cycle-selector {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
+	.cycle-selector {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 30px;
 
-    @media screen and (max-width: $breakpoint-4) {
-      gap: 10px;
-    }
+		@media screen and (max-width: $breakpoint-4) {
+			gap: 10px;
+		}
 
-    h4 {
-      font-family: Spartan;
-      font-size: 20px;
-      font-weight: 500;
-      opacity: 0.5;
-      color: #ffffff;
-      // text-align: center;
-      align-self: flex-start;
-      padding-top: 2.4rem;
+		h4 {
+			font-family: Spartan;
+			font-size: 20px;
+			font-weight: 500;
+			opacity: 0.5;
+			color: #ffffff;
+			// text-align: center;
+			align-self: flex-start;
+			padding-top: 2.4rem;
 
-      transition: 0.1s;
+			transition: 0.1s;
 
-      &.active {
-        opacity: 1;
-        font-weight: 700;
-      }
+			&.active {
+				opacity: 1;
+				font-weight: 700;
+			}
 
-      @media screen and (max-width: $breakpoint-4) {
-        font-size: 17px;
-      }
-    }
-  }
+			@media screen and (max-width: $breakpoint-4) {
+				font-size: 17px;
+			}
+		}
+	}
 
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 105px;
-    height: 34px;
-  }
-  
-  /* Hide default HTML checkbox */
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  /* The slider */
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      113.11deg,
-      rgba(255, 255, 255, 0.8) 0.6%,
-      rgba(255, 255, 255, 0.1) 99.61%
-    );
-  
-    outline: 3px solid #ffffff1a;
-    outline-offset: -3px;
-    border-radius: 12px;
-    width: 104px;
-    height: 55px;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-  
-    right: 10px;
-    bottom: 7px;
-  
-    width: 37px;
-    height: 35px;
-    background: #620c90;
-  
-    border: 3px solid #6e1f9985;
-  
-    border-radius: 50%;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #5b5b5b;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(-42px);
-    -ms-transform: translateX(-42px);
-    transform: translateX(-42px);
-  }
+	.switch {
+		position: relative;
+		display: inline-block;
+		width: 105px;
+		height: 34px;
+	}
+
+	/* Hide default HTML checkbox */
+	.switch input {
+		opacity: 0;
+		width: 0;
+		height: 0;
+	}
+
+	/* The slider */
+	.slider {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: linear-gradient(
+			113.11deg,
+			rgba(255, 255, 255, 0.8) 0.6%,
+			rgba(255, 255, 255, 0.1) 99.61%
+		);
+
+		outline: 3px solid #ffffff1a;
+		outline-offset: -3px;
+		border-radius: 12px;
+		width: 104px;
+		height: 55px;
+		-webkit-transition: 0.4s;
+		transition: 0.4s;
+	}
+
+	.slider:before {
+		position: absolute;
+		content: '';
+
+		right: 10px;
+		bottom: 7px;
+
+		width: 37px;
+		height: 35px;
+		background: #620c90;
+
+		border: 3px solid #6e1f9985;
+
+		border-radius: 50%;
+		-webkit-transition: 0.4s;
+		transition: 0.4s;
+	}
+
+	input:focus + .slider {
+		box-shadow: 0 0 1px #5b5b5b;
+	}
+
+	input:checked + .slider:before {
+		-webkit-transform: translateX(-42px);
+		-ms-transform: translateX(-42px);
+		transform: translateX(-42px);
+	}
 }

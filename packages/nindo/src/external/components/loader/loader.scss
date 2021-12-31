@@ -1,44 +1,44 @@
 @import '../../styles/_vars';
 
 .loader {
-  p {
-    color: #333;
-    margin: 10px 0 0 -5px;
-  }
- 
-  div {
-    box-sizing: border-box;
-    position: relative;
-    display: inline-block;
-    padding: 0.5em;
-    vertical-align: middle;
-    text-align: center;
-    background-color: transparent;
-    border: 5px solid transparent;
-    border-top-color: $blue-10;
-    border-bottom-color: $blue-10;
-    border-radius: 50%;
-  }
+	p {
+		color: #333;
+		margin: 10px 0 0 -5px;
+	}
 
-  .outer {
-    animation: spin 1s infinite;
-  }
+	div {
+		box-sizing: border-box;
+		position: relative;
+		display: inline-block;
+		padding: 0.5em;
+		vertical-align: middle;
+		text-align: center;
+		background-color: transparent;
+		border: 5px solid transparent;
+		border-top-color: $blue-10;
+		border-bottom-color: $blue-10;
+		border-radius: 50%;
+	}
 
-  .inner {
-    border-top-color: #333;
-    border-bottom-color: #333;
-    animation: spin 1s infinite;
-  }
+	.outer {
+		animation: spin 1s infinite;
+	}
 
-  &.small {
-    transform: scale(0.5);
-    transform-origin: 0 0;
-  }
+	.inner {
+		border-top-color: #333;
+		border-bottom-color: #333;
+		animation: spin 1s infinite;
+	}
 
-  &.big {
-    transform: scale(1.5);
-    transform-origin: 0 0;
-  }
+	&.small {
+		transform: scale(0.5);
+		transform-origin: 0 0;
+	}
+
+	&.big {
+		transform: scale(1.5);
+		transform-origin: 0 0;
+	}
 }
 
 .app-loader {
@@ -48,7 +48,7 @@
 	z-index: 990;
 	width: 100%;
 	height: 100%;
-	background: rgba(255,255,255,0.85);
+	background: rgba(255, 255, 255, 0.85);
 
 	&.transparent {
 		background: transparent;
@@ -62,20 +62,20 @@
 	}
 
 	&.white {
-    background: rgba(0,0,0,0.9);
+		background: rgba(0, 0, 0, 0.9);
 
-    .loader {
-      p {
-        color: #222;
-        font-style: italic;
-      }
+		.loader {
+			p {
+				color: #222;
+				font-style: italic;
+			}
 
-      .inner {
-        border-top-color: #222;
-        border-bottom-color: #222;
-      }
-    }
-  }
+			.inner {
+				border-top-color: #222;
+				border-bottom-color: #222;
+			}
+		}
+	}
 }
 
 @keyframes spin {
@@ -83,6 +83,6 @@
 		transform: rotateZ(0deg);
 	}
 	100% {
-	transform: rotateZ(360deg);
+		transform: rotateZ(360deg);
 	}
 }

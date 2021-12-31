@@ -25,4 +25,4 @@ export const eventMocks = () => {
 	};
 
 	return [reportEvent];
-}
+};

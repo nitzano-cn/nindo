@@ -12,36 +12,36 @@ const packageJson = require('./package.json');
 const extensions = ['.js', '.ts', '.jsx', '.tsx'];
 
 export default [
-  {
-    input: ['src/index.ts', ...getFiles('./src/external', extensions)],
-    output: {
-      dir: 'dist',
-      format: 'esm',
-      preserveModules: true,
-      preserveModulesRoot: 'src',
-      sourcemap: true,
-    },
-    plugins: [
-      nodeResolve(),
-      commonjs(),
-      typescript({
-        tsconfig: './tsconfig.json',
-        declaration: true,
-        declarationDir: 'dist/types',
-      }),
-      postcss(),
-    ],
-    external: [
-      // Use external version of React
-      // To prevent loading react twice
-      'react',
-      'react-dom'
-    ],
-  },
-  {
-    input: 'dist/types/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    plugins: [dts()],
-    external: [/\.(css|less|scss)$/],
-  },
+	{
+		input: ['src/index.ts', ...getFiles('./src/external', extensions)],
+		output: {
+			dir: 'dist',
+			format: 'esm',
+			preserveModules: true,
+			preserveModulesRoot: 'src',
+			sourcemap: true,
+		},
+		plugins: [
+			nodeResolve(),
+			commonjs(),
+			typescript({
+				tsconfig: './tsconfig.json',
+				declaration: true,
+				declarationDir: 'dist/types',
+			}),
+			postcss(),
+		],
+		external: [
+			// Use external version of React
+			// To prevent loading react twice
+			'react',
+			'react-dom',
+		],
+	},
+	{
+		input: 'dist/types/index.d.ts',
+		output: [{ file: 'dist/index.d.ts', format: 'esm' }],
+		plugins: [dts()],
+		external: [/\.(css|less|scss)$/],
+	},
 ];

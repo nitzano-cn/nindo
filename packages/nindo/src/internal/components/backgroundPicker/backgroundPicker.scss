@@ -2,91 +2,91 @@
 @import '../../../external/styles/_vars';
 
 .background-picker-wrapper {
-  position: absolute;
-  top: calc(#{$editorToolbarHeight} + 10px);
-  right: 20px;
-  display: flex;
-  align-items: center;
-  width: fit-content;
-  height: fit-content;
-  gap: 10px;
+	position: absolute;
+	top: calc(#{$editorToolbarHeight} + 10px);
+	right: 20px;
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	height: fit-content;
+	gap: 10px;
 
-  .brush-icon-container {
-    cursor: pointer;
-    color: #9a9b9f;
-    background-color: #e8eaf0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
-    padding: 0.475rem;
-    border-radius: 3.5px;
-    font-size: 0.95rem;
-    position: relative;
-    z-index: 4;
-    transition: color 0.2s ease;
+	.brush-icon-container {
+		cursor: pointer;
+		color: #9a9b9f;
+		background-color: #e8eaf0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: fit-content;
+		padding: 0.475rem;
+		border-radius: 3.5px;
+		font-size: 0.95rem;
+		position: relative;
+		z-index: 4;
+		transition: color 0.2s ease;
 
-    &.active {
-      color: $green-10;
-    }
-  }
+		&.active {
+			color: $green-10;
+		}
+	}
 
-  .backgorund-colors-container {
-    background-color: #e8eaf0;
-    color: #747474;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 3.5px;
-    gap: 5px;
-    overflow: hidden;
-    width: 0px;
-    z-index: 3;
-    margin-right: -20px;
-    transition: all 0.2s ease;
+	.backgorund-colors-container {
+		background-color: #e8eaf0;
+		color: #747474;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 3.5px;
+		gap: 5px;
+		overflow: hidden;
+		width: 0px;
+		z-index: 3;
+		margin-right: -20px;
+		transition: all 0.2s ease;
 
-    &.opened {
-      margin-right: 0;
-      width: 123px;
-      padding: 0.2rem;
-    }
+		&.opened {
+			margin-right: 0;
+			width: 123px;
+			padding: 0.2rem;
+		}
 
-    .background-color-picker {
-      cursor: pointer;
-      width: 1.6rem;
-      height: 1.5rem;
-      border-radius: 3.5px;
-      transition: border-color 0.2s ease;
+		.background-color-picker {
+			cursor: pointer;
+			width: 1.6rem;
+			height: 1.5rem;
+			border-radius: 3.5px;
+			transition: border-color 0.2s ease;
 
-      &.gray {
-        background-color: #bababa;
-      }
+			&.gray {
+				background-color: #bababa;
+			}
 
-      &.black {
-        background-color: #000000;
-      }
+			&.black {
+				background-color: #000000;
+			}
 
-      &.white {
-        background-color: #ffffff;
-      }
+			&.white {
+				background-color: #ffffff;
+			}
 
-      &.active {
-        border: 2px solid $green-10;
-      }
-    }
+			&.active {
+				border: 2px solid $green-10;
+			}
+		}
 
-    .transparent-backgorund {
-      cursor: pointer;
-      padding: 0.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      transition: color 0.2s ease;
+		.transparent-backgorund {
+			cursor: pointer;
+			padding: 0.2rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 1rem;
+			transition: color 0.2s ease;
 
-      &.active {
-        color: $green-10;
-      }
-    }
-  }
+			&.active {
+				color: $green-10;
+			}
+		}
+	}
 }

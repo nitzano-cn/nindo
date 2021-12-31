@@ -4,17 +4,17 @@ import Select, { Props } from 'react-select';
 import './select.scss';
 
 interface INinjaSelectProps extends Props {
-  mode: 'dark' | 'light'
+	mode: 'dark' | 'light';
 }
 
 export const NinjaSelect = (props: INinjaSelectProps) => {
-  const { mode, ...restProps } = props;
+	const { mode, ...restProps } = props;
 
-  return (
-    <Select 
-      {...restProps}
-      className={`ninja-select ${mode}`}
-      classNamePrefix="ninja-select"
-    />
-  );
+	return (
+		<Select
+			{...restProps}
+			className={`ninja-select ${mode}`}
+			classNamePrefix="ninja-select"
+		/>
+	);
 };

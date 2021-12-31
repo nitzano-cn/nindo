@@ -1,7 +1,11 @@
 import { pluginService } from '../../internal/services/plugin.service';
 import { IPlugin, TPluginState } from '../types';
 
-export const getDefaultPlugin = <T>(data: T, name?: string, status?: TPluginState): IPlugin<T> => ({
+export const getDefaultPlugin = <T>(
+	data: T,
+	name?: string,
+	status?: TPluginState
+): IPlugin<T> => ({
 	type: pluginService.pluginType,
 	guid: null,
 	galleryId: null,

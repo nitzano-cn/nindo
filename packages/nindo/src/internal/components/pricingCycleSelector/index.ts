@@ -1,1 +1,4 @@
-export { CycleSelector, CycleSelectorLoader } from './pricingCycleSelector.comp';
+export {
+	CycleSelector,
+	CycleSelectorLoader,
+} from './pricingCycleSelector.comp';

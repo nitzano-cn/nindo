@@ -38,12 +38,11 @@ export function genStore<T, P>(
 	env: string,
 	appConfig: IAppConfig<T>
 ): AppStateStore<T, P> {
-	const reducers = provideReducers(appConfig.plugin.defaultData, appConfig.pluginState || {});
-	const store = createStore(
-		reducers,
-		{},
-		applyMiddleware(thunk as any)
+	const reducers = provideReducers(
+		appConfig.plugin.defaultData,
+		appConfig.pluginState || {}
 	);
+	const store = createStore(reducers, {}, applyMiddleware(thunk as any));
 
 	return store;
 }

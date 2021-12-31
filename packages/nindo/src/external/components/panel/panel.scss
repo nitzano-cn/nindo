@@ -1,92 +1,93 @@
 @import '../../styles/_vars';
 
 .panel {
-  background: rgba(0,0,0,0.08);
-  margin-bottom: 10px;
-  border-radius: 3px;
+	background: rgba(0, 0, 0, 0.08);
+	margin-bottom: 10px;
+	border-radius: 3px;
 
-  header {
-    padding: 10px;
-    position: relative;
-    transition: all 0.2s ease;
-    border-radius: 3px 3px 0 0;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	header {
+		padding: 10px;
+		position: relative;
+		transition: all 0.2s ease;
+		border-radius: 3px 3px 0 0;
+		cursor: pointer;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 
-    i, svg {
-      transition: transform 0.2s ease;
-      font-size: 24px;
-    }
+		i,
+		svg {
+			transition: transform 0.2s ease;
+			font-size: 24px;
+		}
 
-    .actions {
-      position: absolute;
-      right: 40px;
-      top: 50%;
-      transform: translateY(-50%);
-      opacity: 0;
-      transition: all 0.2s ease;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
+		.actions {
+			position: absolute;
+			right: 40px;
+			top: 50%;
+			transform: translateY(-50%);
+			opacity: 0;
+			transition: all 0.2s ease;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
 
-      > * {
-        cursor: pointer;
-        opacity: 0.7;
-        transition: opacity 0.2s ease;
-        margin-left: 10px;
+			> * {
+				cursor: pointer;
+				opacity: 0.7;
+				transition: opacity 0.2s ease;
+				margin-left: 10px;
 
-        &:first-child {
-          margin-left: 0;
-        }
+				&:first-child {
+					margin-left: 0;
+				}
 
-        &:hover {
-          opacity: 1;
-        }
-      }
-    }
+				&:hover {
+					opacity: 1;
+				}
+			}
+		}
 
-    &:hover {
-      background: rgba(255,255,255,0.025);
-      
-      .actions {
-        opacity: 1;
-      }
-    }
-  }
+		&:hover {
+			background: rgba(255, 255, 255, 0.025);
 
-  section {
-    margin: 0;
-    padding: 0;
-    max-height: 0;
-    transition: max-height 0.1s linear;
-    overflow: hidden;
+			.actions {
+				opacity: 1;
+			}
+		}
+	}
 
-    .inner {
-      padding: 10px;
-    }
-  }
+	section {
+		margin: 0;
+		padding: 0;
+		max-height: 0;
+		transition: max-height 0.1s linear;
+		overflow: hidden;
 
-  &.active {
-    header {
-      .actions {
-        opacity: 1;
-      }
-      
-      .icon-chevron-down {
-        transform: rotate(180deg);
-      }
-    }
-  }
+		.inner {
+			padding: 10px;
+		}
+	}
 
-  &.visible {
-    section {
-      overflow: visible;
-    }
-  }
+	&.active {
+		header {
+			.actions {
+				opacity: 1;
+			}
 
-  &:last-child {
-    margin-bottom: 0;
-  }
+			.icon-chevron-down {
+				transform: rotate(180deg);
+			}
+		}
+	}
+
+	&.visible {
+		section {
+			overflow: visible;
+		}
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
 }

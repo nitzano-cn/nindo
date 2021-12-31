@@ -8,24 +8,25 @@ import { VendorUpgrade } from '../vendorUpgrade/vendorUpgrade.comp';
 import './vendorUpgradePopup.scss';
 
 interface IVendorUpgradePopupProps {
-  user: IUser
-  serviceName: string
-  closeCallback: () => void
-  vendor: TPlatform | null
+	user: IUser;
+	serviceName: string;
+	closeCallback: () => void;
+	vendor: TPlatform | null;
 }
 
-export const VendorUpgradePopup = ({ vendor, user, closeCallback, serviceName }: IVendorUpgradePopupProps) => {
-  return (
-    <Popup
-      show={!!vendor}
-      closeCallback={closeCallback}
-      className="vendor-upgrade-popup"
-    >
-      <VendorUpgrade 
-        serviceName={serviceName}
-        user={user}
-        vendor={vendor}
-      />
-    </Popup>
-  );
-}
+export const VendorUpgradePopup = ({
+	vendor,
+	user,
+	closeCallback,
+	serviceName,
+}: IVendorUpgradePopupProps) => {
+	return (
+		<Popup
+			show={!!vendor}
+			closeCallback={closeCallback}
+			className="vendor-upgrade-popup"
+		>
+			<VendorUpgrade serviceName={serviceName} user={user} vendor={vendor} />
+		</Popup>
+	);
+};

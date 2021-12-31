@@ -5,7 +5,7 @@
 	&.inline {
 		display: inline-flex;
 		width: auto;
-		
+
 		> * {
 			flex: 1;
 		}
@@ -13,9 +13,9 @@
 
 	.loading-error {
 		position: relative;
-    text-align: center;
-    transform: none;
-    left: 0;
-    top: 0;
+		text-align: center;
+		transform: none;
+		left: 0;
+		top: 0;
 	}
 }

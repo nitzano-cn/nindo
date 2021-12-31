@@ -1,33 +1,33 @@
 {
-  "name": "@commonninja/create-nindo-app",
-  "version": "0.0.1-alpha.0",
-  "description": "",
-  "main": "index.js",
-  "bin": "./bin/index.js",
-  "files": [
-    "bin",
-    "templates",
-    "scripts"
-  ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CommonNinja/create-nindo-app.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/CommonNinja/create-nindo-app/issues"
-  },
-  "homepage": "https://github.com/CommonNinja/create-nindo-app#readme",
-  "dependencies": {
-    "enquirer": "^2.3.6",
-    "execSync": "^1.0.2",
-    "kolorist": "^1.5.1",
-    "minimist": "^1.2.5",
-    "path": "^0.12.7"
-  }
+	"name": "@commonninja/create-nindo-app",
+	"version": "0.0.1-alpha.0",
+	"description": "",
+	"main": "index.js",
+	"bin": "./bin/index.js",
+	"files": [
+		"bin",
+		"templates",
+		"scripts"
+	],
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CommonNinja/create-nindo-app.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/CommonNinja/create-nindo-app/issues"
+	},
+	"homepage": "https://github.com/CommonNinja/create-nindo-app#readme",
+	"dependencies": {
+		"enquirer": "^2.3.6",
+		"execSync": "^1.0.2",
+		"kolorist": "^1.5.1",
+		"minimist": "^1.2.5",
+		"path": "^0.12.7"
+	}
 }

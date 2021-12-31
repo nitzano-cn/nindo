@@ -5,7 +5,10 @@ import { SystemIcon } from '../../../external/components/icon/icon.comp';
 import { Popup } from '../../../external/components/popup/popup.comp';
 import { H2 } from '../heading/heading.comp';
 import { IPlugin } from '../../../external/types/plugin.types';
-import { IPluginListing, pluginsList } from '../../../external/types/component.types';
+import {
+	IPluginListing,
+	pluginsList,
+} from '../../../external/types/component.types';
 import { TComponentType } from '../../../external/types/component.types';
 import { HttpService } from '../../../external/services/http.service';
 import { TPlatform } from '../../../external/types/editor.types';
@@ -18,7 +21,7 @@ export const getDashboardActionUrl = (
 	component: IPlugin<any>,
 	actionType: 'edit' | 'delete' | 'duplicate',
 	query: string,
-	vendor: TPlatform,
+	vendor: TPlatform
 ) => {
 	const { type, guid = '' } = component;
 	const meta: IPluginListing = pluginsList.filter((c) => c.name === type)[0];
@@ -40,20 +43,20 @@ export const getDashboardActionUrl = (
 };
 
 interface ICNDashboard {
-	vendor: TPlatform
-	itemRenderer: any
-	loaderRenderer: any
-	componentType: TComponentType
-	title?: string
-	postDeleteCallback?: (pluginId: string) => Promise<void>
+	vendor: TPlatform;
+	itemRenderer: any;
+	loaderRenderer: any;
+	componentType: TComponentType;
+	title?: string;
+	postDeleteCallback?: (pluginId: string) => Promise<void>;
 }
 
-export const CNDashboard = ({ 
-	vendor, 
-	componentType, 
-	itemRenderer, 
-	loaderRenderer, 
-	title, 
+export const CNDashboard = ({
+	vendor,
+	componentType,
+	itemRenderer,
+	loaderRenderer,
+	title,
 	postDeleteCallback,
 }: ICNDashboard) => {
 	const httpService = new HttpService();
@@ -61,7 +64,10 @@ export const CNDashboard = ({
 	const pluginDetails = pluginsList.filter((c) => c.name === componentType)[0];
 	const [loading, setLoading] = useState<boolean>(false);
 	const [localError, setLocalError] = useState<null | string>(null);
-	const [activeState, setActiveState] = useState<{ activeComponent: null | IPlugin<any>, activeModal: null | string }>({
+	const [activeState, setActiveState] = useState<{
+		activeComponent: null | IPlugin<any>;
+		activeModal: null | string;
+	}>({
 		activeComponent: null,
 		activeModal: null,
 	});
@@ -101,7 +107,12 @@ export const CNDashboard = ({
 			return;
 		}
 
-		const actionUrl = getDashboardActionUrl(activeComponent, 'delete', query.toString(), vendor);
+		const actionUrl = getDashboardActionUrl(
+			activeComponent,
+			'delete',
+			query.toString(),
+			vendor
+		);
 		if (!actionUrl) {
 			return;
 		}
@@ -221,8 +232,12 @@ export const CNDashboard = ({
 		});
 
 		try {
-			const qs = `page=${searchState.page}&limit=${searchState.limit}&search=${searchState.searchTerm}&${query.toString()}`
-			const result = await httpService.makeRequest(`/${vendor}/api/instances/${componentType}?${qs}`);
+			const qs = `page=${searchState.page}&limit=${searchState.limit}&search=${
+				searchState.searchTerm
+			}&${query.toString()}`;
+			const result = await httpService.makeRequest(
+				`/${vendor}/api/instances/${componentType}?${qs}`
+			);
 
 			if (!result.success || !result.data?.docs) {
 				throw new Error(result.message || 'Could not load items.');
@@ -250,9 +265,9 @@ export const CNDashboard = ({
 	function renderLoader() {
 		return (
 			<div className="components-wrapper">
-				{Array.from(new Array(9)).map((c, idx) => (
+				{Array.from(new Array(9)).map((c, idx) =>
 					React.cloneElement(loaderRenderer(), { key: `comp_skel_${idx}` })
-				))}
+				)}
 			</div>
 		);
 	}
@@ -265,7 +280,10 @@ export const CNDashboard = ({
 		if (searchState.totalComponents <= 0) {
 			return (
 				<div className="no-results center">
-					<p>It looks like you haven't created any {pluginDetails.displayName} yet.</p>
+					<p>
+						It looks like you haven't created any {pluginDetails.displayName}{' '}
+						yet.
+					</p>
 					<div className="buttons-wrapper">
 						<a
 							className="btn major"
@@ -292,7 +310,7 @@ export const CNDashboard = ({
 					{searchState.totalPages})
 				</h4>
 				<div className="components-wrapper">
-					{searchState.components.map((component: any) => (
+					{searchState.components.map((component: any) =>
 						React.cloneElement(itemRenderer(), {
 							key: `component_${component.guid}`,
 							data: component,
@@ -300,30 +318,42 @@ export const CNDashboard = ({
 							deleteClick: (data: any) => openModal(data, 'delete'),
 							duplicateClick: (data: any) => openModal(data, 'duplicate'),
 						})
-					))}
+					)}
 				</div>
 				<div className="pagination">
-					{
-            searchState.page > 1 && 
-            <Link to={`/${vendor}/dashboard/${componentType}?search=${searchState.searchTerm}&type=${searchState.searchType}&page=${searchState.page - 1}`} onClick={() => setSearchState({
-							...searchState,
-							page: searchState.page - 1
-						})}>
-              <SystemIcon type="arrow-left" />
-              <span>Previous</span>
-            </Link>
-          }  
-          Page {searchState.page} out of {searchState.totalPages}
-          {
-            searchState.page < searchState.totalPages && 
-            <Link to={`/${vendor}/dashboard/${componentType}?search=${searchState.searchTerm}&type=${searchState.searchType}&page=${searchState.page + 1}`} onClick={() => setSearchState({
-							...searchState,
-							page: searchState.page + 1
-						})}>
-              <span>Next</span>
-              <SystemIcon type="arrow-right" />
-            </Link>
-          }
+					{searchState.page > 1 && (
+						<Link
+							to={`/${vendor}/dashboard/${componentType}?search=${
+								searchState.searchTerm
+							}&type=${searchState.searchType}&page=${searchState.page - 1}`}
+							onClick={() =>
+								setSearchState({
+									...searchState,
+									page: searchState.page - 1,
+								})
+							}
+						>
+							<SystemIcon type="arrow-left" />
+							<span>Previous</span>
+						</Link>
+					)}
+					Page {searchState.page} out of {searchState.totalPages}
+					{searchState.page < searchState.totalPages && (
+						<Link
+							to={`/${vendor}/dashboard/${componentType}?search=${
+								searchState.searchTerm
+							}&type=${searchState.searchType}&page=${searchState.page + 1}`}
+							onClick={() =>
+								setSearchState({
+									...searchState,
+									page: searchState.page + 1,
+								})
+							}
+						>
+							<span>Next</span>
+							<SystemIcon type="arrow-right" />
+						</Link>
+					)}
 				</div>
 				<div className="no-results center">
 					<div className="buttons-wrapper">
@@ -347,31 +377,26 @@ export const CNDashboard = ({
 
 	return (
 		<>
-		<div className="cn-dashboard">
-			<header>
-				<hgroup className="page-titles">
-					{
-						title && <H2>{title}</H2>
-					}
-				</hgroup>
-				<form className="search-components" onSubmit={onSubmit}>
-					<input
-						placeholder="Search by name..."
-						type="text"
-						onChange={(e) =>
-							setSearchState({
-								...searchState,
-								searchTerm: e.target.value,
-							})
-						}
-					/>
-					<button className="btn major">Search</button>
-				</form>
-			</header>
-			{loading ? renderLoader() : renderBody()}
-		</div>
-		{
-			(activeState.activeComponent && activeState.activeModal) && 
+			<div className="cn-dashboard">
+				<header>
+					<hgroup className="page-titles">{title && <H2>{title}</H2>}</hgroup>
+					<form className="search-components" onSubmit={onSubmit}>
+						<input
+							placeholder="Search by name..."
+							type="text"
+							onChange={(e) =>
+								setSearchState({
+									...searchState,
+									searchTerm: e.target.value,
+								})
+							}
+						/>
+						<button className="btn major">Search</button>
+					</form>
+				</header>
+				{loading ? renderLoader() : renderBody()}
+			</div>
+			{activeState.activeComponent && activeState.activeModal && (
 				<>
 					<Popup
 						closeCallback={() =>
@@ -439,7 +464,7 @@ export const CNDashboard = ({
 						</div>
 					</Popup>
 				</>
-			}
+			)}
 		</>
 	);
 };

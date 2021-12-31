@@ -4,9 +4,9 @@ import { IUser } from '../types/user.types';
 import { IAppState } from '../types/state.types';
 
 export function useUserState(): IUser {
-  const { user } = useSelector((state: IAppState<any>) => ({
-    user: state.user,
-  }));
+	const { user } = useSelector((state: IAppState<any>) => ({
+		user: state.user,
+	}));
 
-  return user;
+	return user;
 }

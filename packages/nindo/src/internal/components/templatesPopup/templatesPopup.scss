@@ -1,103 +1,102 @@
 @import '../../../external/styles/_vars';
 
 .templates-popup {
-  $popup-width: 960px;
-  cursor: default;
-  
-  .popup-content {
-    width: $popup-width;
-    padding: 0;
-    background: $black-40;
-    color: #fff;
-    
-    .close-popup {
-      color: #fff;
-    }
+	$popup-width: 960px;
+	cursor: default;
 
-    h2 {
-      margin: 0;
-      z-index: 2;
-      position: relative;
-      background: $black-20;
-      color: #fff;
-      border: none;
-    }
+	.popup-content {
+		width: $popup-width;
+		padding: 0;
+		background: $black-40;
+		color: #fff;
 
-    section {
-      padding: 20px;
-    }
+		.close-popup {
+			color: #fff;
+		}
 
-    p {
-      margin: 0 0 20px;
-      color: $gray-20;
-      font-size: 16px;
-    }
+		h2 {
+			margin: 0;
+			z-index: 2;
+			position: relative;
+			background: $black-20;
+			color: #fff;
+			border: none;
+		}
 
-    .templates-container {
-      position: relative;
-      max-height: 60vh;
-      overflow: auto;
-    }
+		section {
+			padding: 20px;
+		}
 
-    .templates-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      flex-wrap: wrap;
+		p {
+			margin: 0 0 20px;
+			color: $gray-20;
+			font-size: 16px;
+		}
 
-      > * {
-        width: 33%;
-      }
+		.templates-container {
+			position: relative;
+			max-height: 60vh;
+			overflow: auto;
+		}
 
-      .template-item {
-        text-align: center;
-        padding: 0 20px 40px;
+		.templates-wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0;
+			flex-wrap: wrap;
 
-        &:hover .img {
-          box-shadow: 0 0 0 4px rgba(255,255,255,0.2),
-                      0 3px 10px 0px rgba(0, 0, 0, 0.3);
-        }
+			> * {
+				width: 33%;
+			}
 
-        &.selected .img {
-          box-shadow: 0 0 0 4px $blue-10,
-                      0 3px 10px 0px rgba(0, 0, 0, 0.3);
-        }
+			.template-item {
+				text-align: center;
+				padding: 0 20px 40px;
 
-        h4 {
-          font-size: 14px;
-          margin: 0 0 10px;
-        }
+				&:hover .img {
+					box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2),
+						0 3px 10px 0px rgba(0, 0, 0, 0.3);
+				}
 
-        .img {
-          max-width: 100%;
-          border-radius: 3px;
-          box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.3);
-          cursor: pointer;
-          transition: all 0.2s ease;
-          overflow: hidden;
-          background: url($transparentBg) repeat;
-          height: 200px;
+				&.selected .img {
+					box-shadow: 0 0 0 4px $blue-10, 0 3px 10px 0px rgba(0, 0, 0, 0.3);
+				}
 
-          img {
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-          }
-        }
-      }
-    }
-    
-    .buttons-wrapper {
-      margin: 0;
-      padding: 20px 0 0;
-      text-align: center;
+				h4 {
+					font-size: 14px;
+					margin: 0 0 10px;
+				}
 
-      .button {
-        &:disabled {
-          opacity: 0.7;
-        }
-      }
-    }
-  }
+				.img {
+					max-width: 100%;
+					border-radius: 3px;
+					box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.3);
+					cursor: pointer;
+					transition: all 0.2s ease;
+					overflow: hidden;
+					background: url($transparentBg) repeat;
+					height: 200px;
+
+					img {
+						object-fit: cover;
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+		}
+
+		.buttons-wrapper {
+			margin: 0;
+			padding: 20px 0 0;
+			text-align: center;
+
+			.button {
+				&:disabled {
+					opacity: 0.7;
+				}
+			}
+		}
+	}
 }
