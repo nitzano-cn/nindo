@@ -83,7 +83,6 @@ function installDeps(pkgManager, npmToken, folderPath) {
 		execSync(
 			[
 				`cd ${folderPath}`,
-				`NPM_TOKEN=${npmToken.trim()} ${pkgManager} update @commonninja/nindo`,
 				`NPM_TOKEN=${npmToken.trim()} ${pkgManager} install`,
 			].join(' && '),
 			{ stdio: 'inherit' }
@@ -95,14 +94,26 @@ function installDeps(pkgManager, npmToken, folderPath) {
 	}
 }
 
+function getLatestPackageVersion(npmToken) {
+	try {
+		return execSync(
+			[
+				`NPM_TOKEN=${npmToken.trim()} npm show @commonninja/nindo version`,
+			].join(' && ')
+		).toString().trim();
+	} catch (e) {
+		console.log(red('Could not get latest package version.'), e);
+		return '0.0.0';
+	}
+}
+
 function validateToken(npmToken = '') {
-	const trimmedToken = npmToken.trim();
-	if (!trimmedToken) {
+	if (!npmToken) {
 		return false;
 	}
 
-	const tokenLength = trimmedToken.length;
-	if (trimmedToken.indexOf('npm_') === 0 && tokenLength === 40) {
+	const tokenLength = npmToken.length;
+	if (npmToken.indexOf('npm_') === 0 && tokenLength === 40) {
 		return true;
 	}
 
@@ -122,7 +133,7 @@ async function init() {
 `)
 	);
 	// Request the npm token
-	const npmToken = await getNpmToken();
+	const npmToken = (await getNpmToken() || '').trim();
 	if (!validateToken(npmToken)) {
 		console.log(red(tokenErrorMessage));
 		return;
@@ -217,8 +228,10 @@ async function init() {
 	}
 
 	const pkg = require(path.join(templateDir, `package.json`));
+	const nindoPkgVersion = await getLatestPackageVersion(npmToken);
 
 	pkg.name = packageName;
+	pkg.dependencies['@commonninja/nindo'] = `^${nindoPkgVersion}`;
 
 	// Create package.json dynamically with package name
 	write('package.json', JSON.stringify(pkg, null, 2));
