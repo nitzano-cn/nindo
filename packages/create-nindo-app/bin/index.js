@@ -83,8 +83,8 @@ function installDeps(pkgManager, npmToken, folderPath) {
 		execSync(
 			[
 				`cd ${folderPath}`,
+				`NPM_TOKEN=${npmToken.trim()} ${pkgManager} update @commonninja/nindo`,
 				`NPM_TOKEN=${npmToken.trim()} ${pkgManager} install`,
-				`NPM_TOKEN=${npmToken.trim()} ${pkgManager} update @commonninja/nindo`
 			].join(' && '),
 			{ stdio: 'inherit' }
 		);
