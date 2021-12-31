@@ -1,6 +1,6 @@
 {
 	"name": "@commonninja/create-nindo-app",
-	"version": "0.0.3-alpha.0",
+	"version": "0.0.4-alpha.0",
 	"description": "",
 	"main": "index.js",
 	"bin": "./bin/index.js",
