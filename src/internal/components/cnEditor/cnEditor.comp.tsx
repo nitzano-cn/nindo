@@ -2,6 +2,7 @@ import React, { useState, useEffect, ComponentType, ReactElement } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { faCode, faChartBar, faEye } from '@fortawesome/free-solid-svg-icons';
+import { CommonNinjaPlugin } from 'commonninja-react';
 
 import {
   pluginService,
@@ -27,7 +28,6 @@ import { IAppMenuLink } from '../../../external/types/appMenu.types';
 import { IPlugin, TChildren } from '../../../external/types/plugin.types';
 import { IUser } from '../../../external/types/user.types';
 import { historyChange } from '../../actions/history.actions';
-import { CommonNinjaPlugin } from '../commonninjaPlugin/commonninjaPlugin.comp';
 import { MainArea } from '../mainArea/mainArea.comp';
 import { PluginSkeleton } from '../../../external/components/pluginSkeleton/pluginSkeleton.comp';
 import {

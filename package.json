@@ -1,6 +1,6 @@
 {
   "name": "@commonninja/nindo",
-  "version": "2.1.0-beta.13",
+  "version": "2.1.0-beta.14",
   "description": "",
   "scripts": {
     "rollup": "rollup -c",
@@ -46,6 +46,7 @@
     "@fortawesome/react-fontawesome": "^0.1.16",
     "@loadable/component": "^5.15.2",
     "color2k": "^1.2.4",
+    "commonninja-react": "^1.0.1",
     "dotenv": "^10.0.0",
     "es6-promise": "^4.2.8",
     "mimic": "^2.0.9",
