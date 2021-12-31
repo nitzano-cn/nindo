@@ -81,7 +81,11 @@ function emptyDir(dir) {
 function installDeps(pkgManager, npmToken, folderPath) {
 	try {
 		execSync(
-			`cd ${folderPath} && NPM_TOKEN=${npmToken.trim()} ${pkgManager} install`,
+			[
+				`cd ${folderPath}`,
+				`NPM_TOKEN=${npmToken.trim()} ${pkgManager} install`,
+				`NPM_TOKEN=${npmToken.trim()} ${pkgManager} update @commonninja/nindo`
+			].join(' && '),
 			{ stdio: 'inherit' }
 		);
 		return true;
@@ -213,10 +217,8 @@ async function init() {
 	}
 
 	const pkg = require(path.join(templateDir, `package.json`));
-	const nindoPkg = require(path.join(__dirname, '../', `package.json`));
 
 	pkg.name = packageName;
-	pkg.dependencies['@commonninja/nindo'] = nindoPkg.version;
 
 	// Create package.json dynamically with package name
 	write('package.json', JSON.stringify(pkg, null, 2));
