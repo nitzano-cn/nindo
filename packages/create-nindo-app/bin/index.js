@@ -16,9 +16,9 @@ const renameFiles = {
 	_gitignore: '.gitignore',
 };
 
-const tokenErrorMessage = `
+const dependenciesErrorMessage = `
 Something isn't right.
-It looks like the NPM_TOKEN you're using is invalid or expired.
+We couldn't install dependencies.
 Please contact us for more information:
 contact@commoninja.com
 `;
@@ -48,14 +48,14 @@ async function getValidPackageName(projectName) {
 	}
 }
 
-async function getNpmToken() {
-	const { inputNpmToken } = await prompt({
-		type: 'input',
-		name: 'inputNpmToken',
-		message: `Insert your NPM Token:`,
-	});
-	return inputNpmToken;
-}
+// async function getNpmToken() {
+// 	const { inputNpmToken } = await prompt({
+// 		type: 'input',
+// 		name: 'inputNpmToken',
+// 		message: `Insert your NPM Token:`,
+// 	});
+// 	return inputNpmToken;
+// }
 
 function capitalize(str) {
 	return str.replace(/\w\S*/g, function (txt) {
@@ -78,27 +78,27 @@ function emptyDir(dir) {
 	}
 }
 
-function installDeps(pkgManager, npmToken, folderPath) {
+function installDeps(pkgManager, folderPath) {
 	try {
 		execSync(
 			[
 				`cd ${folderPath}`,
-				`NPM_TOKEN=${npmToken.trim()} ${pkgManager} install`,
+				`${pkgManager} install`,
 			].join(' && '),
 			{ stdio: 'inherit' }
 		);
 		return true;
 	} catch (e) {
-		console.log(red(tokenErrorMessage));
+		console.log(red(dependenciesErrorMessage));
 		return false;
 	}
 }
 
-function getLatestPackageVersion(npmToken) {
+function getLatestPackageVersion() {
 	try {
 		return execSync(
 			[
-				`NPM_TOKEN=${npmToken.trim()} npm show @commonninja/nindo version`,
+				`npm show @commonninja/nindo version`,
 			].join(' && ')
 		).toString().trim();
 	} catch (e) {
@@ -107,22 +107,22 @@ function getLatestPackageVersion(npmToken) {
 	}
 }
 
-function validateToken(npmToken = '') {
-	if (!npmToken) {
-		return false;
-	}
+// function validateToken(npmToken = '') {
+// 	if (!npmToken) {
+// 		return false;
+// 	}
 
-	const tokenLength = npmToken.length;
-	if (npmToken.indexOf('npm_') === 0 && tokenLength === 40) {
-		return true;
-	}
+// 	const tokenLength = npmToken.length;
+// 	if (npmToken.indexOf('npm_') === 0 && tokenLength === 40) {
+// 		return true;
+// 	}
 
-	if (tokenLength !== 36) {
-		return false;
-	}
+// 	if (tokenLength !== 36) {
+// 		return false;
+// 	}
 
-	return true;
-}
+// 	return true;
+// }
 
 async function init() {
 	console.log(
@@ -133,11 +133,11 @@ async function init() {
 `)
 	);
 	// Request the npm token
-	const npmToken = (await getNpmToken() || '').trim();
-	if (!validateToken(npmToken)) {
-		console.log(red(tokenErrorMessage));
-		return;
-	}
+	// const npmToken = (await getNpmToken() || '').trim();
+	// if (!validateToken(npmToken)) {
+	// 	console.log(red(tokenErrorMessage));
+	// 	return;
+	// }
 
 	let targetDir = argv._[0];
 	if (!targetDir) {
@@ -228,7 +228,7 @@ async function init() {
 	}
 
 	const pkg = require(path.join(templateDir, `package.json`));
-	const nindoPkgVersion = await getLatestPackageVersion(npmToken);
+	const nindoPkgVersion = await getLatestPackageVersion();
 
 	pkg.name = packageName;
 	pkg.dependencies['@commonninja/nindo'] = `^${nindoPkgVersion}`;
@@ -259,7 +259,7 @@ REACT_APP_NINJA_PLUGIN_TITLE=       ${capitalize(
 	console.log(lightCyan('\nInstalling dependencies...\n'));
 
 	// Install dependencies
-	const isDownloadDone = await installDeps(pkgManager, npmToken, root);
+	const isDownloadDone = await installDeps(pkgManager, root);
 
 	if (isDownloadDone) {
 		console.log(`
