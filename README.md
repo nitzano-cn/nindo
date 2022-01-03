@@ -1,7 +1,8 @@
 <p align="center">
     <a href="https://www.commoninja.com/develoeprs">
-      <img style="max-width: 200px; margin-bottom: 10px" src="./docs/images/nindo-icon.png" alt="Nindo Icon"/>
-      <img style="max-width: 400px" src="./docs/images/nindo-logo.png" alt="Nindo Logo"/>
+      <img width="200" src="./docs/images/nindo-icon.png" alt="Nindo Icon"/>
+      <br />
+      <img width="400" src="./docs/images/nindo-logo.png" alt="Nindo Logo"/>
     </a>
 </p>
 <p align="center">
