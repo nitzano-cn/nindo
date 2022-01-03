@@ -20,6 +20,8 @@
 
 Nindo is a **React-based framework** for building amazing apps for website builders and e-commerce platforms.
 
+Powered by [Common Ninja](https://www.commoninja.com/developers).
+
 ## Getting Started
 
 **Requirements:**
