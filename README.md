@@ -14,7 +14,7 @@
 
 <div align="center">
 
-📚 [Docs](https://docs.commoninja.com) | 🗣 [Discord](https://discord.gg/Hefq6w5c5d) | 💬 [Discussions](https://github.com/CommonNinja/nindo/discussions) | 📝 [Changelog](https://docs.commoninja.com/change-log/)
+📚 [Docs](https://docs.commoninja.com) | 🗣 [Discord](https://discord.com/invite/cxqUTbvMNd) | 💬 [Discussions](https://github.com/CommonNinja/nindo/discussions) | 📝 [Changelog](https://docs.commoninja.com/change-log/)
 
 </div>
 
