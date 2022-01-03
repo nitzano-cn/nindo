@@ -1,5 +1,8 @@
 <p align="center">
-    <a href="https://www.commoninja.com/develoeprs"><img src="./docs/images/nindo-logo.png" alt="Nindo Logo"/></a>
+    <a href="https://www.commoninja.com/develoeprs">
+      <img style="max-width: 200px; margin-bottom: 10px" src="./docs/images/nindo-icon.png" alt="Nindo Icon"/>
+      <img style="max-width: 400px" src="./docs/images/nindo-logo.png" alt="Nindo Logo"/>
+    </a>
 </p>
 <p align="center">
     <a href="https://www.npmjs.com/package/@commonninja/nindo"><img src="https://img.shields.io/npm/v/@commonninja/nindo.svg?sanitize=true" alt="Version"></a>
