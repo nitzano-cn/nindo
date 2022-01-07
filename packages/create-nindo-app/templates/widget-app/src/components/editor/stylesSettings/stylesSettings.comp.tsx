@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import loadable from '@loadable/component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faImages, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import {
 	premiumHelper,
 	PremiumOpener,
@@ -190,9 +190,7 @@ export const StylesSettingsComp = () => {
 									url ? `url(${url})` : ''
 								)
 							}
-						>
-							<FontAwesomeIcon icon={faImages} title="Open Gallery" />
-						</AssetsGalleryOpener>
+						/>
 						<input
 							type="url"
 							maxLength={400}

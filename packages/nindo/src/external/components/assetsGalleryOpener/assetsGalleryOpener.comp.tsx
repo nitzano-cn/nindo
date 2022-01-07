@@ -11,6 +11,7 @@ import { useQuery } from '../../hooks/query.hook';
 import { pluginService } from '../../../internal/services';
 import { notificationHelper } from '../../helpers/notification.helper';
 import { AssetType } from '../../types/asset.types';
+import { usePlugin } from '../../hooks/plugin.hook';
 
 import './assetsGalleryOpener.scss';
 
@@ -31,6 +32,7 @@ interface AssetsGalleryOpenerProps {
 }
 
 export const AssetsGalleryOpener = (props: AssetsGalleryOpenerProps) => {
+	const plugin = usePlugin<any>();
 	const {
 		children,
 		submitCallback,
@@ -42,11 +44,10 @@ export const AssetsGalleryOpener = (props: AssetsGalleryOpenerProps) => {
 		disabledCallback,
 		assetApiBaseUrl,
 		limit,
-		pluginId,
+		pluginId = plugin.guid,
 		fileSizeLimitInMB,
 		assetType = AssetType.IMAGE,
 	} = props;
-
 	const [opened, setOpened] = useState<boolean>(false);
 	const query = useQuery();
 	const { vendor } = useParams() as any;
