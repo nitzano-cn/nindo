@@ -52,7 +52,7 @@ Learn more about [getting started with Nindo](https://docs.commoninja.com/common
 
 ## Other handy links
 
-📍 Check out [a Nindo app demo on Github](https://github.com/CommonNinja/nindo-demo-app).
+📍 Check out [a Nindo app demo on Github](https://github.com/CommonNinja/nindo-app-demo).
 
 🤩 [Learn more about NindoJS](https://docs.commoninja.com).
 
