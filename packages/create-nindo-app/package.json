@@ -29,5 +29,6 @@
 		"kolorist": "^1.5.1",
 		"minimist": "^1.2.5",
 		"path": "^0.12.7"
-	}
+	},
+	"gitHead": "1baea02fdbea8a63713ae20a6d8626fa17ef518a"
 }

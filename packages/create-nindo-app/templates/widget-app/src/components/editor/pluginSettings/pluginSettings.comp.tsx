@@ -11,6 +11,7 @@ import {
 	FormLabel,
 	notificationHelper,
 	usePluginData,
+	usePlugin,
 } from '@commonninja/nindo';
 
 import { IPluginData } from '../../plugin/plugin.types';
@@ -18,15 +19,13 @@ import { IPluginData } from '../../plugin/plugin.types';
 import './pluginSettings.scss';
 
 export const PluginSettingsComp = () => {
+	const plugin = usePlugin<IPluginData>();
 	const [pluginData, updateData] = usePluginData<IPluginData>();
-	const { settings } = pluginData.data;
+	const { settings } = pluginData;
 	let firstInput: HTMLInputElement | null = null;
 
 	function setSettingField(settingName: string, value: any, e: any) {
-		if (
-			typeof pluginData.planFeatures[settingName] !== 'undefined' &&
-			!premiumHelper.getFeatureValue(settingName)
-		) {
+		if (!premiumHelper.getFeatureValue(settingName)) {
 			notificationHelper.removeAll();
 			notificationHelper.warning({
 				title: '✭ Premium Feature',
@@ -57,8 +56,8 @@ export const PluginSettingsComp = () => {
 	return (
 		<ContextMenuWrapper className="plugin-settings">
 			<ContextMenuSection title="General Settings">
-				<NameFieldEditor currentValue={pluginData.name} />
-				<PrivacySelector currentValue={pluginData.privacy} />
+				<NameFieldEditor currentValue={plugin.name} />
+				<PrivacySelector currentValue={plugin.privacy} />
 			</ContextMenuSection>
 			<ContextMenuSection title="Visibility">
 				<FormRow>

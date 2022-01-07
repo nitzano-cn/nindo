@@ -39,7 +39,7 @@ export const StylesSettingsComp = () => {
 	const [pluginData, updateData] = usePluginData<IPluginData>();
 	const [cssPopupOpened, setCssPopupOpened] = useState<boolean>(false);
 	const [activeStylesProp, setActiveStylesProp] = useState<string | null>(null);
-	const { styles } = pluginData.data;
+	const { styles } = pluginData;
 
 	function stylePropChanged(propName: string, value: any) {
 		updateData({
@@ -183,7 +183,6 @@ export const StylesSettingsComp = () => {
 						<FormLabel>Image URL</FormLabel>
 						<AssetsGalleryOpener
 							enabled={premiumHelper.getFeatureValue('imageUploads') as boolean}
-							pluginId={pluginData.guid || ''}
 							submitCallback={(url) =>
 								cssPropChanged(
 									'background',
@@ -229,7 +228,7 @@ export const StylesSettingsComp = () => {
 			<>
 				<ContextMenuSection title="Font">
 					<FontFamilySelector
-						selectedFontId={pluginData.data.styles.fontId || 'font_open_sans'}
+						selectedFontId={styles.fontId || 'font_open_sans'}
 						updateFont={fontChanged}
 					/>
 				</ContextMenuSection>

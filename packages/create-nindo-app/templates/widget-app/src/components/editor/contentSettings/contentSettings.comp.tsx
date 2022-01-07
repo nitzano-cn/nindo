@@ -12,7 +12,7 @@ import './contentSettings.scss';
 
 export const ContentSettingsComp = () => {
 	const [pluginData, updateData] = usePluginData<IPluginData>();
-	const { content } = pluginData.data;
+	const { content } = pluginData;
 
 	function setContentField(propName: string, value: any) {
 		updateData({
