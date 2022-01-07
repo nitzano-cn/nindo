@@ -13,7 +13,7 @@ import { Editor } from '../editor/editor.comp';
 import { IEditorExtraProps } from '../../../external/types/editor.types';
 import { IViewerProps } from '../../../external/types/viewer.types';
 import { IPlugin } from '../../../external/types/plugin.types';
-import { usePluginData } from '../../../external/hooks/pluginData.hook';
+import { usePlugin } from '../../../external/hooks/plugin.hook';
 
 import './app.scss';
 
@@ -37,7 +37,7 @@ function extractViewerEditorProps<T>(
 }
 
 export const App = ({ appConfig }: IAppProps<any>) => {
-	const [pluginData] = usePluginData<any>();
+	const pluginData = usePlugin<any>();
 	const pluginComp = appConfig.plugin.pluginComponent;
 	const pluginLoaderComp = appConfig.plugin.loaderComponent;
 	const editorProps = extractViewerEditorProps<TPluginEditorProps<any>>(

@@ -1,3 +1,4 @@
+export * from './plugin.hook';
 export * from './pluginContext.hook';
 export * from './pluginData.hook';
 export * from './pluginState.hook';

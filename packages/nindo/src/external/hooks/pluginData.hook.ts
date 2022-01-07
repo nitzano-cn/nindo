@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import { IAppState } from '../types/state.types';
-import { IPlugin } from '../types/plugin.types';
 import { dataUpdated } from '../../internal/actions/plugin.actions';
 
 export function usePluginData<T>(): [
-	IPlugin<T>,
+	T,
 	(updatedData: Partial<T>) => void
 ] {
 	const { pluginData } = useSelector((state: IAppState<T>) => ({
@@ -17,5 +16,5 @@ export function usePluginData<T>(): [
 		dispatch(dataUpdated(updatedData));
 	}
 
-	return [pluginData, updateData];
+	return [pluginData.data, updateData];
 }
