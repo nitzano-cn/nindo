@@ -1,12 +1,4 @@
 <p align="center">
-    <a href="https://www.commoninja.com/develoeprs">
-      <img width="200" src="./docs/images/nindo-icon.png" alt="Nindo Icon"/>
-      <br /><br />
-      <img width="300" src="./docs/images/nindo-logo.png" alt="Nindo Logo"/>
-      <br /><br />
-    </a>
-</p>
-<p align="center">
     <a href="https://www.npmjs.com/package/@commonninja/nindo"><img src="https://img.shields.io/npm/v/@commonninja/nindo.svg?sanitize=true" alt="Version"></a>
     <a href="https://github.com/CommonNinja/nindo/blob/main/LICENSE.md"><img src="https://img.shields.io/npm/l/@commonninja/nindo.svg?sanitize=true" alt="License"></a>
     <a href="https://npmcharts.com/compare/@commonninja/nindo?minimal=true"><img src="https://img.shields.io/npm/dm/@commonninja/nindo.svg?sanitize=true" alt="Downloads"></a>
