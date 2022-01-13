@@ -1,1 +1,1 @@
-export { SortableItem, SortableList } from './sortableList.comp';
+export { SortableItem, SortableList, DragHandler } from './sortableList.comp';
