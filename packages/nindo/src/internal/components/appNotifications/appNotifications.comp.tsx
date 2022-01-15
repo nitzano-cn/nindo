@@ -6,9 +6,12 @@ import 'react-toastify/dist/ReactToastify.css';
 export const getAppNotificationElm = (title: string, message: string, children?: any) => ({ closeToast, toastProps }: any) => (
 	<>
 		<p style={{ margin: 0 }}><strong>{title}</strong></p>
-		<div style={{ margin: 0 }}>
-			{message}&nbsp;{children}
-		</div>
+		{
+			(message || children) && 
+			<div style={{ margin: 0 }}>
+				{message}&nbsp;{children}
+			</div>
+		}
 	</>
 );
 
