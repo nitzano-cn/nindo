@@ -24,10 +24,10 @@ export default [
 			sourcemap: true,
 		},
 		plugins: [
-			nodeResolve(),
 			peerDepsExternal({
 				includeDependencies: true,
 			}),
+			nodeResolve(),
 			commonjs({
 				include: 'node_modules/**',
 				namedExports: {
@@ -46,9 +46,11 @@ export default [
 			// To prevent loading react twice
 			'react',
 			'react-dom',
+			'styled-components',
 		],
 		globals: {
-			Quill: 'Quill'
+			Quill: 'Quill',
+			'styled-components': 'styled'
 		}
 	},
 	{
