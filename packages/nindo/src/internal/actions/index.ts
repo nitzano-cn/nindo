@@ -1,4 +1,3 @@
-export * from './appNotifications.actions';
 export * from './editor.actions';
 export * from './history.actions';
 export * from './plugin.actions';

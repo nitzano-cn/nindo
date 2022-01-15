@@ -1,34 +1,24 @@
 import React from 'react';
-import Notifications from 'react-notification-system-redux';
+import { ToastContainer } from 'react-toastify';
 
-import { IAppNotification } from '../../../external/types/appNotification.types';
+import 'react-toastify/dist/ReactToastify.css';
 
-interface AppNotificationsProps {
-	notifications: IAppNotification[];
-}
+export const getAppNotificationElm = (title: string, message: string, children?: any) => ({ closeToast, toastProps }: any) => (
+	<div>
+		<p>{title}</p>
+		<p>{message}</p>
+		<div>{children}</div>
+	</div>
+);
 
-export const AppNotifications = ({ notifications }: AppNotificationsProps) => {
+export const AppNotifications = () => {
 	return (
-		<Notifications
-			notifications={notifications}
-			style={{
-				Containers: {
-					DefaultStyle: {
-						width: 520,
-						left: '50%',
-					},
-				},
-				NotificationItem: {
-					DefaultStyle: {
-						padding: '10px 20px',
-					},
-				},
-				Title: {
-					DefaultStyle: {
-						margin: '0',
-					},
-				},
-			}}
+		<ToastContainer 
+			position="top-center" 
+			closeButton={true}
+			className="app-notifications"
+			draggable={false}
+			limit={2}
 		/>
 	);
 };

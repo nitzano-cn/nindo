@@ -9,5 +9,4 @@ export interface IAppState<T, P = {}> {
 	pluginState: P;
 	pluginContext: IPluginContext;
 	editor: IEditorState<T>;
-	notifications: Notification[];
 }

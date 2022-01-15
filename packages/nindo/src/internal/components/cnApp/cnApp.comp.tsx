@@ -6,11 +6,8 @@ import {
 	Switch,
 	RouteProps,
 } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { AppNotifications } from '../appNotifications/appNotifications.comp';
 import { PreviewPage } from '../previewPage/previewPage.comp';
-import { IAppState } from '../../../external/types/state.types';
-import { notificationHelper } from '../../../external/helpers/notification.helper';
 import { IExtraRouteProps } from '../../../external/types/app.types';
 
 import './cnApp.scss';
@@ -46,13 +43,7 @@ export const CNApp = (props: {
 			REACT_APP_NINJA_PLUGIN_PATH
 		`);
 	}
-
-	// Init notification helper with dispatch reference
-	notificationHelper.dispatch = useDispatch();
-
-	const { notifications } = useSelector((state: IAppState<any>) => ({
-		notifications: state.notifications,
-	}));
+	
 	const {
 		extraRoutes = [],
 		defaultRoutePath,
@@ -173,7 +164,7 @@ export const CNApp = (props: {
 					/>
 				</Switch>
 			</Router>
-			<AppNotifications notifications={notifications} />
+			<AppNotifications />
 		</div>
 	);
 };

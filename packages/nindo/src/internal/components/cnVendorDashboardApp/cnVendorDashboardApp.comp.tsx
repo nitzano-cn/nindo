@@ -6,7 +6,6 @@ import {
 	Switch,
 	useParams,
 } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import {
 	faDollarSign,
 	faHandshake,
@@ -20,7 +19,6 @@ import { TPlatform } from '../../../external/types/editor.types';
 import { AppHeader } from '../appHeader/appHeader.comp';
 import { AppMenu } from '../appMenu/appMenu.comp';
 import { IAppMenuLink } from '../../../external/types/appMenu.types';
-import { IAppState } from '../../../external/types/state.types';
 import { pluginsList } from '../../../external/types/component.types';
 
 import './cnVendorDashboardApp.scss';
@@ -109,10 +107,6 @@ export const CNVendorDashboardApp = (props: {
 	extraRoutes?: RouteProps[];
 	defaultRoutePath?: string;
 }) => {
-	const { notifications } = useSelector((state: IAppState<any>) => ({
-		notifications: state.notifications,
-	}));
-
 	const { vendor, extraRoutes, dashboardComp, pricingComp } = props;
 	const routePrefix = vendor ? `${vendor}/` : '';
 	const routes: RouteProps[] = [
@@ -177,7 +171,7 @@ export const CNVendorDashboardApp = (props: {
 					</main>
 				</div>
 			</Router>
-			<AppNotifications notifications={notifications} />
+			<AppNotifications />
 		</div>
 	);
 };
