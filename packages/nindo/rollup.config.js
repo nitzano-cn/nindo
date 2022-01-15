@@ -37,6 +37,9 @@ export default [
 			'react',
 			'react-dom',
 		],
+		globals: {
+			quill: 'Quill'
+		}
 	},
 	{
 		input: 'dist/types/index.d.ts',
