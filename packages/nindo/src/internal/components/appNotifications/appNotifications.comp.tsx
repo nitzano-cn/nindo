@@ -15,7 +15,6 @@ export const AppNotifications = () => {
 	return (
 		<ToastContainer 
 			position="top-center" 
-			autoClose={false}
 			closeButton={true}
 			className="app-notifications"
 			draggable={false}

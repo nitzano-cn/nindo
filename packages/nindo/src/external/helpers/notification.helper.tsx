@@ -1,5 +1,4 @@
 import React from 'react';
-import { Dispatch } from 'react';
 import { toast } from 'react-toastify';
 
 import { getAppNotificationElm } from '../../internal/components/appNotifications/appNotifications.comp';
@@ -15,11 +14,9 @@ function getToastContent(config: IAppNotification) {
 }
 
 class NotificationHelper {
-	public dispatch: null | Dispatch<any> = null;
-
 	public success(config: IAppNotification) {
 		toast.success(getToastContent(config), {
-			autoClose: config.autoDismiss,
+			autoClose: typeof config.autoDismiss === 'number' ? config.autoDismiss * 1000 : false,
 			closeButton: !!config.dismissible,
 			closeOnClick: !!config.dismissible,
 			toastId: config.uid,
@@ -28,7 +25,7 @@ class NotificationHelper {
 
 	public error(config: IAppNotification) {
 		toast.error(getToastContent(config), {
-			autoClose: config.autoDismiss,
+			autoClose: typeof config.autoDismiss === 'number' ? config.autoDismiss * 1000 : false,
 			closeButton: !!config.dismissible,
 			closeOnClick: !!config.dismissible,
 			toastId: config.uid,
@@ -37,7 +34,7 @@ class NotificationHelper {
 
 	public warning(config: IAppNotification) {
 		toast.warning(getToastContent(config), {
-			autoClose: config.autoDismiss,
+			autoClose: typeof config.autoDismiss === 'number' ? config.autoDismiss * 1000 : false,
 			closeButton: !!config.dismissible,
 			closeOnClick: !!config.dismissible,
 			toastId: config.uid,
@@ -46,7 +43,7 @@ class NotificationHelper {
 
 	public info(config: IAppNotification) {
 		toast.info(getToastContent(config), {
-			autoClose: config.autoDismiss,
+			autoClose: typeof config.autoDismiss === 'number' ? config.autoDismiss * 1000 : false,
 			closeButton: !!config.dismissible,
 			closeOnClick: !!config.dismissible,
 			toastId: config.uid,
@@ -55,7 +52,7 @@ class NotificationHelper {
 
 	public show(config: IAppNotification) {
 		toast(getToastContent(config), {
-			autoClose: config.autoDismiss,
+			autoClose: typeof config.autoDismiss === 'number' ? config.autoDismiss * 1000 : false,
 			closeButton: !!config.dismissible,
 			closeOnClick: !!config.dismissible,
 			toastId: config.uid,
