@@ -6,7 +6,6 @@ import {
 	Switch,
 	RouteProps,
 } from 'react-router-dom';
-import { AppNotifications } from '../appNotifications/appNotifications.comp';
 import { PreviewPage } from '../previewPage/previewPage.comp';
 import { IExtraRouteProps } from '../../../external/types/app.types';
 
@@ -164,7 +163,6 @@ export const CNApp = (props: {
 					/>
 				</Switch>
 			</Router>
-			<AppNotifications />
 		</div>
 	);
 };

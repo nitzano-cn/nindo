@@ -14,6 +14,7 @@ import { IEditorExtraProps } from '../../../external/types/editor.types';
 import { IViewerProps } from '../../../external/types/viewer.types';
 import { IPlugin } from '../../../external/types/plugin.types';
 import { usePlugin } from '../../../external/hooks/plugin.hook';
+import { AppNotifications } from '../appNotifications/appNotifications.comp';
 
 import './app.scss';
 
@@ -53,33 +54,36 @@ export const App = ({ appConfig }: IAppProps<any>) => {
 	appConfig.app?.onInit?.();
 
 	return (
-		<CNApp
-			editorComp={
-				<Editor
-					{...editorProps}
-					pluginComp={pluginComp}
-					pluginLoaderComp={pluginLoaderComp}
-					config={appConfig.editor.config}
-					defaultPluginData={appConfig.plugin.defaultData}
-				/>
-			}
-			galleryPageComp={
-				<GalleryPage
-					{...viewerProps}
-					pluginComp={pluginComp}
-					pluginLoaderComp={pluginLoaderComp}
-				/>
-			}
-			viewerComp={
-				<Viewer
-					{...viewerProps}
-					pluginComp={pluginComp}
-					pluginLoaderComp={pluginLoaderComp}
-				/>
-			}
-			previewComp={<PluginWrapper pluginComp={pluginComp} />}
-			defaultRoutePath={appConfig.app?.defaultRoutePath || '/editor/content'}
-			extraRoutes={appConfig.app?.extraRoutes}
-		/>
+		<>
+			<CNApp
+				editorComp={
+					<Editor
+						{...editorProps}
+						pluginComp={pluginComp}
+						pluginLoaderComp={pluginLoaderComp}
+						config={appConfig.editor.config}
+						defaultPluginData={appConfig.plugin.defaultData}
+					/>
+				}
+				galleryPageComp={
+					<GalleryPage
+						{...viewerProps}
+						pluginComp={pluginComp}
+						pluginLoaderComp={pluginLoaderComp}
+					/>
+				}
+				viewerComp={
+					<Viewer
+						{...viewerProps}
+						pluginComp={pluginComp}
+						pluginLoaderComp={pluginLoaderComp}
+					/>
+				}
+				previewComp={<PluginWrapper pluginComp={pluginComp} />}
+				defaultRoutePath={appConfig.app?.defaultRoutePath || '/editor/content'}
+				extraRoutes={appConfig.app?.extraRoutes}
+			/>
+			<AppNotifications />
+		</>
 	);
 };
