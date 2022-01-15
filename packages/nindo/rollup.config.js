@@ -6,6 +6,8 @@ import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import dts from 'rollup-plugin-dts';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+
 import { getFiles } from './scripts/buildUtils';
 
 const packageJson = require('./package.json');
@@ -23,6 +25,9 @@ export default [
 		},
 		plugins: [
 			nodeResolve(),
+			peerDepsExternal({
+				includeDependencies: true,
+			}),
 			commonjs({
 				include: 'node_modules/**',
 				namedExports: {
