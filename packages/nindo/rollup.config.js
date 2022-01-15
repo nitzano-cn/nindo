@@ -23,7 +23,12 @@ export default [
 		},
 		plugins: [
 			nodeResolve(),
-			commonjs(),
+			commonjs({
+				include: 'node_modules/**',
+				namedExports: {
+					'node_modules/react-is/index.js': ['isValidElementType']
+				}
+			}),
 			typescript({
 				tsconfig: './tsconfig.json',
 				declaration: true,
