@@ -38,7 +38,7 @@ export default [
 			'react-dom',
 		],
 		globals: {
-			quill: 'Quill'
+			Quill: 'Quill'
 		}
 	},
 	{

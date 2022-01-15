@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ReactQuill, { Quill } from 'react-quill';
+import ReactQuill from 'react-quill';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImages } from '@fortawesome/free-solid-svg-icons';
 // @ts-ignore
@@ -10,6 +10,7 @@ import { AssetsGalleryOpener } from '../assetsGalleryOpener/assetsGalleryOpener.
 import 'react-quill/dist/quill.snow.css';
 import './richEditor.scss';
 
+const Quill = require('quill');
 let Icons, TextAlignStyle, Size, Link;
 
 if (typeof Quill !== 'undefined') {
