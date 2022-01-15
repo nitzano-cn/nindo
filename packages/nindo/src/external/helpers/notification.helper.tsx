@@ -17,8 +17,8 @@ class NotificationHelper {
 	public success(config: IAppNotification) {
 		toast.success(getToastContent(config), {
 			autoClose: typeof config.autoDismiss === 'number' ? config.autoDismiss * 1000 : false,
-			closeButton: !!config.dismissible,
-			closeOnClick: !!config.dismissible,
+			closeButton: !!config.autoDismiss,
+			closeOnClick: !!config.autoDismiss,
 			toastId: config.uid,
 		});
 	}
@@ -26,8 +26,8 @@ class NotificationHelper {
 	public error(config: IAppNotification) {
 		toast.error(getToastContent(config), {
 			autoClose: typeof config.autoDismiss === 'number' ? config.autoDismiss * 1000 : false,
-			closeButton: !!config.dismissible,
-			closeOnClick: !!config.dismissible,
+			closeButton: !!config.autoDismiss,
+			closeOnClick: !!config.autoDismiss,
 			toastId: config.uid,
 		});
 	}
@@ -35,8 +35,8 @@ class NotificationHelper {
 	public warning(config: IAppNotification) {
 		toast.warning(getToastContent(config), {
 			autoClose: typeof config.autoDismiss === 'number' ? config.autoDismiss * 1000 : false,
-			closeButton: !!config.dismissible,
-			closeOnClick: !!config.dismissible,
+			closeButton: !!config.autoDismiss,
+			closeOnClick: !!config.autoDismiss,
 			toastId: config.uid,
 		});
 	}
@@ -44,8 +44,8 @@ class NotificationHelper {
 	public info(config: IAppNotification) {
 		toast.info(getToastContent(config), {
 			autoClose: typeof config.autoDismiss === 'number' ? config.autoDismiss * 1000 : false,
-			closeButton: !!config.dismissible,
-			closeOnClick: !!config.dismissible,
+			closeButton: !!config.autoDismiss,
+			closeOnClick: !!config.autoDismiss,
 			toastId: config.uid,
 		});
 	}
@@ -53,8 +53,8 @@ class NotificationHelper {
 	public show(config: IAppNotification) {
 		toast(getToastContent(config), {
 			autoClose: typeof config.autoDismiss === 'number' ? config.autoDismiss * 1000 : false,
-			closeButton: !!config.dismissible,
-			closeOnClick: !!config.dismissible,
+			closeButton: !!config.autoDismiss,
+			closeOnClick: !!config.autoDismiss,
 			toastId: config.uid,
 		});
 	}
