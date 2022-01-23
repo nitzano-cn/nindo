@@ -1,15 +1,5 @@
 #! /usr/bin/env node
 
-const { exec } = require('child_process');
+const shell = require('shelljs');
 
-exec('npm run react:test', (error, stdout, stderr) => {
-	if (error) {
-		console.log(`error: ${error.message}`);
-		return;
-	}
-	if (stderr) {
-		console.log(`stderr: ${stderr}`);
-		return;
-	}
-	console.log(`stdout: ${stdout}`);
-});
+shell.exec('node node_modules/react-scripts/bin/react-scripts.js test');

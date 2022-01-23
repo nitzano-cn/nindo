@@ -12,12 +12,22 @@ const spawn = require('child_process').spawnSync;
 const args = process.argv.slice(2);
 
 const scriptIndex = args.findIndex(
-	(x) => x === 'start' || x === 'build' || x === 'test' || x === 'post-build' || x === 'analyze' || x === 'simulate' // || x === 'test'
+	(x) =>
+		x === 'start' ||
+		x === 'build' ||
+		x === 'test' ||
+		x === 'post-build' ||
+		x === 'analyze' ||
+		x === 'simulate' // || x === 'test'
 );
 const script = scriptIndex === -1 ? args[0] : args[scriptIndex];
 const nodeArgs = scriptIndex > 0 ? args.slice(0, scriptIndex) : [];
 
-if (['start', 'build', 'test', 'post-build', 'analyze', 'simulate'].includes(script)) {
+if (
+	['start', 'build', 'test', 'post-build', 'analyze', 'simulate'].includes(
+		script
+	)
+) {
 	const result = spawn(
 		process.execPath,
 		nodeArgs

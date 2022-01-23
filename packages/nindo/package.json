@@ -9,10 +9,7 @@
 		"prepare": "npm run build",
 		"postinstall": "node ./scripts/pre-build.js",
 		"prebuild": "node ./scripts/pre-build.js",
-		"build": "npm run clean && npm run rollup",
-		"react:start": "react-scripts start",
-		"react:build": "react-scripts build",
-		"react:test": "react-scripts test"
+		"build": "npm run clean && npm run rollup"
 	},
 	"main": "dist/index.js",
 	"module": "dist/index.js",
@@ -74,6 +71,7 @@
 		"redux": "^4.1.2",
 		"redux-thunk": "^2.4.1",
 		"remote-redux-devtools": "^0.5.16",
+		"shelljs": "^0.8.5",
 		"ts-json-schema-generator": "^0.97.0",
 		"uuid": "^8.3.2",
 		"webpack-bundle-analyzer": "^4.5.0"
