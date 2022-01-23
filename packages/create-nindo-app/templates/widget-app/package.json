@@ -4,8 +4,8 @@
 	"private": true,
 	"proxy": "http://localhost:5006/",
 	"engines": {
-		"npm": "6.13.4",
-		"node": "12.16.1"
+		"npm": "^6 || ^7 || ^8",
+		"node": "^12 || ^14 || ^16 || ^18"
 	},
 	"dependencies": {
 		"@commonninja/nindo": "^1.1.0",
