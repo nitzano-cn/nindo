@@ -29,10 +29,10 @@ export default [
 			}),
 			nodeResolve(),
 			commonjs({
-				include: 'node_modules/**',
-				namedExports: {
-					'node_modules/react-is/index.js': ['isValidElementType']
-				}
+				// include: 'node_modules/**',
+				// namedExports: {
+				// 	'node_modules/react-is/index.js': ['isValidElementType']
+				// }
 			}),
 			typescript({
 				tsconfig: './tsconfig.json',
@@ -46,11 +46,11 @@ export default [
 			// To prevent loading react twice
 			'react',
 			'react-dom',
-			'styled-components',
+			// 'styled-components',
 		],
 		globals: {
 			Quill: 'Quill',
-			'styled-components': 'styled'
+			// 'styled-components': 'styled'
 		}
 	},
 	{
