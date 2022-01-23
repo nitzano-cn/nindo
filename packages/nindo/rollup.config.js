@@ -35,7 +35,7 @@ export default [
 			// }),
 			nodeResolve(),
 			commonjs({
-				include: /node_modules/,
+				// include: /node_modules/,
 			}),
 			typescript({
 				tsconfig: './tsconfig.json',
