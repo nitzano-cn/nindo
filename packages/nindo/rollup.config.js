@@ -22,13 +22,21 @@ export default [
 			preserveModules: true,
 			preserveModulesRoot: 'src',
 			sourcemap: true,
+			globals: {
+				react: 'React',
+				'react-dom': 'ReactDOM',
+				'styled-components': 'styled',
+				quill: 'Quill',
+			}
 		},
 		plugins: [
 			// peerDepsExternal({
 			// 	includeDependencies: true,
 			// }),
 			nodeResolve(),
-			commonjs(),
+			commonjs({
+				include: /node_modules/,
+			}),
 			typescript({
 				tsconfig: './tsconfig.json',
 				declaration: true,
@@ -41,10 +49,8 @@ export default [
 			// To prevent loading react twice
 			'react',
 			'react-dom',
-		],
-		globals: {
-			Quill: 'Quill',
-		}
+			'styled-components',
+		]
 	},
 	{
 		input: 'dist/types/index.d.ts',
