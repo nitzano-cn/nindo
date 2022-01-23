@@ -25,7 +25,7 @@ export default [
 			globals: {
 				react: 'React',
 				'react-dom': 'ReactDOM',
-				'styled-components': 'styled',
+				// 'styled-components': 'styled',
 				quill: 'Quill',
 			}
 		},
@@ -49,7 +49,7 @@ export default [
 			// To prevent loading react twice
 			'react',
 			'react-dom',
-			'styled-components',
+			// 'styled-components',
 		]
 	},
 	{
