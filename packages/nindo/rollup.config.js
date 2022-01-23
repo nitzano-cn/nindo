@@ -36,6 +36,9 @@ export default [
 			nodeResolve(),
 			commonjs({
 				// include: /node_modules/,
+				namedExports: {
+					'node_modules/react-is/index.js': ['isElement', 'isValidElementType']
+				}
 			}),
 			typescript({
 				tsconfig: './tsconfig.json',
