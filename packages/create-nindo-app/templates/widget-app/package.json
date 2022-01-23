@@ -7,28 +7,19 @@
 		"npm": "^6 || ^7 || ^8",
 		"node": "^12 || ^14 || ^16 || ^18"
 	},
-	"dependencies": {
-		"@commonninja/nindo": "^1.1.0",
-		"@loadable/component": "^5.14.1",
-		"@sentry/browser": "^5.30.0",
-		"@testing-library/jest-dom": "^4.2.4",
-		"@testing-library/react": "^9.5.0",
-		"@testing-library/user-event": "^7.2.1",
-		"@types/uuid": "^8.3.0",
-		"es6-promise": "^4.2.8",
-		"sass": "^1.35.1",
-		"typescript": "^3.9.9",
-		"uuid": "^8.3.2"
-	},
 	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject",
-		"prettier": "prettier --write .",
+		"start": "cn-scripts start",
+		"build": "cn-scripts build",
+		"test": "cn-scripts test",
 		"analyze": "cn-scripts analyze",
 		"simulate": "cn-scripts simulate",
-		"postbuild": "cn-scripts post-build"
+		"postbuild": "cn-scripts post-build",
+		"prettier": "prettier --write ."
+	},
+	"dependencies": {
+		"@commonninja/nindo": "^1.1.0",
+		"sass": "^1.35.1",
+		"typescript": "^3.9.9"
 	},
 	"husky": {
 		"hooks": {
