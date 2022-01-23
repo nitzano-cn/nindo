@@ -1,6 +1,6 @@
 {
 	"name": "@commonninja/nindo",
-	"version": "1.1.22",
+	"version": "1.1.23",
 	"description": "",
 	"scripts": {
 		"rollup": "rollup -c",
@@ -46,8 +46,8 @@
 		"@fortawesome/react-fontawesome": "^0.1.16",
 		"@loadable/component": "^5.15.2",
 		"@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^7.2.1",
+		"@testing-library/react": "^12.1.2",
+		"@testing-library/user-event": "^7.2.1",
 		"@types/jest": "^27.0.2",
 		"@types/loadable__component": "^5.13.4",
 		"@types/react": "^16.13.1",
