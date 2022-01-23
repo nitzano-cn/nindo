@@ -6,7 +6,7 @@ import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import dts from 'rollup-plugin-dts';
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+// import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 import { getFiles } from './scripts/buildUtils';
 
@@ -24,12 +24,12 @@ export default [
 			sourcemap: true,
 		},
 		plugins: [
-			peerDepsExternal({
-				includeDependencies: true,
-			}),
+			// peerDepsExternal({
+			// 	includeDependencies: true,
+			// }),
 			nodeResolve(),
 			commonjs({
-				include: 'node_modules/**',
+				// include: 'node_modules/**',
 			}),
 			typescript({
 				tsconfig: './tsconfig.json',
@@ -43,11 +43,9 @@ export default [
 			// To prevent loading react twice
 			'react',
 			'react-dom',
-			'styled-components',
 		],
 		globals: {
 			Quill: 'Quill',
-			'styled-components': 'styled'
 		}
 	},
 	{
