@@ -8,18 +8,19 @@
 		"node": "^12 || ^14 || ^16 || ^18"
 	},
 	"scripts": {
-		"start": "cn-scripts start",
-		"build": "cn-scripts build",
-		"test": "cn-scripts test",
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
 		"analyze": "cn-scripts analyze",
 		"simulate": "cn-scripts simulate",
 		"postbuild": "cn-scripts post-build",
 		"prettier": "prettier --write ."
 	},
 	"dependencies": {
-		"@commonninja/nindo": "^1.1.0",
-		"sass": "^1.35.1",
-		"typescript": "^3.9.9"
+		"@commonninja/nindo": "^1.1.23",
+    "react-scripts": "^4.0.3",
+    "sass": "^1.35.1",
+    "typescript": "^3.9.9"
 	},
 	"husky": {
 		"hooks": {
