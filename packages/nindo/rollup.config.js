@@ -25,7 +25,7 @@ export default [
 			globals: {
 				react: 'React',
 				'react-dom': 'ReactDOM',
-				// 'styled-components': 'styled',
+				'styled-components': 'styled',
 				quill: 'Quill',
 			}
 		},
@@ -36,9 +36,9 @@ export default [
 			nodeResolve(),
 			commonjs({
 				// include: /node_modules/,
-				namedExports: {
-					'node_modules/react-is/index.js': ['isElement', 'isValidElementType']
-				}
+				// namedExports: {
+				// 	'node_modules/react-is/index.js': ['isElement', 'isValidElementType']
+				// }
 			}),
 			typescript({
 				tsconfig: './tsconfig.json',
@@ -52,7 +52,7 @@ export default [
 			// To prevent loading react twice
 			'react',
 			'react-dom',
-			// 'styled-components',
+			'styled-components',
 		]
 	},
 	{
