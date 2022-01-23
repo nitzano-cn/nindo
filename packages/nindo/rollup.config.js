@@ -28,9 +28,7 @@ export default [
 			// 	includeDependencies: true,
 			// }),
 			nodeResolve(),
-			commonjs({
-				// include: 'node_modules/**',
-			}),
+			commonjs(),
 			typescript({
 				tsconfig: './tsconfig.json',
 				declaration: true,
