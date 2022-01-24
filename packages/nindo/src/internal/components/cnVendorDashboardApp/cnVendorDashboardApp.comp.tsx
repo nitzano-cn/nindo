@@ -109,8 +109,8 @@ export const CNVendorDashboardApp = (props: {
 }) => {
 	const { vendor, extraRoutes, dashboardComp, pricingComp } = props;
 	const routePrefix = vendor ? `${vendor}/` : '';
-	const dashboardComponent = () => React.cloneElement(dashboardComp, {});
-	const pricingComponent = () => React.cloneElement(pricingComp, {});
+	const dashboardComponent = () => (dashboardComp);
+	const pricingComponent = () => (pricingComp);
 
 	const routes: RouteProps[] = [
 		{

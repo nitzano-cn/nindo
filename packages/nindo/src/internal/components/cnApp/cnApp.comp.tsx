@@ -52,9 +52,9 @@ export const CNApp = (props: {
 		viewerComp,
 	} = props;
 	const previewComponent = () => <PreviewPage>{previewComp}</PreviewPage>;
-	const editorComponent = () => React.cloneElement(editorComp, {});
-	const viewerComponent = () => React.cloneElement(viewerComp, {});
-	const galleryComponent = () => React.cloneElement(galleryPageComp, {});
+	const editorComponent = () => (editorComp);
+	const viewerComponent = () => (viewerComp);
+	const galleryComponent = () => (galleryPageComp);
 
 	const routes: RouteProps[] = [
 		// Editor
