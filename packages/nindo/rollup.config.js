@@ -20,6 +20,9 @@ export default [
 			preserveModules: true,
 			preserveModulesRoot: 'src',
 			sourcemap: true,
+			globals: {
+				react: 'React',
+			}
 		},
 		plugins: [
 			nodeResolve(),
