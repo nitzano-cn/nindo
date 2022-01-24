@@ -6,8 +6,6 @@ import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import dts from 'rollup-plugin-dts';
-// import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-
 import { getFiles } from './scripts/buildUtils';
 
 const packageJson = require('./package.json');
@@ -22,38 +20,10 @@ export default [
 			preserveModules: true,
 			preserveModulesRoot: 'src',
 			sourcemap: true,
-			// globals: {
-			// 	react: 'React',
-			// 	'react-dom': 'ReactDOM',
-			// 	// 'styled-components': 'styled',
-			// 	quill: 'Quill',
-			// }
 		},
 		plugins: [
-			// peerDepsExternal({
-			// 	includeDependencies: true,
-			// }),
 			nodeResolve(),
-			commonjs({
-				include: 'node_modules/**',
-				// left-hand side can be an absolute path, a path
-				// relative to the current directory, or the name
-				// of a module in node_modules
-				namedExports: {
-					'node_modules/react/index.js': [
-						'cloneElement',
-						'createContext',
-						'Component',
-						'createElement'
-					],
-					'node_modules/react-dom/index.js': ['render', 'hydrate'],
-					'node_modules/react-is/index.js': [
-						'isElement',
-						'isValidElementType',
-						'ForwardRef'
-					]
-				}
-			}),
+			commonjs(),
 			typescript({
 				tsconfig: './tsconfig.json',
 				declaration: true,
@@ -66,9 +36,7 @@ export default [
 			// To prevent loading react twice
 			'react',
 			'react-dom',
-			'quill',
-			// 'styled-components',
-		]
+		],
 	},
 	{
 		input: 'dist/types/index.d.ts',
