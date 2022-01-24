@@ -51,74 +51,74 @@ export const CNApp = (props: {
 		previewComp,
 		viewerComp,
 	} = props;
-	const previewComponent = () => <PreviewPage>{previewComp}</PreviewPage>;
-	const editorComponent = () => (editorComp);
-	const viewerComponent = () => (viewerComp);
-	const galleryComponent = () => (galleryPageComp);
-
 	const routes: RouteProps[] = [
 		// Editor
 		{
 			exact: true,
 			path: `/${pluginPath}/editor/preview`,
-			component: previewComponent
+			render: (routeProps) => (
+				<PreviewPage {...routeProps}>{previewComp}</PreviewPage>
+			),
 		},
 		{
 			exact: true,
 			path: `/${pluginPath}/editor/:page`,
-			component: editorComponent
+			render: (routeProps) => React.cloneElement(editorComp, routeProps),
 		},
 		{
 			exact: true,
 			path: `/${pluginPath}/editor/:page/:pluginId`,
-			component: editorComponent
+			render: (routeProps) => React.cloneElement(editorComp, routeProps),
 		},
 		// Viewer
 		{
 			exact: true,
 			path: `/${pluginPath}/viewer`,
-			component: viewerComponent
+			render: (routeProps) => React.cloneElement(viewerComp, routeProps),
 		},
 		{
 			exact: true,
 			path: `/${pluginPath}/viewer/:pluginId`,
-			component: viewerComponent
+			render: (routeProps) => React.cloneElement(viewerComp, routeProps),
 		},
 		// Gallery Page
 		{
 			exact: true,
 			path: `/${pluginPath}/lp/:galleryId`,
-			component: galleryComponent
+			render: (routeProps) => React.cloneElement(galleryPageComp, routeProps),
 		},
 		// Vendors
 		{
 			exact: true,
 			path: `/${pluginPath}/v/:vendor/viewer`,
-			component: viewerComponent
+			render: (routeProps) => React.cloneElement(viewerComp, routeProps),
 		},
 		{
 			exact: true,
 			path: `/${pluginPath}/v/:vendor/viewer/:pluginId`,
-			component: viewerComponent
+			render: (routeProps) => React.cloneElement(viewerComp, routeProps),
 		},
 		{
 			exact: true,
 			path: `/${pluginPath}/v/:vendor/:page`,
-			component: editorComponent
+			render: (routeProps) => React.cloneElement(editorComp, routeProps),
 		},
 		{
 			exact: true,
 			path: `/${pluginPath}/v/:vendor/:page/:pluginId`,
-			component: editorComponent
+			render: (routeProps) => React.cloneElement(editorComp, routeProps),
 		},
 		// Extra routes
 		...extraRoutes.map((extraRoute) => {
 			if (extraRoute.pageType === 'viewer') {
-				extraRoute.component = viewerComponent;
+				extraRoute.render = (routeProps) =>
+					React.cloneElement(viewerComp, routeProps);
 			} else if (extraRoute.pageType === 'editor') {
-				extraRoute.component = editorComponent;
+				extraRoute.render = (routeProps) =>
+					React.cloneElement(editorComp, routeProps);
 			} else if (extraRoute.pageType === 'gallery') {
-				extraRoute.component = galleryComponent;
+				extraRoute.render = (routeProps) =>
+					React.cloneElement(galleryPageComp, routeProps);
 			}
 			return extraRoute;
 		}),

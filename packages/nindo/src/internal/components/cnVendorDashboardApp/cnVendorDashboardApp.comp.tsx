@@ -109,14 +109,11 @@ export const CNVendorDashboardApp = (props: {
 }) => {
 	const { vendor, extraRoutes, dashboardComp, pricingComp } = props;
 	const routePrefix = vendor ? `${vendor}/` : '';
-	const dashboardComponent = () => (dashboardComp);
-	const pricingComponent = () => (pricingComp);
-
 	const routes: RouteProps[] = [
 		{
 			exact: true,
 			path: `/${routePrefix}dashboard/:componentType`,
-			component: dashboardComponent
+			render: (routeProps) => React.cloneElement(dashboardComp, routeProps),
 		},
 	];
 
@@ -124,7 +121,7 @@ export const CNVendorDashboardApp = (props: {
 		routes.push({
 			exact: true,
 			path: `/${routePrefix}pricing/:componentType`,
-			component: pricingComponent
+			render: (routeProps) => React.cloneElement(pricingComp, routeProps),
 		});
 	}
 
