@@ -22,12 +22,12 @@ export default [
 			preserveModules: true,
 			preserveModulesRoot: 'src',
 			sourcemap: true,
-			globals: {
-				react: 'React',
-				'react-dom': 'ReactDOM',
-				// 'styled-components': 'styled',
-				quill: 'Quill',
-			}
+			// globals: {
+			// 	react: 'React',
+			// 	'react-dom': 'ReactDOM',
+			// 	// 'styled-components': 'styled',
+			// 	quill: 'Quill',
+			// }
 		},
 		plugins: [
 			// peerDepsExternal({
@@ -52,7 +52,7 @@ export default [
 			// To prevent loading react twice
 			'react',
 			'react-dom',
-			'Quill',
+			'quill',
 			// 'styled-components',
 		]
 	},
