@@ -23,22 +23,7 @@ export default [
 		},
 		plugins: [
 			nodeResolve(),
-			commonjs({
-				namedExports: {
-					'node_modules/react/index.js': [
-						'cloneElement',
-						'createContext',
-						'Component',
-						'createElement'
-					],
-					'node_modules/react-dom/index.js': ['render', 'hydrate'],
-					'node_modules/react-is/index.js': [
-						'isElement',
-						'isValidElementType',
-						'ForwardRef'
-					]
-				}
-			}),
+			commonjs(),
 			typescript({
 				tsconfig: './tsconfig.json',
 				declaration: true,
@@ -51,6 +36,7 @@ export default [
 			// To prevent loading react twice
 			'react',
 			'react-dom',
+			'react-is',
 		],
 	},
 	{
